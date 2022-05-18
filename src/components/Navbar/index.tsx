@@ -6,9 +6,7 @@ export default function Navbar() {
 		<header className="header flex-col-center-center fade">
 			<div className="container flex-row-center-sBetween">
 				<Link href="/">
-					<a>
-						<b className="fade">VS</b>
-					</a>
+					<b className="fade">VS</b>
 				</Link>
 				<div className="nav-links">
 					<a className="fade" href="#about" rel="nofollow">

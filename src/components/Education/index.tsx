@@ -9,7 +9,7 @@ export default function Education() {
 				<h2 className="section-title">EDUCATION</h2>
 				<div className="flex-col">
 					<div className="flex-row education-item">
-						<img defer src="/imgs/harbour-sapce-university.jpg" alt="Harbour Space University building" />
+						<img /* defer */ src="/imgs/harbour-sapce-university.jpg" alt="Harbour Space University building" />
 						<div>
 							<h3>Harbour.Space University</h3>
 							<h4 className="edu-desktop">Bachelor in Computer Science | Barcelona, Spain | 2021 - Today</h4>
@@ -29,7 +29,7 @@ export default function Education() {
 					<br />
 					<br />
 					<div className="flex-row education-item">
-						<img defer src="/imgs/it-high-school-exupery.jpg" alt="IT Highschool Exupery building" />
+						<img /* defer */ src="/imgs/it-high-school-exupery.jpg" alt="IT Highschool Exupery building" />
 						<div>
 							<h3>IT High School &quot;Antoine de Saint-Exupéry&quot;</h3>
 							<h4 className="edu-desktop">High School Diploma | Varna, Bulgaria | 2017 - 2021</h4>
@@ -49,7 +49,7 @@ export default function Education() {
 					<br />
 					<br />
 					<div className="flex-row education-item">
-						<img defer src="/imgs/vienna-international-school.webp" alt="Vienna International School building" />
+						<img /* defer */ src="/imgs/vienna-international-school.webp" alt="Vienna International School building" />
 						<div>
 							<h3>Vienna International School</h3>
 							<h4 className="edu-desktop">First to Eighth Grade Education | Vienna, Austria | 2009 - 2017</h4>

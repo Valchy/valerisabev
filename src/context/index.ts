@@ -1,3 +1,5 @@
+export function nothing() {}
+
 // import { createContext, ReactNode } from 'react';
 // import { useLocalStorage } from '@hooks/localStorage';
 // import type { Context } from '@mytypes';

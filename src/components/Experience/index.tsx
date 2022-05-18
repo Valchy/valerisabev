@@ -11,9 +11,9 @@ export default function Experience() {
 				<div className="flex-row">
 					<div className="flex-col-center-none">
 						<Link href="https://bauwerksolutions.com/" target="_BLANK">
-							<a>
+							<a rel="noreferrer" href="https://bauwerksolutions.com/" target="_BLANK">
 								<img
-									defer
+									// defer
 									className="company-img"
 									src="/imgs/bauwerk-building-solutions.png"
 									alt="Logo of Bauwerk Building Solutions"
@@ -41,9 +41,9 @@ export default function Experience() {
 				<div className="flex-row">
 					<div className="flex-col-center-none">
 						<Link href="https://bauwerksolutions.com/" target="_BLANK">
-							<a>
+							<a rel="noreferrer" href="https://bauwerksolutions.com/" target="_BLANK">
 								<img
-									defer
+									// defer
 									className="company-img"
 									src="/imgs/bauwerk-building-solutions.png"
 									alt="Logo of Bauwerk Building Solutions"
@@ -73,8 +73,12 @@ export default function Experience() {
 				<div className="flex-row">
 					<div className="flex-col-center-none">
 						<Link href="http://www.eurorisksystems.com/" target="_BLANK">
-							<a>
-								<img defer className="company-img" src="/imgs/eurorisk-systems.jpg" alt="Logo of Eurorisk Systems ltd." />
+							<a rel="noreferrer" href="http://www.eurorisksystems.com/" target="_BLANK">
+								<img
+									/* defer */ className="company-img"
+									src="/imgs/eurorisk-systems.jpg"
+									alt="Logo of Eurorisk Systems ltd."
+								/>
 							</a>
 						</Link>
 						<div className="connection-line"></div>
@@ -99,9 +103,9 @@ export default function Experience() {
 				<div className="flex-row">
 					<div className="flex-col-center-none">
 						<Link href="https://www.transcard.bg/en/" target="_BLANK">
-							<a>
+							<a rel="noreferrer" href="https://www.transcard.bg/en/" target="_BLANK">
 								<img
-									defer
+									// defer
 									className="company-img"
 									src="/imgs/transcard-financial-services.webp"
 									alt="Logo of Transcard Financial Services"

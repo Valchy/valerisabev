@@ -16,7 +16,9 @@ export default function About() {
 							&#x3c; Hey_there /&#x3e; my name is Valeri Sabev and I am a full stack web developer from Bulgaria.
 							<wbr /> Currently, I am a student at{' '}
 							<Link href="https://harbour.space/" target="_BLANK">
-								<a>Harbour.Space</a>
+								<a rel="noreferrer" href="https://harbour.space/" target="_BLANK">
+									Harbour.Space
+								</a>
 							</Link>{' '}
 							university <wbr /> in Barcelona, Spain studying Computer Science, Cyber Security and High-tech entrepreneurship.{' '}
 							<wbr /> <br />
@@ -37,7 +39,7 @@ export default function About() {
 							<br />
 							• Recently got myself into crypto currencies <wbr /> as I find the blockchain technology fascinating.
 						</p>
-						<img defer src="/imgs/about_pic.jpg" alt="Happy summer photo of Valeri Sabev" />
+						<img /* defer */ src="/imgs/about_pic.jpg" alt="Happy summer with Valeri Sabev" />
 					</div>
 				</div>
 			</div>

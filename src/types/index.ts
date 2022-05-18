@@ -1,3 +1,3 @@
-interface Context {
+export interface Context {
 	locale: string;
 }

@@ -3,6 +3,7 @@ import { request } from 'graphql-request';
 import Head from 'next/head';
 
 // Section components
+import Header from '@components/Header';
 import Hero from '@components/Hero';
 import About from '@components/About';
 import Education from '@components/Education';
@@ -18,15 +19,13 @@ interface Props {
 
 const HomePage: NextPage<Props> = ({ page }) => {
 	const currentPage = page[0];
-	console.log(currentPage);
 
 	return (
 		<main>
-			<Head>
-				{currentPage.title && <title>{currentPage.title}</title>}
-				{currentPage.favicon && <link rel="icon" type="image/x-icon" href={currentPage.favicon.url} />}
-				{currentPage.description && <meta name="description" content={currentPage.description} />}
-			</Head>
+			{/* Meta tags & SEO */}
+			<Header title={currentPage?.title} description={currentPage?.description} favicon={currentPage?.favicon?.url} />
+
+			{/* Page Content */}
 			<Hero />
 			<About />
 			<Education />

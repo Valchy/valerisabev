@@ -1,11 +1,18 @@
 import Head from 'next/head';
+import { default_title, default_description, default_favicon } from './defaults';
 
-export default function Header() {
+interface HeaderProps {
+	title?: string;
+	description?: string;
+	favicon?: string;
+}
+
+export default function Header(props: HeaderProps) {
 	return (
 		<Head>
 			{/* Title and Icon */}
-			<title>Valeri Sabev | Full Stack Web Developer</title>
-			<link rel="icon" type="image/x-icon" href="/imgs/icon.png" />
+			<title>{props.title || default_title}</title>
+			<link rel="icon" type="image/x-icon" href={props.favicon || default_favicon} />
 			<link rel="canonical" href="https://valerisabev.com" />
 
 			{/* Default Meta Tags */}
@@ -14,15 +21,9 @@ export default function Header() {
 			<meta name="HandheldFriendly" content="True" />
 			<meta name="MobileOptimized" content="380" />
 			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-			<meta
-				name="description"
-				content="My name is Valeri Sabev and I am a freelance full stack web developer, cyber-security enthusiast and entrepreneur"
-			/>
+			<meta name="description" content="" />
 			<meta name="author" content="Valeri Sabev" />
-			<meta
-				name="keywords"
-				content="Valeri Sabev, Valeri, Sabev, Valchy, full stack web developer, full stack, freelance web developer, web developer, react development, Harbour.Space, cybersecurity, entrepreneur"
-			/>
+			<meta name="keywords" content={props.description || default_description} />
 
 			{/* Social media integration when sharing */}
 			<meta property="og:title" content="Valeri Sabev - Full Stack Web Development" />

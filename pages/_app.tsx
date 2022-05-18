@@ -2,7 +2,6 @@ import type { AppProps } from 'next/app';
 
 // Page template components
 import Layout from '@components/Layout';
-import Header from '@components/Header';
 import Navbar from '@components/Navbar';
 import Footer from '@components/Footer';
 
@@ -24,7 +23,6 @@ import '@styles/navbar.css';
 function App({ Component, pageProps }: AppProps) {
 	return (
 		<Layout>
-			<Header />
 			<Navbar />
 			<Component {...pageProps} />
 			<Footer />

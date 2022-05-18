@@ -1,0 +1,142 @@
+#home {
+	width: 100vw;
+	height: 100vh;
+	background-image: url('/imgs/windsurf.jpg');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	position: relative;
+	padding: 0;
+}
+
+.page-title {
+	font-size: 46px;
+	margin-bottom: 50px;
+	text-align: center;
+	letter-spacing: -3px;
+	line-height: 1.1;
+}
+
+.page-title span {
+	font-weight: 100;
+	color: #eee;
+}
+
+.page-title b {
+	font-weight: 700;
+	font-size: 60px;
+	color: #fff;
+}
+
+.page-description {
+	color: #fff;
+	font-size: 20px;
+	text-align: center;
+	line-height: 1.5;
+	font-weight: 300;
+}
+
+.page-description b {
+	font-size: 26px;
+	font-weight: 700;
+	padding-left: 12px;
+}
+
+.page-description b:first-child {
+	/*padding-left: 0;*/
+}
+
+.cv-wrapper {
+	border: 2px solid var(--fadeWhite);
+	padding: 10px 25px;
+	font-size: 20px;
+	cursor: pointer;
+	margin-top: 25px;
+	color: #fff;
+
+	position: relative;
+	height: 50px;
+	overflow: hidden;
+	font-weight: 300;
+	transition: 0.5s;
+	letter-spacing: 1px;
+}
+
+.cv-wrapper a {
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	letter-spacing: 1px;
+	/*background: #000;*/
+	/*-webkit-mask: url('/imgs/cv-btn-mask.png');*/
+	/*mask: url('/imgs/cv-btn-mask.png');*/
+	/*-webkit-mask-size: 2300% 100%;*/
+	/*mask-size: 2300% 100%;*/
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	-webkit-animation: ani2 0.7s steps(22) forwards;
+	animation: ani2 0.7s steps(22) forwards;
+}
+
+.cv-wrapper a:hover {
+	-webkit-animation: ani 0.7s steps(22) forwards;
+	animation: ani 0.7s steps(22) forwards;
+}
+
+.mas {
+	position: absolute;
+	color: #000;
+	text-align: center;
+	width: 101%;
+	font-weight: 300;
+	position: absolute;
+	font-size: 11px;
+	margin-top: 17px;
+	overflow: hidden;
+	font-weight: bold;
+}
+
+@-webkit-keyframes ani {
+	from {
+		-webkit-mask-position: 0 0;
+		mask-position: 0 0;
+	}
+	to {
+		-webkit-mask-position: 100% 0;
+		mask-position: 100% 0;
+	}
+}
+@keyframes ani {
+	from {
+		-webkit-mask-position: 0 0;
+		mask-position: 0 0;
+	}
+	to {
+		-webkit-mask-position: 100% 0;
+		mask-position: 100% 0;
+	}
+}
+@-webkit-keyframes ani2 {
+	from {
+		-webkit-mask-position: 100% 0;
+		mask-position: 100% 0;
+	}
+	to {
+		-webkit-mask-position: 0 0;
+		mask-position: 0 0;
+	}
+}
+@keyframes ani2 {
+	from {
+		-webkit-mask-position: 100% 0;
+		mask-position: 100% 0;
+	}
+	to {
+		-webkit-mask-position: 0 0;
+		mask-position: 0 0;
+	}
+}

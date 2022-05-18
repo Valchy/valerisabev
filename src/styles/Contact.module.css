@@ -1,0 +1,93 @@
+#contact h2 {
+	text-align: center;
+}
+
+#contact p {
+	margin-bottom: var(--sectionYPadding);
+	margin-top: 15px;
+	text-align: center;
+}
+
+#contact .mail-link {
+	margin-top: 5px;
+	display: inline-block;
+}
+
+#contact img {
+	width: 50%;
+	border-bottom: 0;
+}
+
+.contact-form {
+	background-color: var(--lightWhite);
+	width: 50%;
+	padding: 45px;
+}
+
+.contact-form input,
+.contact-form textarea {
+	border: 1px solid #ced4da;
+	padding: 10px;
+	background-color: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	resize: none;
+	margin-bottom: 20px;
+	font-size: 16px;
+	width: 100%;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+	border-color: var(--lightBlue);
+}
+
+.contact-form button {
+	position: relative;
+	background-color: var(--mainBlue);
+	padding: 15px;
+	color: #fff;
+	font-weight: 500;
+	font-size: 18px;
+	width: 200px;
+	height: 60px;
+	-webkit-align-self: center;
+	-ms-flex-item-align: center;
+	-ms-grid-row-align: center;
+	align-self: center;
+}
+
+.contact-img {
+	background-image: url('../imgs/contact_me.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 50%;
+}
+
+.spinner {
+	display: none;
+	border-radius: 50%;
+	border: 3px solid #fff;
+	border-left: 3px solid var(--mainBlue);
+	border-right: 3px solid var(--mainBlue);
+	width: 35px;
+	height: 35px;
+	animation-name: spin;
+	animation-duration: 1500ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

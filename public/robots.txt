@@ -1,0 +1,4 @@
+Sitemap: https://valerisabev.com/sitemap.xml
+User-agent: *
+Crawl-delay: 10
+Disallow:

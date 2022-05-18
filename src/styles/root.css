@@ -1,0 +1,13 @@
+:root {
+	--mainWidth: 1110px;
+	--borderGrey: #444;
+	--textGrey: #212529;
+	--lightGrey: rgba(0, 0, 0, 0.15);
+	--mainBlue: #0075f6;
+	--lightBlue: #2594ff;
+	--fadeWhite: #f0f0f0;
+	--lightWhite: #f8f9fa;
+	--darkWhite: #dfdfdf;
+	--sidePadding: 20px;
+	--sectionYPadding: 60px;
+}

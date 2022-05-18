@@ -1,0 +1,277 @@
+@media screen and (max-width: 1240px) {
+	:root {
+		--mainWidth: 1000px;
+	}
+}
+
+@media screen and (max-width: 1140px) {
+	:root {
+		--mainWidth: 900px;
+		--sidePadding: 35px;
+	}
+
+	footer {
+		padding-left: var(--sidePadding);
+		padding-right: var(--sidePadding);
+	}
+
+	.contact-form {
+		padding: 20px;
+	}
+
+	.contact-form input,
+	.contact-form textarea {
+		padding: 15px;
+	}
+}
+
+@media screen and (max-width: 980px) {
+	:root {
+		--mainWidth: 100%;
+	}
+}
+
+@media screen and (max-width: 860px) {
+	:root {
+		--sectionYPadding: 40px;
+	}
+
+	#contact p {
+		font-size: 14px;
+	}
+
+	.section-title {
+		font-size: 20px;
+	}
+
+	.edu-desktop,
+	.exp-desktop {
+		display: none;
+	}
+
+	.edu-mobile,
+	.exp-mobile {
+		display: block;
+	}
+
+	.company-img {
+		width: 45px;
+		height: 45px;
+		border: 2px solid var(--borderGrey);
+	}
+
+	.connection-line {
+		width: 2px;
+	}
+
+	.experience-item {
+		padding-bottom: 0;
+		-webkit-clip-path: polygon(10px 0, 100% 0%, 100% 100%, 10px 100%, 10px 32px, 0 22px, 10px 12px);
+		clip-path: polygon(10px 0, 100% 0%, 100% 100%, 10px 100%, 10px 32px, 0 22px, 10px 12px);
+	}
+
+	.education-item h3 {
+		margin-top: 20px;
+	}
+
+	.education-item h3,
+	.experience-item h3 {
+		font-size: 15px;
+	}
+
+	.education-item h4,
+	.education-item ul,
+	.experience-item h4,
+	.experience-item ul {
+		font-size: 12px;
+	}
+
+	.empty-circle {
+		margin-left: 10px;
+	}
+
+	.experience-item ul {
+		padding-left: 0px;
+	}
+
+	.experience-item ul li {
+		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: 770px) {
+	header .burger {
+		display: block;
+	}
+
+	.nav-links {
+		display: none;
+	}
+
+	#about img,
+	.contact-img {
+		display: none;
+	}
+
+	.contact-form {
+		width: 100%;
+	}
+
+	header a {
+		padding: 0;
+	}
+
+	.education-item {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: column;
+		-moz-box-orient: vertical;
+		-moz-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+
+	.education-item img {
+		width: 100%;
+	}
+
+	.education-item p {
+		margin-top: 15px;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	.footer-data {
+		-webkit-box-pack: center;
+		-webkit-justify-content: center;
+		-moz-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+
+	.footer-social-media {
+		top: 150px;
+	}
+
+	.copyright {
+		margin-top: 180px;
+	}
+
+	.footer-contact-info,
+	.footer-links {
+		width: 250px;
+	}
+}
+
+@media screen and (max-width: 620px) {
+	:root {
+		--sidePadding: 28px;
+	}
+
+	.page-title {
+		font-size: 35px;
+		margin-bottom: 25px;
+	}
+
+	.page-title b {
+		font-size: 50px;
+	}
+
+	.page-description {
+		font-size: 16px;
+	}
+
+	.page-description b {
+		font-size: 20px;
+	}
+
+	.cv-btn {
+		font-size: 16px;
+	}
+}
+
+@media screen and (max-width: 520px) {
+	:root {
+		--mainWidth: 100%;
+		--sidePadding: 20px;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.page-title {
+		font-size: 30px;
+	}
+
+	.page-title b {
+		font-size: 40px;
+	}
+
+	.page-description {
+		font-size: 13px;
+	}
+
+	.page-description b {
+		font-size: 18px;
+		padding-left: 4px;
+	}
+}
+
+@media only screen and (max-width: 415px) {
+	footer,
+	.footer-data,
+	.footer-data * {
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		-moz-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+
+	.footer-social-media {
+		position: relative;
+	}
+
+	.footer-social-media {
+		-webkit-box-ordinal-group: 4;
+		-webkit-order: 3;
+		-moz-box-ordinal-group: 4;
+		-ms-flex-order: 3;
+		order: 3;
+	}
+
+	.footer-data {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: column;
+		-moz-box-orient: vertical;
+		-moz-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+
+	.footer-data b {
+		margin-top: 30px;
+	}
+
+	.footer-contact-info b {
+		margin-top: 0;
+	}
+
+	.footer-social-media {
+		top: 0;
+	}
+
+	.copyright {
+		margin-top: 30px;
+	}
+
+	.cv-btn {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 350px) {
+	.page-description {
+		font-size: 12px;
+	}
+}

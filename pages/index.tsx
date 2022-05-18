@@ -1,5 +1,6 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { request } from 'graphql-request';
+import Head from 'next/head';
 
 // Section components
 import Hero from '@components/Hero';
@@ -9,15 +10,23 @@ import Experience from '@components/Experience';
 import Contact from '@components/Contact';
 
 // Graphql Queries
-import { GET_ASSETS } from './api/queries';
+import { CONTENT_API, GET_MAIN_PAGE } from './api/queries';
 
 interface Props {
-	assets: any[];
+	page: any[];
 }
 
-const HomePage: NextPage<Props> = ({ assets }) => {
+const HomePage: NextPage<Props> = ({ page }) => {
+	const currentPage = page[0];
+	console.log(currentPage);
+
 	return (
 		<main>
+			<Head>
+				{currentPage.title && <title>{currentPage.title}</title>}
+				{currentPage.favicon && <link rel="icon" type="image/x-icon" href={currentPage.favicon.url} />}
+				{currentPage.description && <meta name="description" content={currentPage.description} />}
+			</Head>
 			<Hero />
 			<About />
 			<Education />
@@ -28,12 +37,11 @@ const HomePage: NextPage<Props> = ({ assets }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-	const data = await request(process.env.NEXT_PUBLIC_GRAPHCMS_API, GET_ASSETS);
-	// console.log(data);
+	const { page } = await request(CONTENT_API, GET_MAIN_PAGE);
 
 	return {
 		props: {
-			assets: data.assets || [],
+			page: page.localizations || [],
 		},
 	};
 };

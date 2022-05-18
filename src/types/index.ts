@@ -1,0 +1,3 @@
+interface Context {
+	locale: string;
+}

@@ -49,11 +49,9 @@ export default function Footer() {
 				<div className="flex-col-fEnd-none footer-links">
 					<b> Links </b>
 					<div className="flex-col-fEnd-none">
-						<Link href="assets/valeri-sabev-cv.pdf" target="_BLANK">
-							<a rel="noreferrer" href="assets/valeri-sabev-cv.pdf" target="_BLANK">
-								Check out my CV
-							</a>
-						</Link>
+						<a rel="noreferrer" href="assets/valeri-sabev-cv.pdf" target="_BLANK">
+							Check out my CV
+						</a>
 						<Link href="#education">
 							<a href="#education">My Education</a>
 						</Link>

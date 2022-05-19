@@ -8,7 +8,7 @@ export default function Navbar() {
 				<Link href="/">
 					<b className="fade">VS</b>
 				</Link>
-				<div className="nav-links">
+				<nav className="nav-links">
 					<a className="fade" href="#about" rel="nofollow">
 						About
 					</a>
@@ -25,7 +25,7 @@ export default function Navbar() {
 						Contact
 					</a>
 					{/* <a className="fade" href="#blog">Blog (ACTUALLY MAKE ONE)</a> */}
-				</div>
+				</nav>
 				<button id="burger" className="open-main-nav" aria-label="Mobile navigation menu">
 					<span className="burger"></span>
 				</button>

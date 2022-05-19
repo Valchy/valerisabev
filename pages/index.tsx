@@ -1,6 +1,5 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { request } from 'graphql-request';
-import Head from 'next/head';
 
 // Section components
 import Header from '@components/Header';
@@ -12,13 +11,14 @@ import Contact from '@components/Contact';
 
 // Graphql Queries
 import { CONTENT_API, GET_MAIN_PAGE } from './api/queries';
+import { GetMainPageQuery } from '@generated/graphql';
 
-interface Props {
-	page: any[];
+interface MainPageProps {
+	page: any;
 }
 
-const HomePage: NextPage<Props> = ({ page }) => {
-	const currentPage = page[0];
+const MainPage: NextPage<MainPageProps> = ({ page }) => {
+	const currentPage = page.localizations[0];
 
 	return (
 		<main>
@@ -35,14 +35,12 @@ const HomePage: NextPage<Props> = ({ page }) => {
 	);
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-	const { page } = await request(CONTENT_API, GET_MAIN_PAGE);
+export const getStaticProps: GetStaticProps = async () => {
+	const { page } = await request<GetMainPageQuery>(CONTENT_API, GET_MAIN_PAGE);
 
 	return {
-		props: {
-			page: page.localizations || [],
-		},
+		props: { page },
 	};
 };
 
-export default HomePage;
+export default MainPage;

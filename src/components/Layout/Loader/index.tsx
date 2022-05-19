@@ -1,4 +1,4 @@
-import classNames from 'classNames';
+import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import styles from './Loader.module.css';
 

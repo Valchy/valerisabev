@@ -21,9 +21,12 @@ export default function Header(props: HeaderProps) {
 			<meta name="HandheldFriendly" content="True" />
 			<meta name="MobileOptimized" content="380" />
 			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-			<meta name="description" content="" />
+			<meta name="description" content={props.description || default_description} />
 			<meta name="author" content="Valeri Sabev" />
-			<meta name="keywords" content={props.description || default_description} />
+			<meta
+				name="keywords"
+				content="Valeri Sabev, Valeri, Sabev, Valchy, freelance web developer, web developer, react development, Harbour.Space, cyber-security, entrepreneur"
+			/>
 
 			{/* Social media integration when sharing */}
 			<meta property="og:title" content="Valeri Sabev - Full Stack Web Development" />

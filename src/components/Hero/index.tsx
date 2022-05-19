@@ -29,7 +29,7 @@ export default function Hero() {
 					</span>
 				</p>
 				<div className={classNames(styles.cv_wrapper)}>
-					<a className="cv-btn" href="assets/valeri-sabev-cv.pdf" target="_BLANK">
+					<a className={classNames(styles.cv_btn)} href="assets/valeri-sabev-cv.pdf" target="_BLANK">
 						Take a look at my CV
 					</a>
 				</div>

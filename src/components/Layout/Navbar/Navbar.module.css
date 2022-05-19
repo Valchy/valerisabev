@@ -240,3 +240,17 @@
 	background: #fedc2a;
 	text-decoration: none;
 }
+
+@media screen and (max-width: 770px) {
+	.header .burger {
+		display: block;
+	}
+
+	.header a {
+		padding: 0;
+	}
+
+	.nav_links {
+		display: none;
+	}
+}

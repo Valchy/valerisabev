@@ -93,12 +93,28 @@
 }
 
 @media screen and (max-width: 1140px) {
-	.contact_form {
+	.contact-form {
 		padding: 20px;
 	}
 
-	.contact_form input,
-	.contact_form textarea {
+	.contact-form input,
+	.contact-form textarea {
 		padding: 15px;
+	}
+}
+
+@media screen and (max-width: 860px) {
+	.contact p {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 770px) {
+	.contact_img {
+		display: none;
+	}
+
+	.contact_form {
+		width: 100%;
 	}
 }

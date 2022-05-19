@@ -24,7 +24,7 @@ export default function Experience() {
 					</div>
 					<div className={classNames(styles.experience_item)}>
 						<h3>Full Stack Web Development</h3>
-						<h4 className="exp-desktop">Bauwerk Building Solutions | United States | Dec 2020 - Today</h4>
+						<h4 className={classNames(styles.exp_desktop)}>Bauwerk Building Solutions | United States | Dec 2020 - Today</h4>
 						<h4 className={classNames(styles.exp_mobile)}>
 							Bauwerk Building Solutions <br />
 							United States | Dec 2020 - Today
@@ -53,7 +53,7 @@ export default function Experience() {
 					</div>
 					<div className={classNames(styles.experience_item)}>
 						<h3>Frontend React.js Web Development</h3>
-						<h4 className="exp-desktop">Bauwerk Building Solutions | United States | May 2019 - Dec 2020</h4>
+						<h4 className={classNames(styles.exp_desktop)}>Bauwerk Building Solutions | United States | May 2019 - Dec 2020</h4>
 						<h4 className={classNames(styles.exp_mobile)}>
 							Bauwerk Building Solutions <br />
 							United States | May 2019 - Dec 2020
@@ -84,7 +84,7 @@ export default function Experience() {
 					</div>
 					<div className={classNames(styles.experience_item)}>
 						<h3>Frontend Web Development</h3>
-						<h4 className="exp-desktop">Eurorisk Systems | Varna, Bulgaria | Apr. 2018 - June 2018</h4>
+						<h4 className={classNames(styles.exp_desktop)}>Eurorisk Systems | Varna, Bulgaria | Apr. 2018 - June 2018</h4>
 						<h4 className={classNames(styles.exp_mobile)}>
 							Eurorisk Systems <br />
 							Varna, Bulgaria | Apr. 2018 - June 2018
@@ -114,7 +114,9 @@ export default function Experience() {
 					</div>
 					<div className={classNames(styles.experience_item)}>
 						<h3>Full Stack Web Development</h3>
-						<h4 className="exp-desktop">Transcard Financial Services | Varna, Bulgaria | Mar. 2017 - Mar. 2018</h4>
+						<h4 className={classNames(styles.exp_desktop)}>
+							Transcard Financial Services | Varna, Bulgaria | Mar. 2017 - Mar. 2018
+						</h4>
 						<h4 className={classNames(styles.exp_mobile)}>
 							Transcard Financial Services <br />
 							Varna, Bulgaria | Mar. 2017 - Mar. 2018

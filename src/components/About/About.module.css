@@ -39,3 +39,9 @@
 	line-height: 1.5;
 	font-size: 14px;
 }
+
+@media screen and (max-width: 770px) {
+	.about img {
+		display: none;
+	}
+}

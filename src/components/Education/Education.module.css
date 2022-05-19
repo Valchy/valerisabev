@@ -40,3 +40,46 @@
 .edu_mobile {
 	display: none;
 }
+
+@media screen and (min-width: 860px) {
+	.edu_desktop {
+		display: none;
+	}
+
+	.edu_mobile {
+		display: block;
+	}
+
+	.education_item h3 {
+		margin-top: 20px;
+	}
+
+	.education_item h3 {
+		font-size: 15px;
+	}
+
+	.education_item h4,
+	.education_item ul {
+		font-size: 12px;
+	}
+}
+
+@media screen and (max-width: 770px) {
+	.education_item {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: column;
+		-moz-box-orient: vertical;
+		-moz-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+
+	.education_item img {
+		width: 100%;
+	}
+
+	.education_item p {
+		margin-top: 15px;
+	}
+}

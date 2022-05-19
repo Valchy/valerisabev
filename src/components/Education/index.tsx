@@ -13,7 +13,9 @@ export default function Education() {
 						<img src="/imgs/harbour-sapce-university.jpg" alt="Harbour Space University building" />
 						<div>
 							<h3>Harbour.Space University</h3>
-							<h4 className="edu-desktop">Bachelor in Computer Science | Barcelona, Spain | 2021 - Today</h4>
+							<h4 className={classNames(styles.edu_desktop)}>
+								Bachelor in Computer Science | Barcelona, Spain | 2021 - Today
+							</h4>
 							<h4 className={classNames(styles.edu_mobile)}>
 								Bachelor in Computer Science <br />
 								Barcelona, Spain | 2021 - Today
@@ -33,7 +35,7 @@ export default function Education() {
 						<img src="/imgs/it-high-school-exupery.jpg" alt="IT Highschool Exupery building" />
 						<div>
 							<h3>IT High School &quot;Antoine de Saint-Exupéry&quot;</h3>
-							<h4 className="edu-desktop">High School Diploma | Varna, Bulgaria | 2017 - 2021</h4>
+							<h4 className={classNames(styles.edu_desktop)}>High School Diploma | Varna, Bulgaria | 2017 - 2021</h4>
 							<h4 className={classNames(styles.edu_mobile)}>
 								High School Diploma <br />
 								Varna, Bulgaria | 2017 - 2021
@@ -53,7 +55,9 @@ export default function Education() {
 						<img src="/imgs/vienna-international-school.webp" alt="Vienna International School building" />
 						<div>
 							<h3>Vienna International School</h3>
-							<h4 className="edu-desktop">First to Eighth Grade Education | Vienna, Austria | 2009 - 2017</h4>
+							<h4 className={classNames(styles.edu_desktop)}>
+								First to Eighth Grade Education | Vienna, Austria | 2009 - 2017
+							</h4>
 							<h4 className={classNames(styles.edu_mobile)}>
 								First to Eighth Grade Education <br />
 								Vienna, Austria | 2009 - 2017

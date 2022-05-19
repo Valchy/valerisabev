@@ -73,3 +73,50 @@
 	font-size: 14px;
 	line-height: 1.5;
 }
+
+@media screen and (min-width: 860px) {
+	.company_img {
+		width: 45px;
+		height: 45px;
+		border: 2px solid var(--borderGrey);
+	}
+
+	.exp_desktop {
+		display: none;
+	}
+
+	.exp_mobile {
+		display: block;
+	}
+
+	.connection_line {
+		width: 2px;
+	}
+
+	.experience_item {
+		padding-bottom: 0;
+		-webkit-clip-path: polygon(10px 0, 100% 0%, 100% 100%, 10px 100%, 10px 32px, 0 22px, 10px 12px);
+		clip-path: polygon(10px 0, 100% 0%, 100% 100%, 10px 100%, 10px 32px, 0 22px, 10px 12px);
+	}
+
+	.experience_item h3 {
+		font-size: 15px;
+	}
+
+	.experience_item h4,
+	.experience_item ul {
+		font-size: 12px;
+	}
+
+	.experience_item ul {
+		padding-left: 0px;
+	}
+
+	.experience_item ul li {
+		margin-bottom: 10px;
+	}
+
+	.empty_circle {
+		margin-left: 10px;
+	}
+}

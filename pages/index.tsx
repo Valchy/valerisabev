@@ -2,6 +2,7 @@ import type { NextPage, GetStaticProps } from 'next';
 import { request } from 'graphql-request';
 
 // Section components
+import Layout from '@components/Layout';
 import Header from '@components/Header';
 import Hero from '@components/Hero';
 import About from '@components/About';
@@ -14,14 +15,14 @@ import { CONTENT_API, GET_MAIN_PAGE } from './api/queries';
 import { GetMainPageQuery } from '@generated/graphql';
 
 interface MainPageProps {
-	page: any;
+	page: GetMainPageQuery['page'];
 }
 
 const MainPage: NextPage<MainPageProps> = ({ page }) => {
-	const currentPage = page.localizations[0];
+	const currentPage = page?.localizations[0];
 
 	return (
-		<main>
+		<Layout>
 			{/* Meta tags & SEO */}
 			<Header title={currentPage?.title} description={currentPage?.description} favicon={currentPage?.favicon?.url} />
 
@@ -31,7 +32,7 @@ const MainPage: NextPage<MainPageProps> = ({ page }) => {
 			<Education />
 			<Experience />
 			<Contact />
-		</main>
+		</Layout>
 	);
 };
 

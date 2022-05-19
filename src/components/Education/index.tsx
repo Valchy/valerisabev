@@ -1,19 +1,20 @@
 import Image from 'next/image';
-// import './Education.module.css';
+import classNames from 'classnames';
+import styles from './Education.module.css';
 
 export default function Education() {
 	return (
-		<section id="education" className="flex-col-center-center">
+		<section id="education" className={classNames(styles.education, 'flex-col-center-center')}>
 			<div className="container">
 				<div className="line"></div>
 				<h2 className="section-title">EDUCATION</h2>
 				<div className="flex-col">
-					<div className="flex-row education-item">
-						<img /* defer */ src="/imgs/harbour-sapce-university.jpg" alt="Harbour Space University building" />
+					<div className={classNames(styles.education_item, 'flex-row')}>
+						<img src="/imgs/harbour-sapce-university.jpg" alt="Harbour Space University building" />
 						<div>
 							<h3>Harbour.Space University</h3>
 							<h4 className="edu-desktop">Bachelor in Computer Science | Barcelona, Spain | 2021 - Today</h4>
-							<h4 className="edu-mobile">
+							<h4 className={classNames(styles.edu_mobile)}>
 								Bachelor in Computer Science <br />
 								Barcelona, Spain | 2021 - Today
 							</h4>
@@ -28,12 +29,12 @@ export default function Education() {
 					</div>
 					<br />
 					<br />
-					<div className="flex-row education-item">
-						<img /* defer */ src="/imgs/it-high-school-exupery.jpg" alt="IT Highschool Exupery building" />
+					<div className={classNames(styles.education_item, 'flex-row')}>
+						<img src="/imgs/it-high-school-exupery.jpg" alt="IT Highschool Exupery building" />
 						<div>
 							<h3>IT High School &quot;Antoine de Saint-Exupéry&quot;</h3>
 							<h4 className="edu-desktop">High School Diploma | Varna, Bulgaria | 2017 - 2021</h4>
-							<h4 className="edu-mobile">
+							<h4 className={classNames(styles.edu_mobile)}>
 								High School Diploma <br />
 								Varna, Bulgaria | 2017 - 2021
 							</h4>
@@ -48,12 +49,12 @@ export default function Education() {
 					</div>
 					<br />
 					<br />
-					<div className="flex-row education-item">
-						<img /* defer */ src="/imgs/vienna-international-school.webp" alt="Vienna International School building" />
+					<div className={classNames(styles.education_item, 'flex-row')}>
+						<img src="/imgs/vienna-international-school.webp" alt="Vienna International School building" />
 						<div>
 							<h3>Vienna International School</h3>
 							<h4 className="edu-desktop">First to Eighth Grade Education | Vienna, Austria | 2009 - 2017</h4>
-							<h4 className="edu-mobile">
+							<h4 className={classNames(styles.edu_mobile)}>
 								First to Eighth Grade Education <br />
 								Vienna, Austria | 2009 - 2017
 							</h4>

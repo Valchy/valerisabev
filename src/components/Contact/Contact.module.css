@@ -1,31 +1,31 @@
-#contact h2 {
+.contact h2 {
 	text-align: center;
 }
 
-#contact p {
+.contact p {
 	margin-bottom: var(--sectionYPadding);
 	margin-top: 15px;
 	text-align: center;
 }
 
-#contact .mail-link {
+.contact .mail_link {
 	margin-top: 5px;
 	display: inline-block;
 }
 
-#contact img {
+.contact img {
 	width: 50%;
 	border-bottom: 0;
 }
 
-.contact-form {
+.contact_form {
 	background-color: var(--lightWhite);
 	width: 50%;
 	padding: 45px;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact_form input,
+.contact_form textarea {
 	border: 1px solid #ced4da;
 	padding: 10px;
 	background-color: #fff;
@@ -38,12 +38,12 @@
 	width: 100%;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+.contact_form input:focus,
+.contact_form textarea:focus {
 	border-color: var(--lightBlue);
 }
 
-.contact-form button {
+.contact_form button {
 	position: relative;
 	background-color: var(--mainBlue);
 	padding: 15px;
@@ -58,7 +58,7 @@
 	align-self: center;
 }
 
-.contact-img {
+.contact_img {
 	background-image: url('/imgs/contact_me.jpg');
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -89,5 +89,16 @@
 	}
 	to {
 		transform: rotate(360deg);
+	}
+}
+
+@media screen and (max-width: 1140px) {
+	.contact_form {
+		padding: 20px;
+	}
+
+	.contact_form input,
+	.contact_form textarea {
+		padding: 15px;
 	}
 }

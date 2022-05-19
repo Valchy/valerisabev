@@ -1,0 +1,21 @@
+.loader_gif {
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	width: 100vw;
+	height: 100vh;
+}
+
+.loader_gif img {
+	width: 80px;
+	height: 80px;
+}
+
+.loader_gif span {
+	font-weight: 500;
+	position: absolute;
+	color: var(--main-blue);
+	font-size: 26px;
+}

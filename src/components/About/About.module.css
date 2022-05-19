@@ -1,4 +1,4 @@
-#about {
+.about {
 	padding-top: 30px;
 }
 
@@ -6,11 +6,11 @@
 	margin-top: 20px;
 }
 
-#about h2 {
+.about h2 {
 	padding-right: 20px;
 }
 
-#about img {
+.about img {
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
@@ -27,7 +27,7 @@
 	margin-left: 50px;
 }
 
-#about img:hover {
+.about img:hover {
 	-webkit-filter: grayscale(85%);
 	filter: grayscale(85%);
 	-webkit-border-radius: 100%;
@@ -35,7 +35,7 @@
 	border-radius: 100%;
 }
 
-#about p {
+.about p {
 	line-height: 1.5;
 	font-size: 14px;
 }

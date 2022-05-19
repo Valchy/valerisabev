@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-// import './About.module.css';
+import classNames from 'classnames';
+import styles from './About.module.css';
 
 export default function About() {
 	return (
-		<section id="about" className="flex-col-center-center">
+		<section id="about" className={classNames(styles.about, 'flex-col-center-center')}>
 			<div className="container">
 				<div className="flex-col">
 					<div className="flex-row-center-sBetween">

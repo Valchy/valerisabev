@@ -1,15 +1,15 @@
-#education h2 {
+.education h2 {
 	text-align: center;
 	margin-bottom: var(--sectionYPadding);
 }
 
-.education-item img {
+.education_item img {
 	width: 40%;
 	margin-right: 25px;
 	border: 1px solid var(--borderGrey);
 }
 
-.education-item div {
+.education_item div {
 	-webkit-box-flex: 1;
 	-webkit-flex-grow: 1;
 	-moz-box-flex: 1;
@@ -17,26 +17,26 @@
 	flex-grow: 1;
 }
 
-.education-item h3 {
+.education_item h3 {
 	font-weight: 600;
 	font-size: 20px;
 	margin-bottom: 3px;
 	color: var(--textGrey);
 }
 
-.education-item h4 {
+.education_item h4 {
 	font-weight: 200;
 	font-size: 14px;
 	margin-bottom: 15px;
 }
 
-.education-item ul {
+.education_item ul {
 	list-style-type: circle;
 	padding-left: 22px;
 	font-size: 14px;
 	line-height: 1.5;
 }
 
-.edu-mobile {
+.edu_mobile {
 	display: none;
 }

@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-// import './Experience.module.css';
+import classNames from 'classnames';
+import styles from './Experience.module.css';
 
 export default function Experience() {
 	return (
-		<section id="experience" className="flex-col-center-center">
+		<section id="experience" className={classNames(styles.experience, 'flex-col-center-center')}>
 			<div className="container">
 				<div className="line"></div>
 				<h2 className="section-title">EXPERIENCE</h2>
@@ -13,19 +14,18 @@ export default function Experience() {
 						<Link href="https://bauwerksolutions.com/" target="_BLANK">
 							<a rel="noreferrer" href="https://bauwerksolutions.com/" target="_BLANK">
 								<img
-									// defer
-									className="company-img"
+									className={classNames(styles.company_img)}
 									src="/imgs/bauwerk-building-solutions.png"
 									alt="Logo of Bauwerk Building Solutions"
 								/>
 							</a>
 						</Link>
-						<div className="connection-line"></div>
+						<div className={classNames(styles.connection_line)}></div>
 					</div>
-					<div className="experience-item">
+					<div className={classNames(styles.experience_item)}>
 						<h3>Full Stack Web Development</h3>
 						<h4 className="exp-desktop">Bauwerk Building Solutions | United States | Dec 2020 - Today</h4>
-						<h4 className="exp-mobile">
+						<h4 className={classNames(styles.exp_mobile)}>
 							Bauwerk Building Solutions <br />
 							United States | Dec 2020 - Today
 						</h4>
@@ -43,19 +43,18 @@ export default function Experience() {
 						<Link href="https://bauwerksolutions.com/" target="_BLANK">
 							<a rel="noreferrer" href="https://bauwerksolutions.com/" target="_BLANK">
 								<img
-									// defer
-									className="company-img"
+									className={classNames(styles.company_img)}
 									src="/imgs/bauwerk-building-solutions.png"
 									alt="Logo of Bauwerk Building Solutions"
 								/>
 							</a>
 						</Link>
-						<div className="connection-line"></div>
+						<div className={classNames(styles.connection_line)}></div>
 					</div>
-					<div className="experience-item">
+					<div className={classNames(styles.experience_item)}>
 						<h3>Frontend React.js Web Development</h3>
 						<h4 className="exp-desktop">Bauwerk Building Solutions | United States | May 2019 - Dec 2020</h4>
-						<h4 className="exp-mobile">
+						<h4 className={classNames(styles.exp_mobile)}>
 							Bauwerk Building Solutions <br />
 							United States | May 2019 - Dec 2020
 						</h4>
@@ -75,18 +74,18 @@ export default function Experience() {
 						<Link href="http://www.eurorisksystems.com/" target="_BLANK">
 							<a rel="noreferrer" href="http://www.eurorisksystems.com/" target="_BLANK">
 								<img
-									/* defer */ className="company-img"
+									/* defer */ className={classNames(styles.company_img)}
 									src="/imgs/eurorisk-systems.jpg"
 									alt="Logo of Eurorisk Systems ltd."
 								/>
 							</a>
 						</Link>
-						<div className="connection-line"></div>
+						<div className={classNames(styles.connection_line)}></div>
 					</div>
-					<div className="experience-item">
+					<div className={classNames(styles.experience_item)}>
 						<h3>Frontend Web Development</h3>
 						<h4 className="exp-desktop">Eurorisk Systems | Varna, Bulgaria | Apr. 2018 - June 2018</h4>
-						<h4 className="exp-mobile">
+						<h4 className={classNames(styles.exp_mobile)}>
 							Eurorisk Systems <br />
 							Varna, Bulgaria | Apr. 2018 - June 2018
 						</h4>
@@ -105,19 +104,18 @@ export default function Experience() {
 						<Link href="https://www.transcard.bg/en/" target="_BLANK">
 							<a rel="noreferrer" href="https://www.transcard.bg/en/" target="_BLANK">
 								<img
-									// defer
-									className="company-img"
+									className={classNames(styles.company_img)}
 									src="/imgs/transcard-financial-services.webp"
 									alt="Logo of Transcard Financial Services"
 								/>
 							</a>
 						</Link>
-						<div className="connection-line"></div>
+						<div className={classNames(styles.connection_line)}></div>
 					</div>
-					<div className="experience-item">
+					<div className={classNames(styles.experience_item)}>
 						<h3>Full Stack Web Development</h3>
 						<h4 className="exp-desktop">Transcard Financial Services | Varna, Bulgaria | Mar. 2017 - Mar. 2018</h4>
-						<h4 className="exp-mobile">
+						<h4 className={classNames(styles.exp_mobile)}>
 							Transcard Financial Services <br />
 							Varna, Bulgaria | Mar. 2017 - Mar. 2018
 						</h4>
@@ -131,7 +129,7 @@ export default function Experience() {
 						</ul>
 					</div>
 				</div>
-				<div className="empty-circle"></div>
+				<div className={classNames(styles.empty_circle)}></div>
 			</div>
 		</section>
 	);

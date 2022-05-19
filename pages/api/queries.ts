@@ -11,6 +11,81 @@ export const GET_MAIN_PAGE = gql`
 				locale
 				favicon {
 					url
+					fileName
+					width
+					height
+				}
+				sections {
+					... on NavbarSection {
+						display
+						initials
+						navItems {
+							title
+							link
+							openInNewTab
+						}
+					}
+					... on HeroSection {
+						bottomSkills
+						callToActionText
+						callToActionUrl
+						display
+						topSkills
+						title
+						secondaryTitle
+						image {
+							fileName
+							height
+							url
+							width
+						}
+					}
+					... on AboutSection {
+						text
+						image {
+							fileName
+							height
+							url
+							width
+						}
+					}
+					... on EducationSection {
+						achievements
+						description
+						display
+						title
+						image {
+							fileName
+							height
+							url
+							width
+						}
+					}
+					... on ExperienceSection {
+						achievements
+						description
+						display
+						title
+						image {
+							fileName
+							height
+							url
+							width
+						}
+					}
+					... on ContactSection {
+						description
+						display
+						image {
+							fileName
+							height
+							url
+							width
+						}
+					}
+					... on FooterSection {
+						display
+					}
 				}
 			}
 		}

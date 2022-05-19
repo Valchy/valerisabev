@@ -1,15 +1,16 @@
-// import './Hero.module.css';
+import classNames from 'classnames';
+import styles from './Hero.module.css';
 
 export default function Hero() {
 	return (
-		<section id="home" className="flex-col-center-center">
+		<section id="home" className={classNames(styles.home, 'flex-col-center-center')}>
 			<div className="container flex-col-center-center">
-				<h1 className="page-title">
+				<h1 className={classNames(styles.page_title)}>
 					<span> Hello, I&apos;m </span>
 					<br />
 					<b> Valeri Sabev </b>
 				</h1>
-				<p className="page-description">
+				<p className={classNames(styles.page_description)}>
 					<span>
 						<b> # </b> Full Stack Web Development{' '}
 					</span>
@@ -27,7 +28,7 @@ export default function Hero() {
 						<b> # </b> SEO{' '}
 					</span>
 				</p>
-				<div className="cv-wrapper">
+				<div className={classNames(styles.cv_wrapper)}>
 					<a className="cv-btn" href="assets/valeri-sabev-cv.pdf" target="_BLANK">
 						Take a look at my CV
 					</a>

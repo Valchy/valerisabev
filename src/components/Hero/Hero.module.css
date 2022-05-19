@@ -1,4 +1,4 @@
-#home {
+.home {
 	width: 100vw;
 	height: 100vh;
 	background-image: url('/imgs/windsurf.jpg');
@@ -12,7 +12,7 @@
 	padding: 0;
 }
 
-.page-title {
+.page_title {
 	font-size: 46px;
 	margin-bottom: 50px;
 	text-align: center;
@@ -20,18 +20,18 @@
 	line-height: 1.1;
 }
 
-.page-title span {
+.page_title span {
 	font-weight: 100;
 	color: #eee;
 }
 
-.page-title b {
+.page_title b {
 	font-weight: 700;
 	font-size: 60px;
 	color: #fff;
 }
 
-.page-description {
+.page_description {
 	color: #fff;
 	font-size: 20px;
 	text-align: center;
@@ -39,17 +39,17 @@
 	font-weight: 300;
 }
 
-.page-description b {
+.page_description b {
 	font-size: 26px;
 	font-weight: 700;
 	padding-left: 12px;
 }
 
-.page-description b:first-child {
+.page_description b:first-child {
 	/*padding-left: 0;*/
 }
 
-.cv-wrapper {
+.cv_wrapper {
 	border: 2px solid var(--fadeWhite);
 	padding: 10px 25px;
 	font-size: 20px;
@@ -65,7 +65,7 @@
 	letter-spacing: 1px;
 }
 
-.cv-wrapper a {
+.cv_wrapper a {
 	width: 100%;
 	height: 100%;
 	font-size: 14px;
@@ -82,7 +82,7 @@
 	animation: ani2 0.7s steps(22) forwards;
 }
 
-.cv-wrapper a:hover {
+.cv_wrapper a:hover {
 	-webkit-animation: ani 0.7s steps(22) forwards;
 	animation: ani 0.7s steps(22) forwards;
 }

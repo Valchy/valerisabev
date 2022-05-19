@@ -1272,6 +1272,86 @@ export enum ContactSectionOrderByInput {
   IdDesc = 'id_DESC'
 }
 
+export type ContactSectionParent = Page;
+
+export type ContactSectionParentConnectInput = {
+  Page?: InputMaybe<PageConnectInput>;
+};
+
+export type ContactSectionParentCreateInput = {
+  Page?: InputMaybe<PageCreateInput>;
+};
+
+export type ContactSectionParentCreateManyInlineInput = {
+  /** Connect multiple existing ContactSectionParent documents */
+  connect?: InputMaybe<Array<ContactSectionParentWhereUniqueInput>>;
+  /** Create and connect multiple existing ContactSectionParent documents */
+  create?: InputMaybe<Array<ContactSectionParentCreateInput>>;
+};
+
+export type ContactSectionParentCreateOneInlineInput = {
+  /** Connect one existing ContactSectionParent document */
+  connect?: InputMaybe<ContactSectionParentWhereUniqueInput>;
+  /** Create and connect one ContactSectionParent document */
+  create?: InputMaybe<ContactSectionParentCreateInput>;
+};
+
+export type ContactSectionParentUpdateInput = {
+  Page?: InputMaybe<PageUpdateInput>;
+};
+
+export type ContactSectionParentUpdateManyInlineInput = {
+  /** Connect multiple existing ContactSectionParent documents */
+  connect?: InputMaybe<Array<ContactSectionParentConnectInput>>;
+  /** Create and connect multiple ContactSectionParent documents */
+  create?: InputMaybe<Array<ContactSectionParentCreateInput>>;
+  /** Delete multiple ContactSectionParent documents */
+  delete?: InputMaybe<Array<ContactSectionParentWhereUniqueInput>>;
+  /** Disconnect multiple ContactSectionParent documents */
+  disconnect?: InputMaybe<Array<ContactSectionParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing ContactSectionParent documents */
+  set?: InputMaybe<Array<ContactSectionParentWhereUniqueInput>>;
+  /** Update multiple ContactSectionParent documents */
+  update?: InputMaybe<Array<ContactSectionParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple ContactSectionParent documents */
+  upsert?: InputMaybe<Array<ContactSectionParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type ContactSectionParentUpdateManyWithNestedWhereInput = {
+  Page?: InputMaybe<PageUpdateManyWithNestedWhereInput>;
+};
+
+export type ContactSectionParentUpdateOneInlineInput = {
+  /** Connect existing ContactSectionParent document */
+  connect?: InputMaybe<ContactSectionParentWhereUniqueInput>;
+  /** Create and connect one ContactSectionParent document */
+  create?: InputMaybe<ContactSectionParentCreateInput>;
+  /** Delete currently connected ContactSectionParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected ContactSectionParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single ContactSectionParent document */
+  update?: InputMaybe<ContactSectionParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single ContactSectionParent document */
+  upsert?: InputMaybe<ContactSectionParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ContactSectionParentUpdateWithNestedWhereUniqueInput = {
+  Page?: InputMaybe<PageUpdateWithNestedWhereUniqueInput>;
+};
+
+export type ContactSectionParentUpsertWithNestedWhereUniqueInput = {
+  Page?: InputMaybe<PageUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ContactSectionParentWhereInput = {
+  Page?: InputMaybe<PageWhereInput>;
+};
+
+export type ContactSectionParentWhereUniqueInput = {
+  Page?: InputMaybe<PageWhereUniqueInput>;
+};
+
 export type ContactSectionUpdateInput = {
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
@@ -1523,7 +1603,7 @@ export type DocumentVersion = {
 export type EducationSection = {
   __typename?: 'EducationSection';
   /** Bullet point achievements for the given school / university */
-  achievements: Scalars['String'];
+  achievements: Array<Scalars['String']>;
   /** Any info related to the school / university, e.g study level, location, year */
   description: Scalars['String'];
   /** Whether to show or hide the given component */
@@ -1574,7 +1654,7 @@ export type EducationSectionConnection = {
 
 export type EducationSectionCreateInput = {
   /** achievements input for default locale (en) */
-  achievements: Scalars['String'];
+  achievements: Array<Scalars['String']>;
   /** description input for default locale (en) */
   description: Scalars['String'];
   display: Scalars['Boolean'];
@@ -1586,7 +1666,7 @@ export type EducationSectionCreateInput = {
 };
 
 export type EducationSectionCreateLocalizationDataInput = {
-  achievements: Scalars['String'];
+  achievements: Array<Scalars['String']>;
   description: Scalars['String'];
   title: Scalars['String'];
 };
@@ -1758,7 +1838,7 @@ export type EducationSectionParentWhereUniqueInput = {
 
 export type EducationSectionUpdateInput = {
   /** achievements input for default locale (en) */
-  achievements?: InputMaybe<Scalars['String']>;
+  achievements?: InputMaybe<Array<Scalars['String']>>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
@@ -1770,7 +1850,7 @@ export type EducationSectionUpdateInput = {
 };
 
 export type EducationSectionUpdateLocalizationDataInput = {
-  achievements?: InputMaybe<Scalars['String']>;
+  achievements?: InputMaybe<Array<Scalars['String']>>;
   description?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
 };
@@ -1802,8 +1882,6 @@ export type EducationSectionUpdateManyInlineInput = {
 };
 
 export type EducationSectionUpdateManyInput = {
-  /** achievements input for default locale (en) */
-  achievements?: InputMaybe<Scalars['String']>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
@@ -1814,7 +1892,6 @@ export type EducationSectionUpdateManyInput = {
 };
 
 export type EducationSectionUpdateManyLocalizationDataInput = {
-  achievements?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
 };
@@ -1902,25 +1979,16 @@ export type EducationSectionWhereInput = {
   OR?: InputMaybe<Array<EducationSectionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  achievements?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  achievements_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  achievements_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  achievements_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  achievements_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  achievements_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  achievements_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  achievements_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  achievements_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  achievements_starts_with?: InputMaybe<Scalars['String']>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  achievements?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  achievements_contains_all?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  achievements_contains_none?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  achievements_contains_some?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  achievements_not?: InputMaybe<Array<Scalars['String']>>;
   description?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   description_contains?: InputMaybe<Scalars['String']>;
@@ -1993,7 +2061,7 @@ export type EducationSectionWhereUniqueInput = {
 export type ExperienceSection = {
   __typename?: 'ExperienceSection';
   /** Bullet point achievements for the given job */
-  achievements: Scalars['String'];
+  achievements: Array<Scalars['String']>;
   /** Job description, e.g company name, country, start-end data */
   description: Scalars['String'];
   /** Whether to show or hide the given component */
@@ -2002,7 +2070,7 @@ export type ExperienceSection = {
   id: Scalars['ID'];
   /** Company logo image */
   image: Asset;
-  /** Link to the company website */
+  /** URL link to company website */
   link?: Maybe<Scalars['String']>;
   /** System Locale field */
   locale: Locale;
@@ -2046,7 +2114,7 @@ export type ExperienceSectionConnection = {
 
 export type ExperienceSectionCreateInput = {
   /** achievements input for default locale (en) */
-  achievements: Scalars['String'];
+  achievements: Array<Scalars['String']>;
   /** description input for default locale (en) */
   description: Scalars['String'];
   display: Scalars['Boolean'];
@@ -2059,7 +2127,7 @@ export type ExperienceSectionCreateInput = {
 };
 
 export type ExperienceSectionCreateLocalizationDataInput = {
-  achievements: Scalars['String'];
+  achievements: Array<Scalars['String']>;
   description: Scalars['String'];
   title: Scalars['String'];
 };
@@ -2252,7 +2320,7 @@ export type ExperienceSectionParentWhereUniqueInput = {
 
 export type ExperienceSectionUpdateInput = {
   /** achievements input for default locale (en) */
-  achievements?: InputMaybe<Scalars['String']>;
+  achievements?: InputMaybe<Array<Scalars['String']>>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
@@ -2265,7 +2333,7 @@ export type ExperienceSectionUpdateInput = {
 };
 
 export type ExperienceSectionUpdateLocalizationDataInput = {
-  achievements?: InputMaybe<Scalars['String']>;
+  achievements?: InputMaybe<Array<Scalars['String']>>;
   description?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
 };
@@ -2297,11 +2365,10 @@ export type ExperienceSectionUpdateManyInlineInput = {
 };
 
 export type ExperienceSectionUpdateManyInput = {
-  /** achievements input for default locale (en) */
-  achievements?: InputMaybe<Scalars['String']>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
+  link?: InputMaybe<Scalars['String']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<ExperienceSectionUpdateManyLocalizationsInput>;
   /** title input for default locale (en) */
@@ -2309,7 +2376,6 @@ export type ExperienceSectionUpdateManyInput = {
 };
 
 export type ExperienceSectionUpdateManyLocalizationDataInput = {
-  achievements?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
 };
@@ -2397,25 +2463,16 @@ export type ExperienceSectionWhereInput = {
   OR?: InputMaybe<Array<ExperienceSectionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  achievements?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  achievements_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  achievements_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  achievements_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  achievements_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  achievements_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  achievements_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  achievements_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  achievements_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  achievements_starts_with?: InputMaybe<Scalars['String']>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  achievements?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  achievements_contains_all?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  achievements_contains_none?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  achievements_contains_some?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  achievements_not?: InputMaybe<Array<Scalars['String']>>;
   description?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   description_contains?: InputMaybe<Scalars['String']>;
@@ -2501,7 +2558,6 @@ export type ExperienceSectionWhereInput = {
 /** References ExperienceSection record uniquely */
 export type ExperienceSectionWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
-  link?: InputMaybe<Scalars['String']>;
 };
 
 /** Page footer section */
@@ -2801,6 +2857,8 @@ export type FooterSectionWhereUniqueInput = {
 /** Page hero section */
 export type HeroSection = {
   __typename?: 'HeroSection';
+  /** Second row skills of the hero section */
+  bottomSkills: Array<Scalars['String']>;
   /** Call to action text */
   callToActionText: Scalars['String'];
   /** Call to action URL */
@@ -2815,12 +2873,14 @@ export type HeroSection = {
   locale: Locale;
   /** Get the other localizations for this document */
   localizations: Array<HeroSection>;
-  /** List of items with # at the front */
+  /** Secondary title of hero section */
   secondaryTitle: Scalars['String'];
   /** System stage field */
   stage: Stage;
-  /** Title for the hero section */
+  /** Main text of hero section */
   title: Scalars['String'];
+  /** First row skills of the hero section */
+  topSkills: Array<Scalars['String']>;
 };
 
 
@@ -2854,9 +2914,10 @@ export type HeroSectionConnection = {
 };
 
 export type HeroSectionCreateInput = {
+  /** bottomSkills input for default locale (en) */
+  bottomSkills: Array<Scalars['String']>;
   /** callToActionText input for default locale (en) */
   callToActionText: Scalars['String'];
-  /** callToActionUrl input for default locale (en) */
   callToActionUrl: Scalars['String'];
   display: Scalars['Boolean'];
   image: AssetCreateOneInlineInput;
@@ -2866,13 +2927,16 @@ export type HeroSectionCreateInput = {
   secondaryTitle: Scalars['String'];
   /** title input for default locale (en) */
   title: Scalars['String'];
+  /** topSkills input for default locale (en) */
+  topSkills: Array<Scalars['String']>;
 };
 
 export type HeroSectionCreateLocalizationDataInput = {
+  bottomSkills: Array<Scalars['String']>;
   callToActionText: Scalars['String'];
-  callToActionUrl: Scalars['String'];
   secondaryTitle: Scalars['String'];
   title: Scalars['String'];
+  topSkills: Array<Scalars['String']>;
 };
 
 export type HeroSectionCreateLocalizationInput = {
@@ -2922,6 +2986,25 @@ export type HeroSectionManyWhereInput = {
   OR?: InputMaybe<Array<HeroSectionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  callToActionUrl?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  callToActionUrl_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  callToActionUrl_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  callToActionUrl_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  callToActionUrl_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  callToActionUrl_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  callToActionUrl_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  callToActionUrl_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  callToActionUrl_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  callToActionUrl_starts_with?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   display_not?: InputMaybe<Scalars['Boolean']>;
@@ -2948,6 +3031,8 @@ export type HeroSectionManyWhereInput = {
 };
 
 export enum HeroSectionOrderByInput {
+  BottomSkillsAsc = 'bottomSkills_ASC',
+  BottomSkillsDesc = 'bottomSkills_DESC',
   CallToActionTextAsc = 'callToActionText_ASC',
   CallToActionTextDesc = 'callToActionText_DESC',
   CallToActionUrlAsc = 'callToActionUrl_ASC',
@@ -2959,7 +3044,9 @@ export enum HeroSectionOrderByInput {
   SecondaryTitleAsc = 'secondaryTitle_ASC',
   SecondaryTitleDesc = 'secondaryTitle_DESC',
   TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
+  TitleDesc = 'title_DESC',
+  TopSkillsAsc = 'topSkills_ASC',
+  TopSkillsDesc = 'topSkills_DESC'
 }
 
 export type HeroSectionParent = Page;
@@ -3043,9 +3130,10 @@ export type HeroSectionParentWhereUniqueInput = {
 };
 
 export type HeroSectionUpdateInput = {
+  /** bottomSkills input for default locale (en) */
+  bottomSkills?: InputMaybe<Array<Scalars['String']>>;
   /** callToActionText input for default locale (en) */
   callToActionText?: InputMaybe<Scalars['String']>;
-  /** callToActionUrl input for default locale (en) */
   callToActionUrl?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
   image?: InputMaybe<AssetUpdateOneInlineInput>;
@@ -3055,13 +3143,16 @@ export type HeroSectionUpdateInput = {
   secondaryTitle?: InputMaybe<Scalars['String']>;
   /** title input for default locale (en) */
   title?: InputMaybe<Scalars['String']>;
+  /** topSkills input for default locale (en) */
+  topSkills?: InputMaybe<Array<Scalars['String']>>;
 };
 
 export type HeroSectionUpdateLocalizationDataInput = {
+  bottomSkills?: InputMaybe<Array<Scalars['String']>>;
   callToActionText?: InputMaybe<Scalars['String']>;
-  callToActionUrl?: InputMaybe<Scalars['String']>;
   secondaryTitle?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
+  topSkills?: InputMaybe<Array<Scalars['String']>>;
 };
 
 export type HeroSectionUpdateLocalizationInput = {
@@ -3093,7 +3184,6 @@ export type HeroSectionUpdateManyInlineInput = {
 export type HeroSectionUpdateManyInput = {
   /** callToActionText input for default locale (en) */
   callToActionText?: InputMaybe<Scalars['String']>;
-  /** callToActionUrl input for default locale (en) */
   callToActionUrl?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
   /** Optional updates to localizations */
@@ -3106,7 +3196,6 @@ export type HeroSectionUpdateManyInput = {
 
 export type HeroSectionUpdateManyLocalizationDataInput = {
   callToActionText?: InputMaybe<Scalars['String']>;
-  callToActionUrl?: InputMaybe<Scalars['String']>;
   secondaryTitle?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
 };
@@ -3194,6 +3283,16 @@ export type HeroSectionWhereInput = {
   OR?: InputMaybe<Array<HeroSectionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  bottomSkills?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  bottomSkills_contains_all?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  bottomSkills_contains_none?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  bottomSkills_contains_some?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  bottomSkills_not?: InputMaybe<Array<Scalars['String']>>;
   callToActionText?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   callToActionText_contains?: InputMaybe<Scalars['String']>;
@@ -3293,6 +3392,16 @@ export type HeroSectionWhereInput = {
   title_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   title_starts_with?: InputMaybe<Scalars['String']>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  topSkills?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  topSkills_contains_all?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  topSkills_contains_none?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  topSkills_contains_some?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  topSkills_not?: InputMaybe<Array<Scalars['String']>>;
 };
 
 /** References HeroSection record uniquely */
@@ -3360,6 +3469,8 @@ export type Mutation = {
    * @deprecated Asset mutations will be overhauled soon
    */
   createAsset?: Maybe<Asset>;
+  /** Create one navItem */
+  createNavItem?: Maybe<NavItem>;
   /** Create one page */
   createPage?: Maybe<Page>;
   /** Create one scheduledRelease */
@@ -3374,12 +3485,21 @@ export type Mutation = {
   /** Delete many Asset documents, return deleted documents */
   deleteManyAssetsConnection: AssetConnection;
   /**
+   * Delete many NavItem documents
+   * @deprecated Please use the new paginated many mutation (deleteManyNavItemsConnection)
+   */
+  deleteManyNavItems: BatchPayload;
+  /** Delete many NavItem documents, return deleted documents */
+  deleteManyNavItemsConnection: NavItemConnection;
+  /**
    * Delete many Page documents
    * @deprecated Please use the new paginated many mutation (deleteManyPagesConnection)
    */
   deleteManyPages: BatchPayload;
   /** Delete many Page documents, return deleted documents */
   deleteManyPagesConnection: PageConnection;
+  /** Delete one navItem from _all_ existing stages. Returns deleted document. */
+  deleteNavItem?: Maybe<NavItem>;
   /** Delete one page from _all_ existing stages. Returns deleted document. */
   deletePage?: Maybe<Page>;
   /** Delete and return scheduled operation */
@@ -3396,20 +3516,33 @@ export type Mutation = {
   /** Publish many Asset documents */
   publishManyAssetsConnection: AssetConnection;
   /**
+   * Publish many NavItem documents
+   * @deprecated Please use the new paginated many mutation (publishManyNavItemsConnection)
+   */
+  publishManyNavItems: BatchPayload;
+  /** Publish many NavItem documents */
+  publishManyNavItemsConnection: NavItemConnection;
+  /**
    * Publish many Page documents
    * @deprecated Please use the new paginated many mutation (publishManyPagesConnection)
    */
   publishManyPages: BatchPayload;
   /** Publish many Page documents */
   publishManyPagesConnection: PageConnection;
+  /** Publish one navItem */
+  publishNavItem?: Maybe<NavItem>;
   /** Publish one page */
   publishPage?: Maybe<Page>;
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>;
+  /** Schedule to publish one navItem */
+  schedulePublishNavItem?: Maybe<NavItem>;
   /** Schedule to publish one page */
   schedulePublishPage?: Maybe<Page>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>;
+  /** Unpublish one navItem from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishNavItem?: Maybe<NavItem>;
   /** Unpublish one page from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishPage?: Maybe<Page>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3422,12 +3555,21 @@ export type Mutation = {
   /** Find many Asset documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyAssetsConnection: AssetConnection;
   /**
+   * Unpublish many NavItem documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyNavItemsConnection)
+   */
+  unpublishManyNavItems: BatchPayload;
+  /** Find many NavItem documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyNavItemsConnection: NavItemConnection;
+  /**
    * Unpublish many Page documents
    * @deprecated Please use the new paginated many mutation (unpublishManyPagesConnection)
    */
   unpublishManyPages: BatchPayload;
   /** Find many Page documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyPagesConnection: PageConnection;
+  /** Unpublish one navItem from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishNavItem?: Maybe<NavItem>;
   /** Unpublish one page from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishPage?: Maybe<Page>;
   /** Update one asset */
@@ -3440,18 +3582,29 @@ export type Mutation = {
   /** Update many Asset documents */
   updateManyAssetsConnection: AssetConnection;
   /**
+   * Update many navItems
+   * @deprecated Please use the new paginated many mutation (updateManyNavItemsConnection)
+   */
+  updateManyNavItems: BatchPayload;
+  /** Update many NavItem documents */
+  updateManyNavItemsConnection: NavItemConnection;
+  /**
    * Update many pages
    * @deprecated Please use the new paginated many mutation (updateManyPagesConnection)
    */
   updateManyPages: BatchPayload;
   /** Update many Page documents */
   updateManyPagesConnection: PageConnection;
+  /** Update one navItem */
+  updateNavItem?: Maybe<NavItem>;
   /** Update one page */
   updatePage?: Maybe<Page>;
   /** Update one scheduledRelease */
   updateScheduledRelease?: Maybe<ScheduledRelease>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
+  /** Upsert one navItem */
+  upsertNavItem?: Maybe<NavItem>;
   /** Upsert one page */
   upsertPage?: Maybe<Page>;
 };
@@ -3459,6 +3612,11 @@ export type Mutation = {
 
 export type MutationCreateAssetArgs = {
   data: AssetCreateInput;
+};
+
+
+export type MutationCreateNavItemArgs = {
+  data: NavItemCreateInput;
 };
 
 
@@ -3492,6 +3650,21 @@ export type MutationDeleteManyAssetsConnectionArgs = {
 };
 
 
+export type MutationDeleteManyNavItemsArgs = {
+  where?: InputMaybe<NavItemManyWhereInput>;
+};
+
+
+export type MutationDeleteManyNavItemsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<NavItemManyWhereInput>;
+};
+
+
 export type MutationDeleteManyPagesArgs = {
   where?: InputMaybe<PageManyWhereInput>;
 };
@@ -3504,6 +3677,11 @@ export type MutationDeleteManyPagesConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<PageManyWhereInput>;
+};
+
+
+export type MutationDeleteNavItemArgs = {
+  where: NavItemWhereUniqueInput;
 };
 
 
@@ -3555,6 +3733,30 @@ export type MutationPublishManyAssetsConnectionArgs = {
 };
 
 
+export type MutationPublishManyNavItemsArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<NavItemManyWhereInput>;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type MutationPublishManyNavItemsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<NavItemManyWhereInput>;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
 export type MutationPublishManyPagesArgs = {
   locales?: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']>;
@@ -3579,6 +3781,15 @@ export type MutationPublishManyPagesConnectionArgs = {
 };
 
 
+export type MutationPublishNavItemArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  to?: Array<Stage>;
+  where: NavItemWhereUniqueInput;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
 export type MutationPublishPageArgs = {
   locales?: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']>;
@@ -3595,6 +3806,17 @@ export type MutationSchedulePublishAssetArgs = {
   releaseId?: InputMaybe<Scalars['String']>;
   to?: Array<Stage>;
   where: AssetWhereUniqueInput;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type MutationSchedulePublishNavItemArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: NavItemWhereUniqueInput;
   withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
 };
 
@@ -3617,6 +3839,16 @@ export type MutationScheduleUnpublishAssetArgs = {
   releaseId?: InputMaybe<Scalars['String']>;
   unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where: AssetWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishNavItemArgs = {
+  from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where: NavItemWhereUniqueInput;
 };
 
 
@@ -3660,6 +3892,28 @@ export type MutationUnpublishManyAssetsConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyNavItemsArgs = {
+  from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<NavItemManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyNavItemsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<NavItemManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyPagesArgs = {
   from?: Array<Stage>;
   locales?: InputMaybe<Array<Locale>>;
@@ -3679,6 +3933,14 @@ export type MutationUnpublishManyPagesConnectionArgs = {
   stage?: InputMaybe<Stage>;
   unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where?: InputMaybe<PageManyWhereInput>;
+};
+
+
+export type MutationUnpublishNavItemArgs = {
+  from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where: NavItemWhereUniqueInput;
 };
 
 
@@ -3713,6 +3975,23 @@ export type MutationUpdateManyAssetsConnectionArgs = {
 };
 
 
+export type MutationUpdateManyNavItemsArgs = {
+  data: NavItemUpdateManyInput;
+  where?: InputMaybe<NavItemManyWhereInput>;
+};
+
+
+export type MutationUpdateManyNavItemsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: NavItemUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<NavItemManyWhereInput>;
+};
+
+
 export type MutationUpdateManyPagesArgs = {
   data: PageUpdateManyInput;
   where?: InputMaybe<PageManyWhereInput>;
@@ -3727,6 +4006,12 @@ export type MutationUpdateManyPagesConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<PageManyWhereInput>;
+};
+
+
+export type MutationUpdateNavItemArgs = {
+  data: NavItemUpdateInput;
+  where: NavItemWhereUniqueInput;
 };
 
 
@@ -3748,9 +4033,557 @@ export type MutationUpsertAssetArgs = {
 };
 
 
+export type MutationUpsertNavItemArgs = {
+  upsert: NavItemUpsertInput;
+  where: NavItemWhereUniqueInput;
+};
+
+
 export type MutationUpsertPageArgs = {
   upsert: PageUpsertInput;
   where: PageWhereUniqueInput;
+};
+
+/** Navigation item */
+export type NavItem = Node & {
+  __typename?: 'NavItem';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<NavItem>;
+  /** List of NavItem versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** URL of navigation item */
+  link: Scalars['String'];
+  /** System Locale field */
+  locale: Locale;
+  /** Get the other localizations for this document */
+  localizations: Array<NavItem>;
+  /** Whether the navigation link should open in a new tab */
+  openInNewTab: Scalars['Boolean'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  title: Scalars['String'];
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+/** Navigation item */
+export type NavItemCreatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
+};
+
+
+/** Navigation item */
+export type NavItemCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+/** Navigation item */
+export type NavItemDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+/** Navigation item */
+export type NavItemHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+/** Navigation item */
+export type NavItemLocalizationsArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  locales?: Array<Locale>;
+};
+
+
+/** Navigation item */
+export type NavItemPublishedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
+};
+
+
+/** Navigation item */
+export type NavItemPublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+/** Navigation item */
+export type NavItemScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+/** Navigation item */
+export type NavItemUpdatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
+};
+
+
+/** Navigation item */
+export type NavItemUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type NavItemConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: NavItemWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type NavItemConnection = {
+  __typename?: 'NavItemConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<NavItemEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type NavItemCreateInput = {
+  cl3d6a2d31qz401xp02ac1mui?: InputMaybe<NavbarSectionCreateManyInlineInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  link: Scalars['String'];
+  /** Inline mutations for managing document localizations excluding the default locale */
+  localizations?: InputMaybe<NavItemCreateLocalizationsInput>;
+  openInNewTab: Scalars['Boolean'];
+  /** title input for default locale (en) */
+  title: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type NavItemCreateLocalizationDataInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  title: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type NavItemCreateLocalizationInput = {
+  /** Localization input */
+  data: NavItemCreateLocalizationDataInput;
+  locale: Locale;
+};
+
+export type NavItemCreateLocalizationsInput = {
+  /** Create localizations for the newly-created document */
+  create?: InputMaybe<Array<NavItemCreateLocalizationInput>>;
+};
+
+export type NavItemCreateManyInlineInput = {
+  /** Connect multiple existing NavItem documents */
+  connect?: InputMaybe<Array<NavItemWhereUniqueInput>>;
+  /** Create and connect multiple existing NavItem documents */
+  create?: InputMaybe<Array<NavItemCreateInput>>;
+};
+
+export type NavItemCreateOneInlineInput = {
+  /** Connect one existing NavItem document */
+  connect?: InputMaybe<NavItemWhereUniqueInput>;
+  /** Create and connect one NavItem document */
+  create?: InputMaybe<NavItemCreateInput>;
+};
+
+/** An edge in a connection. */
+export type NavItemEdge = {
+  __typename?: 'NavItemEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: NavItem;
+};
+
+/** Identifies documents */
+export type NavItemManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<NavItemWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<NavItemWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<NavItemWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  link?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  link_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  link_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  link_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  link_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  link_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  link_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  link_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  link_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  link_starts_with?: InputMaybe<Scalars['String']>;
+  openInNewTab?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  openInNewTab_not?: InputMaybe<Scalars['Boolean']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum NavItemOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  LinkAsc = 'link_ASC',
+  LinkDesc = 'link_DESC',
+  OpenInNewTabAsc = 'openInNewTab_ASC',
+  OpenInNewTabDesc = 'openInNewTab_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type NavItemUpdateInput = {
+  cl3d6a2d31qz401xp02ac1mui?: InputMaybe<NavbarSectionUpdateManyInlineInput>;
+  link?: InputMaybe<Scalars['String']>;
+  /** Manage document localizations */
+  localizations?: InputMaybe<NavItemUpdateLocalizationsInput>;
+  openInNewTab?: InputMaybe<Scalars['Boolean']>;
+  /** title input for default locale (en) */
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type NavItemUpdateLocalizationDataInput = {
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type NavItemUpdateLocalizationInput = {
+  data: NavItemUpdateLocalizationDataInput;
+  locale: Locale;
+};
+
+export type NavItemUpdateLocalizationsInput = {
+  /** Localizations to create */
+  create?: InputMaybe<Array<NavItemCreateLocalizationInput>>;
+  /** Localizations to delete */
+  delete?: InputMaybe<Array<Locale>>;
+  /** Localizations to update */
+  update?: InputMaybe<Array<NavItemUpdateLocalizationInput>>;
+  upsert?: InputMaybe<Array<NavItemUpsertLocalizationInput>>;
+};
+
+export type NavItemUpdateManyInlineInput = {
+  /** Connect multiple existing NavItem documents */
+  connect?: InputMaybe<Array<NavItemConnectInput>>;
+  /** Create and connect multiple NavItem documents */
+  create?: InputMaybe<Array<NavItemCreateInput>>;
+  /** Delete multiple NavItem documents */
+  delete?: InputMaybe<Array<NavItemWhereUniqueInput>>;
+  /** Disconnect multiple NavItem documents */
+  disconnect?: InputMaybe<Array<NavItemWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing NavItem documents */
+  set?: InputMaybe<Array<NavItemWhereUniqueInput>>;
+  /** Update multiple NavItem documents */
+  update?: InputMaybe<Array<NavItemUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple NavItem documents */
+  upsert?: InputMaybe<Array<NavItemUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type NavItemUpdateManyInput = {
+  link?: InputMaybe<Scalars['String']>;
+  /** Optional updates to localizations */
+  localizations?: InputMaybe<NavItemUpdateManyLocalizationsInput>;
+  openInNewTab?: InputMaybe<Scalars['Boolean']>;
+  /** title input for default locale (en) */
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type NavItemUpdateManyLocalizationDataInput = {
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type NavItemUpdateManyLocalizationInput = {
+  data: NavItemUpdateManyLocalizationDataInput;
+  locale: Locale;
+};
+
+export type NavItemUpdateManyLocalizationsInput = {
+  /** Localizations to update */
+  update?: InputMaybe<Array<NavItemUpdateManyLocalizationInput>>;
+};
+
+export type NavItemUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: NavItemUpdateManyInput;
+  /** Document search */
+  where: NavItemWhereInput;
+};
+
+export type NavItemUpdateOneInlineInput = {
+  /** Connect existing NavItem document */
+  connect?: InputMaybe<NavItemWhereUniqueInput>;
+  /** Create and connect one NavItem document */
+  create?: InputMaybe<NavItemCreateInput>;
+  /** Delete currently connected NavItem document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected NavItem document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single NavItem document */
+  update?: InputMaybe<NavItemUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single NavItem document */
+  upsert?: InputMaybe<NavItemUpsertWithNestedWhereUniqueInput>;
+};
+
+export type NavItemUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: NavItemUpdateInput;
+  /** Unique document search */
+  where: NavItemWhereUniqueInput;
+};
+
+export type NavItemUpsertInput = {
+  /** Create document if it didn't exist */
+  create: NavItemCreateInput;
+  /** Update document if it exists */
+  update: NavItemUpdateInput;
+};
+
+export type NavItemUpsertLocalizationInput = {
+  create: NavItemCreateLocalizationDataInput;
+  locale: Locale;
+  update: NavItemUpdateLocalizationDataInput;
+};
+
+export type NavItemUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: NavItemUpsertInput;
+  /** Unique document search */
+  where: NavItemWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type NavItemWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<NavItemWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<NavItemWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<NavItemWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  link?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  link_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  link_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  link_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  link_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  link_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  link_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  link_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  link_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  link_starts_with?: InputMaybe<Scalars['String']>;
+  openInNewTab?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  openInNewTab_not?: InputMaybe<Scalars['Boolean']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  title?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** References NavItem record uniquely */
+export type NavItemWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
 };
 
 /** Navbar section */
@@ -3766,8 +4599,8 @@ export type NavbarSection = {
   locale: Locale;
   /** Get the other localizations for this document */
   localizations: Array<NavbarSection>;
-  /** Navigation items, links to parts of the page */
-  navbarItems: Scalars['String'];
+  /** Navbar navigation items */
+  navItems: Array<NavItem>;
   /** System stage field */
   stage: Stage;
 };
@@ -3777,6 +4610,19 @@ export type NavbarSection = {
 export type NavbarSectionLocalizationsArgs = {
   includeCurrent?: Scalars['Boolean'];
   locales?: Array<Locale>;
+};
+
+
+/** Navbar section */
+export type NavbarSectionNavItemsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<NavItemOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<NavItemWhereInput>;
 };
 
 export type NavbarSectionConnectInput = {
@@ -3802,13 +4648,11 @@ export type NavbarSectionCreateInput = {
   initials: Scalars['String'];
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<NavbarSectionCreateLocalizationsInput>;
-  /** navbarItems input for default locale (en) */
-  navbarItems: Scalars['String'];
+  navItems?: InputMaybe<NavItemCreateManyInlineInput>;
 };
 
 export type NavbarSectionCreateLocalizationDataInput = {
   initials: Scalars['String'];
-  navbarItems: Scalars['String'];
 };
 
 export type NavbarSectionCreateLocalizationInput = {
@@ -3880,6 +4724,9 @@ export type NavbarSectionManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  navItems_every?: InputMaybe<NavItemWhereInput>;
+  navItems_none?: InputMaybe<NavItemWhereInput>;
+  navItems_some?: InputMaybe<NavItemWhereInput>;
 };
 
 export enum NavbarSectionOrderByInput {
@@ -3888,9 +4735,7 @@ export enum NavbarSectionOrderByInput {
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   InitialsAsc = 'initials_ASC',
-  InitialsDesc = 'initials_DESC',
-  NavbarItemsAsc = 'navbarItems_ASC',
-  NavbarItemsDesc = 'navbarItems_DESC'
+  InitialsDesc = 'initials_DESC'
 }
 
 export type NavbarSectionParent = Page;
@@ -3979,13 +4824,11 @@ export type NavbarSectionUpdateInput = {
   initials?: InputMaybe<Scalars['String']>;
   /** Manage document localizations */
   localizations?: InputMaybe<NavbarSectionUpdateLocalizationsInput>;
-  /** navbarItems input for default locale (en) */
-  navbarItems?: InputMaybe<Scalars['String']>;
+  navItems?: InputMaybe<NavItemUpdateManyInlineInput>;
 };
 
 export type NavbarSectionUpdateLocalizationDataInput = {
   initials?: InputMaybe<Scalars['String']>;
-  navbarItems?: InputMaybe<Scalars['String']>;
 };
 
 export type NavbarSectionUpdateLocalizationInput = {
@@ -4020,13 +4863,10 @@ export type NavbarSectionUpdateManyInput = {
   initials?: InputMaybe<Scalars['String']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<NavbarSectionUpdateManyLocalizationsInput>;
-  /** navbarItems input for default locale (en) */
-  navbarItems?: InputMaybe<Scalars['String']>;
 };
 
 export type NavbarSectionUpdateManyLocalizationDataInput = {
   initials?: InputMaybe<Scalars['String']>;
-  navbarItems?: InputMaybe<Scalars['String']>;
 };
 
 export type NavbarSectionUpdateManyLocalizationInput = {
@@ -4153,25 +4993,9 @@ export type NavbarSectionWhereInput = {
   initials_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   initials_starts_with?: InputMaybe<Scalars['String']>;
-  navbarItems?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  navbarItems_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  navbarItems_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  navbarItems_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  navbarItems_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  navbarItems_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  navbarItems_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  navbarItems_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  navbarItems_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  navbarItems_starts_with?: InputMaybe<Scalars['String']>;
+  navItems_every?: InputMaybe<NavItemWhereInput>;
+  navItems_none?: InputMaybe<NavItemWhereInput>;
+  navItems_some?: InputMaybe<NavItemWhereInput>;
 };
 
 /** References NavbarSection record uniquely */
@@ -4802,10 +5626,11 @@ export type PageWhereUniqueInput = {
   url?: InputMaybe<Scalars['String']>;
 };
 
-export type PagesectionsUnion = AboutSection | EducationSection | ExperienceSection | FooterSection | HeroSection | NavbarSection;
+export type PagesectionsUnion = AboutSection | ContactSection | EducationSection | ExperienceSection | FooterSection | HeroSection | NavbarSection;
 
 export type PagesectionsUnionConnectInput = {
   AboutSection?: InputMaybe<AboutSectionConnectInput>;
+  ContactSection?: InputMaybe<ContactSectionConnectInput>;
   EducationSection?: InputMaybe<EducationSectionConnectInput>;
   ExperienceSection?: InputMaybe<ExperienceSectionConnectInput>;
   FooterSection?: InputMaybe<FooterSectionConnectInput>;
@@ -4815,6 +5640,7 @@ export type PagesectionsUnionConnectInput = {
 
 export type PagesectionsUnionCreateInput = {
   AboutSection?: InputMaybe<AboutSectionCreateInput>;
+  ContactSection?: InputMaybe<ContactSectionCreateInput>;
   EducationSection?: InputMaybe<EducationSectionCreateInput>;
   ExperienceSection?: InputMaybe<ExperienceSectionCreateInput>;
   FooterSection?: InputMaybe<FooterSectionCreateInput>;
@@ -4834,6 +5660,7 @@ export type PagesectionsUnionCreateOneInlineInput = {
 
 export type PagesectionsUnionCreateWithPositionInput = {
   AboutSection?: InputMaybe<AboutSectionCreateWithPositionInput>;
+  ContactSection?: InputMaybe<ContactSectionCreateWithPositionInput>;
   EducationSection?: InputMaybe<EducationSectionCreateWithPositionInput>;
   ExperienceSection?: InputMaybe<ExperienceSectionCreateWithPositionInput>;
   FooterSection?: InputMaybe<FooterSectionCreateWithPositionInput>;
@@ -4843,6 +5670,7 @@ export type PagesectionsUnionCreateWithPositionInput = {
 
 export type PagesectionsUnionUpdateInput = {
   AboutSection?: InputMaybe<AboutSectionUpdateInput>;
+  ContactSection?: InputMaybe<ContactSectionUpdateInput>;
   EducationSection?: InputMaybe<EducationSectionUpdateInput>;
   ExperienceSection?: InputMaybe<ExperienceSectionUpdateInput>;
   FooterSection?: InputMaybe<FooterSectionUpdateInput>;
@@ -4863,6 +5691,7 @@ export type PagesectionsUnionUpdateManyInlineInput = {
 
 export type PagesectionsUnionUpdateManyWithNestedWhereInput = {
   AboutSection?: InputMaybe<AboutSectionUpdateManyWithNestedWhereInput>;
+  ContactSection?: InputMaybe<ContactSectionUpdateManyWithNestedWhereInput>;
   EducationSection?: InputMaybe<EducationSectionUpdateManyWithNestedWhereInput>;
   ExperienceSection?: InputMaybe<ExperienceSectionUpdateManyWithNestedWhereInput>;
   FooterSection?: InputMaybe<FooterSectionUpdateManyWithNestedWhereInput>;
@@ -4883,6 +5712,7 @@ export type PagesectionsUnionUpdateOneInlineInput = {
 
 export type PagesectionsUnionUpdateWithNestedWhereUniqueAndPositionInput = {
   AboutSection?: InputMaybe<AboutSectionUpdateWithNestedWhereUniqueAndPositionInput>;
+  ContactSection?: InputMaybe<ContactSectionUpdateWithNestedWhereUniqueAndPositionInput>;
   EducationSection?: InputMaybe<EducationSectionUpdateWithNestedWhereUniqueAndPositionInput>;
   ExperienceSection?: InputMaybe<ExperienceSectionUpdateWithNestedWhereUniqueAndPositionInput>;
   FooterSection?: InputMaybe<FooterSectionUpdateWithNestedWhereUniqueAndPositionInput>;
@@ -4892,6 +5722,7 @@ export type PagesectionsUnionUpdateWithNestedWhereUniqueAndPositionInput = {
 
 export type PagesectionsUnionUpdateWithNestedWhereUniqueInput = {
   AboutSection?: InputMaybe<AboutSectionUpdateWithNestedWhereUniqueInput>;
+  ContactSection?: InputMaybe<ContactSectionUpdateWithNestedWhereUniqueInput>;
   EducationSection?: InputMaybe<EducationSectionUpdateWithNestedWhereUniqueInput>;
   ExperienceSection?: InputMaybe<ExperienceSectionUpdateWithNestedWhereUniqueInput>;
   FooterSection?: InputMaybe<FooterSectionUpdateWithNestedWhereUniqueInput>;
@@ -4901,6 +5732,7 @@ export type PagesectionsUnionUpdateWithNestedWhereUniqueInput = {
 
 export type PagesectionsUnionUpsertWithNestedWhereUniqueAndPositionInput = {
   AboutSection?: InputMaybe<AboutSectionUpsertWithNestedWhereUniqueAndPositionInput>;
+  ContactSection?: InputMaybe<ContactSectionUpsertWithNestedWhereUniqueAndPositionInput>;
   EducationSection?: InputMaybe<EducationSectionUpsertWithNestedWhereUniqueAndPositionInput>;
   ExperienceSection?: InputMaybe<ExperienceSectionUpsertWithNestedWhereUniqueAndPositionInput>;
   FooterSection?: InputMaybe<FooterSectionUpsertWithNestedWhereUniqueAndPositionInput>;
@@ -4910,6 +5742,7 @@ export type PagesectionsUnionUpsertWithNestedWhereUniqueAndPositionInput = {
 
 export type PagesectionsUnionUpsertWithNestedWhereUniqueInput = {
   AboutSection?: InputMaybe<AboutSectionUpsertWithNestedWhereUniqueInput>;
+  ContactSection?: InputMaybe<ContactSectionUpsertWithNestedWhereUniqueInput>;
   EducationSection?: InputMaybe<EducationSectionUpsertWithNestedWhereUniqueInput>;
   ExperienceSection?: InputMaybe<ExperienceSectionUpsertWithNestedWhereUniqueInput>;
   FooterSection?: InputMaybe<FooterSectionUpsertWithNestedWhereUniqueInput>;
@@ -4919,6 +5752,7 @@ export type PagesectionsUnionUpsertWithNestedWhereUniqueInput = {
 
 export type PagesectionsUnionWhereInput = {
   AboutSection?: InputMaybe<AboutSectionWhereInput>;
+  ContactSection?: InputMaybe<ContactSectionWhereInput>;
   EducationSection?: InputMaybe<EducationSectionWhereInput>;
   ExperienceSection?: InputMaybe<ExperienceSectionWhereInput>;
   FooterSection?: InputMaybe<FooterSectionWhereInput>;
@@ -4928,6 +5762,7 @@ export type PagesectionsUnionWhereInput = {
 
 export type PagesectionsUnionWhereUniqueInput = {
   AboutSection?: InputMaybe<AboutSectionWhereUniqueInput>;
+  ContactSection?: InputMaybe<ContactSectionWhereUniqueInput>;
   EducationSection?: InputMaybe<EducationSectionWhereUniqueInput>;
   ExperienceSection?: InputMaybe<ExperienceSectionWhereUniqueInput>;
   FooterSection?: InputMaybe<FooterSectionWhereUniqueInput>;
@@ -4952,6 +5787,14 @@ export type Query = {
   assets: Array<Asset>;
   /** Retrieve multiple assets using the Relay connection interface */
   assetsConnection: AssetConnection;
+  /** Retrieve a single navItem */
+  navItem?: Maybe<NavItem>;
+  /** Retrieve document version */
+  navItemVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple navItems */
+  navItems: Array<NavItem>;
+  /** Retrieve multiple navItems using the Relay connection interface */
+  navItemsConnection: NavItemConnection;
   /** Fetches an object given its ID */
   node?: Maybe<Node>;
   /** Retrieve a single page */
@@ -5018,6 +5861,44 @@ export type QueryAssetsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<AssetWhereInput>;
+};
+
+
+export type QueryNavItemArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: NavItemWhereUniqueInput;
+};
+
+
+export type QueryNavItemVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryNavItemsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<NavItemOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<NavItemWhereInput>;
+};
+
+
+export type QueryNavItemsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<NavItemOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<NavItemWhereInput>;
 };
 
 
@@ -5271,7 +6152,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Page;
+export type ScheduledOperationAffectedDocument = Asset | NavItem | Page;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -6664,7 +7545,7 @@ export enum _SystemDateTimeFieldVariation {
 export type GetMainPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetMainPageQuery = { __typename?: 'Query', page?: { __typename?: 'Page', localizations: Array<{ __typename?: 'Page', title: string, description: string, locale: Locale, favicon?: { __typename?: 'Asset', url: string } | null }> } | null };
+export type GetMainPageQuery = { __typename?: 'Query', page?: { __typename?: 'Page', localizations: Array<{ __typename?: 'Page', title: string, description: string, locale: Locale, favicon?: { __typename?: 'Asset', url: string, fileName: string, width?: number | null, height?: number | null } | null, sections: Array<{ __typename?: 'AboutSection', text: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename?: 'ContactSection', description: string, display: boolean, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename?: 'EducationSection', achievements: Array<string>, description: string, display: boolean, title: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename?: 'ExperienceSection', achievements: Array<string>, description: string, display: boolean, title: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename?: 'FooterSection', display: boolean } | { __typename?: 'HeroSection', bottomSkills: Array<string>, callToActionText: string, callToActionUrl: string, display: boolean, topSkills: Array<string>, title: string, secondaryTitle: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename?: 'NavbarSection', display: boolean, initials: string, navItems: Array<{ __typename?: 'NavItem', title: string, link: string, openInNewTab: boolean }> }> }> } | null };
 
 
 export const GetMainPageDocument = gql`
@@ -6676,6 +7557,81 @@ export const GetMainPageDocument = gql`
       locale
       favicon {
         url
+        fileName
+        width
+        height
+      }
+      sections {
+        ... on NavbarSection {
+          display
+          initials
+          navItems {
+            title
+            link
+            openInNewTab
+          }
+        }
+        ... on HeroSection {
+          bottomSkills
+          callToActionText
+          callToActionUrl
+          display
+          topSkills
+          title
+          secondaryTitle
+          image {
+            fileName
+            height
+            url
+            width
+          }
+        }
+        ... on AboutSection {
+          text
+          image {
+            fileName
+            height
+            url
+            width
+          }
+        }
+        ... on EducationSection {
+          achievements
+          description
+          display
+          title
+          image {
+            fileName
+            height
+            url
+            width
+          }
+        }
+        ... on ExperienceSection {
+          achievements
+          description
+          display
+          title
+          image {
+            fileName
+            height
+            url
+            width
+          }
+        }
+        ... on ContactSection {
+          description
+          display
+          image {
+            fileName
+            height
+            url
+            width
+          }
+        }
+        ... on FooterSection {
+          display
+        }
       }
     }
   }

@@ -1,22 +1,23 @@
 import { submitEmail } from '@lib/emailjs';
-// import './Contact.module.css';
+import classNames from 'classnames';
+import styles from './Contact.module.css';
 
 export default function Contact() {
 	return (
-		<section id="contact" className="flex-col-center-center">
+		<section id="contact" className={classNames(styles.contact, 'flex-col-center-center')}>
 			<div className="container">
 				<div className="line"></div>
 				<h2 className="section-title">CONTACT ME</h2>
 				<p>
 					Feel free to send me a message if you have any inquiries.
 					<br />
-					<a className="mail-link" href="mailto:contact@valerisabev.com">
+					<a className={classNames(styles.mail_link)} href="mailto:contact@valerisabev.com">
 						contact@valerisabev.com
 					</a>
 				</p>
 				<div className="flex-row">
-					<div className="contact-img"></div>
-					<div className="contact-form flex-col">
+					<div className={classNames(styles.contact_img)}></div>
+					<div className={classNames(styles.contact_form, 'flex-col')}>
 						<input type="text" id="contact_name" placeholder="Your name" />
 						<input type="email" id="contact_email" placeholder="Your email" />
 						<input type="text" id="contact_subject" placeholder="Subject" />
@@ -25,7 +26,7 @@ export default function Contact() {
 						<br />
 						<button id="contact_submit" type="submit" onClick={submitEmail} className="flex-row-center-center">
 							<span>Send Message</span>
-							<div className="spinner"></div>
+							<div className={classNames(styles.spinner)}></div>
 						</button>
 					</div>
 				</div>

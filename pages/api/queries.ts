@@ -6,6 +6,7 @@ export const GET_MAIN_PAGE = gql`
 	query GetMainPage {
 		page(where: { url: "index" }) {
 			localizations(locales: [en, bg], includeCurrent: true) {
+				locale
 				title
 				description
 				locale
@@ -16,6 +17,7 @@ export const GET_MAIN_PAGE = gql`
 					height
 				}
 				sections {
+					__typename
 					... on NavbarSection {
 						display
 						initials
@@ -42,6 +44,7 @@ export const GET_MAIN_PAGE = gql`
 					}
 					... on AboutSection {
 						text
+						display
 						image {
 							fileName
 							height

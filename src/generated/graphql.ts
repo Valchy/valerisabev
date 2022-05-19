@@ -7545,13 +7545,14 @@ export enum _SystemDateTimeFieldVariation {
 export type GetMainPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetMainPageQuery = { __typename?: 'Query', page?: { __typename?: 'Page', localizations: Array<{ __typename?: 'Page', title: string, description: string, locale: Locale, favicon?: { __typename?: 'Asset', url: string, fileName: string, width?: number | null, height?: number | null } | null, sections: Array<{ __typename?: 'AboutSection', text: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename?: 'ContactSection', description: string, display: boolean, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename?: 'EducationSection', achievements: Array<string>, description: string, display: boolean, title: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename?: 'ExperienceSection', achievements: Array<string>, description: string, display: boolean, title: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename?: 'FooterSection', display: boolean } | { __typename?: 'HeroSection', bottomSkills: Array<string>, callToActionText: string, callToActionUrl: string, display: boolean, topSkills: Array<string>, title: string, secondaryTitle: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename?: 'NavbarSection', display: boolean, initials: string, navItems: Array<{ __typename?: 'NavItem', title: string, link: string, openInNewTab: boolean }> }> }> } | null };
+export type GetMainPageQuery = { __typename?: 'Query', page?: { __typename?: 'Page', localizations: Array<{ __typename?: 'Page', locale: Locale, title: string, description: string, favicon?: { __typename?: 'Asset', url: string, fileName: string, width?: number | null, height?: number | null } | null, sections: Array<{ __typename: 'AboutSection', text: string, display: boolean, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename: 'ContactSection', description: string, display: boolean, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename: 'EducationSection', achievements: Array<string>, description: string, display: boolean, title: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename: 'ExperienceSection', achievements: Array<string>, description: string, display: boolean, title: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename: 'FooterSection', display: boolean } | { __typename: 'HeroSection', bottomSkills: Array<string>, callToActionText: string, callToActionUrl: string, display: boolean, topSkills: Array<string>, title: string, secondaryTitle: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename: 'NavbarSection', display: boolean, initials: string, navItems: Array<{ __typename?: 'NavItem', title: string, link: string, openInNewTab: boolean }> }> }> } | null };
 
 
 export const GetMainPageDocument = gql`
     query GetMainPage {
   page(where: {url: "index"}) {
     localizations(locales: [en, bg], includeCurrent: true) {
+      locale
       title
       description
       locale
@@ -7562,6 +7563,7 @@ export const GetMainPageDocument = gql`
         height
       }
       sections {
+        __typename
         ... on NavbarSection {
           display
           initials
@@ -7588,6 +7590,7 @@ export const GetMainPageDocument = gql`
         }
         ... on AboutSection {
           text
+          display
           image {
             fileName
             height

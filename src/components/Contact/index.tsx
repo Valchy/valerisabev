@@ -2,21 +2,25 @@ import { submitEmail } from '@lib/emailjs';
 import classNames from 'classnames';
 import styles from './Contact.module.css';
 
-export default function Contact() {
+interface ContactProps {
+	contactData: any;
+}
+
+export default function Contact({ contactData }: ContactProps) {
 	return (
 		<section id="contact" className={classNames(styles.contact, 'flex-col-center-center')}>
 			<div className="container">
 				<div className="line"></div>
 				<h2 className="section-title">CONTACT ME</h2>
 				<p>
-					Feel free to send me a message if you have any inquiries.
+					{contactData.description}
 					<br />
 					<a className={classNames(styles.mail_link)} href="mailto:contact@valerisabev.com">
 						contact@valerisabev.com
 					</a>
 				</p>
 				<div className="flex-row">
-					<div className={classNames(styles.contact_img)}></div>
+					<div style={{ backgroundImage: `url(${contactData.image.url})` }} className={classNames(styles.contact_img)}></div>
 					<div className={classNames(styles.contact_form, 'flex-col')}>
 						<input type="text" id="contact_name" placeholder="Your name" />
 						<input type="email" id="contact_email" placeholder="Your email" />

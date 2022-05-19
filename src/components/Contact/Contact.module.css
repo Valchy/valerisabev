@@ -59,7 +59,6 @@
 }
 
 .contact_img {
-	background-image: url('/imgs/contact_me.jpg');
 	background-repeat: no-repeat;
 	background-position: center center;
 	-webkit-background-size: cover;

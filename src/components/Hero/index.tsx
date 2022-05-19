@@ -1,41 +1,41 @@
 import classNames from 'classnames';
 import styles from './Hero.module.css';
 
-export default function Hero() {
+interface HeroProps {
+	heroData: any;
+}
+
+export default function Hero({ heroData }: HeroProps) {
 	return (
-		<section id="home" className={classNames(styles.home, 'flex-col-center-center')}>
+		<section
+			id="home"
+			style={{ backgroundImage: `url(${heroData.image.url})` }}
+			className={classNames(styles.home, 'flex-col-center-center')}
+		>
 			<div className="container flex-col-center-center">
 				<h1 className={classNames(styles.page_title)}>
-					<span> Hello, I&apos;m </span>
+					<span>{heroData.secondaryTitle}</span>
 					<br />
-					<b> Valeri Sabev </b>
+					<b>{heroData.title}</b>
 				</h1>
 				<p className={classNames(styles.page_description)}>
-					<span>
-						<b> # </b> Full Stack Web Development{' '}
-					</span>
-					<span>
-						<b> # </b> Cyber Security
-					</span>
+					{heroData.topSkills.map((skill: string) => (
+						<span key={skill}>
+							<b> # </b>
+							{skill}
+						</span>
+					))}
 					<br />
-					<span>
-						<b> # </b> Blockchain{' '}
-					</span>
-					<span>
-						<b> # </b> High-tech entrepreneurship{' '}
-					</span>
-					<span>
-						<b> # </b> SEO{' '}
-					</span>
+					{heroData.bottomSkills.map((skill: string) => (
+						<span key={skill}>
+							<b> # </b>
+							{skill}
+						</span>
+					))}
 				</p>
 				<div className={classNames(styles.cv_wrapper)}>
-					<a
-						className={classNames(styles.cv_btn)}
-						href="https://media.graphassets.com/kVeZhnj6TYWTTvSqAjvU"
-						rel="noreferrer"
-						target="_BLANK"
-					>
-						Take a look at my CV
+					<a className={classNames(styles.cv_btn)} href={heroData.callToActionUrl} rel="noreferrer" target="_BLANK">
+						{heroData.callToActionText}
 					</a>
 				</div>
 			</div>

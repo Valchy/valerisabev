@@ -3,6 +3,14 @@
 	margin-bottom: var(--sectionYPadding);
 }
 
+.education_item {
+	margin-bottom: 30px;
+}
+
+.education_item:last-child {
+	margin-bottom: 0;
+}
+
 .education_item img {
 	width: 40%;
 	margin-right: 25px;

@@ -1,7 +1,6 @@
 .home {
 	width: 100vw;
 	height: 100vh;
-	background-image: url('/imgs/windsurf.jpg');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -43,10 +42,6 @@
 	font-size: 26px;
 	font-weight: 700;
 	padding-left: 12px;
-}
-
-.page_description b:first-child {
-	/*padding-left: 0;*/
 }
 
 .cv_wrapper {

@@ -13,7 +13,9 @@ export default function Header(props: HeaderProps) {
 			{/* Title and Icon */}
 			<title>{props.title || default_title}</title>
 			<link rel="icon" type="image/x-icon" href={props.favicon || default_favicon} />
-			<link rel="canonical" href="https://valerisabev.com" />
+			<link rel="canonical" href="https://valerisabev.com/" />
+			<link rel="alternate" hrefLang="bg-BG" href="https://valerisabev.com/bg" />
+			<link rel="alternate" hrefLang="en-US" href="https://valerisabev.com/" />
 
 			{/* Default Meta Tags */}
 			<meta charSet="utf-8" />

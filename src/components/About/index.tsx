@@ -3,7 +3,11 @@ import Image from 'next/image';
 import classNames from 'classnames';
 import styles from './About.module.css';
 
-export default function About() {
+interface AboutProps {
+	aboutData: any;
+}
+
+export default function About({ aboutData }: AboutProps) {
 	return (
 		<section id="about" className={classNames(styles.about, 'flex-col-center-center')}>
 			<div className="container">
@@ -14,7 +18,8 @@ export default function About() {
 					</div>
 					<div className="flex-row about-text-wrapper">
 						<p className="fGrow">
-							&#x3c; Hey_there /&#x3e; my name is Valeri Sabev and I am a full stack web developer from Bulgaria.
+							{aboutData.text}
+							{/* &#x3c; Hey_there /&#x3e; my name is Valeri Sabev and I am a full stack web developer from Bulgaria.
 							<wbr /> Currently, I am a student at{' '}
 							<Link href="https://harbour.space/" target="_BLANK">
 								<a rel="noreferrer" href="https://harbour.space/" target="_BLANK">
@@ -38,9 +43,9 @@ export default function About() {
 							<br />
 							• I enjoy gaming and it has always been a passion of mine to play with friends.
 							<br />
-							• Recently got myself into crypto currencies <wbr /> as I find the blockchain technology fascinating.
+							• Recently got myself into crypto currencies <wbr /> as I find the blockchain technology fascinating. */}
 						</p>
-						<img /* defer */ src="/imgs/about_pic.jpg" alt="Happy summer with Valeri Sabev" />
+						<img src={aboutData.image.url} alt="Happy summer with Valeri Sabev" />
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,6 @@
 .footer {
 	width: 100vw;
-	background-color: #232323;
+	background-color: var(--dark);
 	padding: 40px var(--sidePadding);
 	color: #fff;
 }

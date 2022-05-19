@@ -1,29 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useViewportScroll, motion } from 'framer-motion';
 import Link from 'next/link';
 import classNames from 'classnames';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
-	const [navbarOverlay, setNavbarOverlay] = useState(false);
 	const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
+	const [navbarOverlay, setNavbarOverlay] = useState(false);
+	const { scrollYProgress } = useViewportScroll();
 
 	useEffect(() => {
-		const toggleNavbar = () => {
-			if (window.scrollY > 48 && !navbarOverlay) setNavbarOverlay(true);
+		return scrollYProgress.onChange(() => {
+			if (scrollYProgress.current > 0.01 && !navbarOverlay) setNavbarOverlay(true);
 			else if (navbarOverlay) setNavbarOverlay(false);
-		};
-
-		toggleNavbar();
-		window.addEventListener('scroll', toggleNavbar);
-		return () => window.removeEventListener('scroll', toggleNavbar);
-	}, [navbarOverlay]);
+		});
+	}, [scrollYProgress, navbarOverlay]);
 
 	const toggleBurgerMenu = () => {
 		setOpenBurgerMenu((prevState) => !prevState);
 	};
 
 	return (
-		<header className={classNames(navbarOverlay && 'header_scrolled', styles.header, 'flex-col-center-center fade')}>
+		<motion.header
+			animate={navbarOverlay ? { backgroundColor: '#000' } : {}}
+			transition={{ duration: 0.3 }}
+			className={classNames(styles.header, 'flex-col-center-center fade')}
+		>
 			<div className="container flex-row-center-sBetween">
 				<Link href="/">
 					<b className="fade">VS</b>
@@ -82,6 +84,6 @@ export default function Navbar() {
 					{/* <li><a href="#blog">Blog</a></li> */}
 				</ul>
 			</nav>
-		</header>
+		</motion.header>
 	);
 }

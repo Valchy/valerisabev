@@ -43,14 +43,6 @@
 	color: #fff;
 }
 
-.header_scrolled {
-	background-color: #000;
-	-webkit-transition: background-color 400ms linear;
-	-o-transition: background-color 400ms linear;
-	-moz-transition: background-color 400ms linear;
-	transition: background-color 400ms linear;
-}
-
 /* Main menu positionning */
 .main_nav {
 	width: 100vw;
@@ -82,7 +74,7 @@
 	bottom: 0;
 	left: 0;
 	right: -15px;
-	background: var(--textGrey);
+	background: var(--dark);
 	transform-origin: 0 0;
 	transform: skew(-14deg) translateX(-120%);
 	transition: all 0.275s 0.1s;
@@ -150,7 +142,6 @@
 	font-weight: bold;
 }
 
-/* Burger Style: @see: https://codepen.io/CreativeJuiz/full/oMZNXy */
 .open_main_nav {
 	position: relative;
 	z-index: 1000;
@@ -158,6 +149,7 @@
 	background: none;
 	border: 0;
 	cursor: pointer;
+	display: none;
 }
 .open_main_nav:focus {
 	outline: none;
@@ -242,7 +234,8 @@
 }
 
 @media screen and (max-width: 770px) {
-	.header .burger {
+	.open_main_nav,
+	.burger {
 		display: block;
 	}
 

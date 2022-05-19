@@ -7,14 +7,14 @@ import styles from './Navbar.module.css';
 export default function Navbar() {
 	const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
 	const [navbarOverlay, setNavbarOverlay] = useState(false);
-	const { scrollYProgress } = useViewportScroll();
+	const { scrollY } = useViewportScroll();
 
 	useEffect(() => {
-		return scrollYProgress.onChange(() => {
-			if (scrollYProgress.current > 0.01 && !navbarOverlay) setNavbarOverlay(true);
-			else if (navbarOverlay) setNavbarOverlay(false);
+		return scrollY.onChange(() => {
+			if (scrollY?.current > 48 && !navbarOverlay) setNavbarOverlay(true);
+			else if (scrollY?.current <= 48 && navbarOverlay) setNavbarOverlay(false);
 		});
-	}, [scrollYProgress, navbarOverlay]);
+	}, [scrollY, navbarOverlay]);
 
 	const toggleBurgerMenu = () => {
 		setOpenBurgerMenu((prevState) => !prevState);

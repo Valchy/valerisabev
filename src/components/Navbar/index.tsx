@@ -23,6 +23,8 @@ export default function Navbar({ navbarData, locale }: NavbarProps) {
 	const { scrollY } = useViewportScroll();
 
 	useEffect(() => {
+		if (scrollY.get() > 40 && !navbarOverlay) setNavbarOverlay(true);
+
 		return scrollY.onChange(() => {
 			if (scrollY.get() > 40 && !navbarOverlay) setNavbarOverlay(true);
 			else if (scrollY.get() <= 40 && navbarOverlay) setNavbarOverlay(false);

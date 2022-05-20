@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 import classNames from 'classnames';
+import useScrollAnimation from '@hooks/useScrollAnimation';
 import styles from './About.module.css';
 
 interface AboutProps {
@@ -8,8 +8,21 @@ interface AboutProps {
 }
 
 export default function About({ aboutData }: AboutProps) {
+	const [ref, controls] = useScrollAnimation(0.8);
+	const onScrollAnimation = {
+		visible: { opacity: 1, transition: { duration: 1 } },
+		hidden: { opacity: 0 },
+	};
+
 	return (
-		<section id="about" className={classNames(styles.about, 'flex-col-center-center')}>
+		<motion.section
+			ref={ref}
+			animate={controls}
+			initial="hidden"
+			variants={onScrollAnimation}
+			id="about"
+			className={classNames(styles.about, 'flex-col-center-center')}
+		>
 			<div className="container">
 				<div className="flex-col">
 					<div className="flex-row-center-sBetween">
@@ -22,6 +35,6 @@ export default function About({ aboutData }: AboutProps) {
 					</div>
 				</div>
 			</div>
-		</section>
+		</motion.section>
 	);
 }

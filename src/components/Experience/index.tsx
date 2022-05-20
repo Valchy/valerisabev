@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import classNames from 'classnames';
+import { motion } from 'framer-motion';
+import useScrollAnimation from '@hooks/useScrollAnimation';
 import styles from './Experience.module.css';
 
 interface ExperienceProps {
@@ -8,13 +9,26 @@ interface ExperienceProps {
 }
 
 export default function Experience({ experienceData }: ExperienceProps) {
+	const [ref, controls] = useScrollAnimation(0.2);
+	const onScrollAnimation = {
+		visible: (i: number) => ({ opacity: 1, y: 0, transition: { duration: 1, staggerChildren: 0.5, delay: 0.75 * i } }),
+		hidden: { opacity: 0, y: -50 },
+	};
+
 	return (
-		<section id="experience" className={classNames(styles.experience, 'flex-col-center-center')}>
+		<section ref={ref} id="experience" className={classNames(styles.experience, 'flex-col-center-center')}>
 			<div className="container">
 				<div className="line"></div>
 				<h2 className="section-title">EXPERIENCE</h2>
 				{experienceData.map(({ title, description, achievements, link, image, alt }, index: number) => (
-					<div className="flex-row" key={`${title}-${index}`}>
+					<motion.div
+						animate={controls}
+						initial="hidden"
+						custom={index}
+						variants={onScrollAnimation}
+						className="flex-row"
+						key={`${title}-${index}`}
+					>
 						<div className="flex-col-center-none">
 							<Link href={link} target="_BLANK">
 								<a rel="noreferrer" href={link} target="_BLANK">
@@ -32,9 +46,15 @@ export default function Experience({ experienceData }: ExperienceProps) {
 								))}
 							</ul>
 						</div>
-					</div>
+					</motion.div>
 				))}
-				<div className={classNames(styles.empty_circle)}></div>
+				<motion.div
+					animate={controls}
+					initial="hidden"
+					custom={experienceData.length}
+					variants={onScrollAnimation}
+					className={classNames(styles.empty_circle)}
+				></motion.div>
 			</div>
 		</section>
 	);

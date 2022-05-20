@@ -23,8 +23,8 @@ export default function Navbar({ navbarData }: NavbarProps) {
 
 	useEffect(() => {
 		return scrollY.onChange(() => {
-			if (scrollY.get() > 48 && !navbarOverlay) setNavbarOverlay(true);
-			else if (scrollY.get() <= 48 && navbarOverlay) setNavbarOverlay(false);
+			if (scrollY.get() > 40 && !navbarOverlay) setNavbarOverlay(true);
+			else if (scrollY.get() <= 40 && navbarOverlay) setNavbarOverlay(false);
 		});
 	}, [scrollY, navbarOverlay]);
 

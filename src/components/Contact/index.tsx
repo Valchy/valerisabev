@@ -12,7 +12,7 @@ export default function Contact({ contactData }: ContactProps) {
 	const [contactForm, setContactForm] = useState({
 		loading: false,
 		disabled: false,
-		text: 'Successfully sent!',
+		text: 'Send message',
 		color: '',
 	});
 
@@ -31,8 +31,8 @@ export default function Contact({ contactData }: ContactProps) {
 		emailjs
 			.send('service_wt3uoi8', 'template_ellgqlc', data, 'user_jMLVyZdHDVBTqzG0911GH')
 			.then(
-				(response) => setContactForm((prevState) => ({ ...prevState, color: '#29ba1f', text: 'Successfully sent!' })),
-				(error) => setContactForm((prevState) => ({ ...prevState, color: '#f44336', text: 'Something happend :/' }))
+				(res) => setContactForm((prevState) => ({ ...prevState, color: '#29ba1f', text: 'Successfully sent!' })),
+				(err) => setContactForm((prevState) => ({ ...prevState, color: '#f44336', text: 'Something happend :/' }))
 			)
 			.finally(() => {
 				setContactForm((prevState) => ({ ...prevState, loading: false }));

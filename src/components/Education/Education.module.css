@@ -49,7 +49,7 @@
 	display: none;
 }
 
-@media screen and (min-width: 860px) {
+@media screen and (max-width: 860px) {
 	.edu_desktop {
 		display: none;
 	}

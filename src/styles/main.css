@@ -253,6 +253,10 @@ section {
 	margin: var(--sectionYPadding) 0;
 }
 
+.p_margin_bottom {
+	margin-bottom: 30px;
+}
+
 .section-title {
 	font-size: 28px;
 	font-weight: 500;
@@ -261,6 +265,6 @@ section {
 
 @media screen and (max-width: 860px) {
 	.section-title {
-		font-size: 20px;
+		font-size: 24px;
 	}
 }

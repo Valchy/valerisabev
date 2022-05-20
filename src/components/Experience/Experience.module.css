@@ -74,7 +74,7 @@
 	line-height: 1.5;
 }
 
-@media screen and (min-width: 860px) {
+@media screen and (max-width: 860px) {
 	.company_img {
 		width: 45px;
 		height: 45px;
@@ -100,12 +100,15 @@
 	}
 
 	.experience_item h3 {
-		font-size: 15px;
+		font-size: 16px;
 	}
 
-	.experience_item h4,
+	.experience_item h4 {
+		font-size: 12.5px;
+	}
+
 	.experience_item ul {
-		font-size: 12px;
+		font-size: 15px;
 	}
 
 	.experience_item ul {

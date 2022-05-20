@@ -11,7 +11,7 @@ interface ExperienceProps {
 export default function Experience({ experienceData }: ExperienceProps) {
 	const [ref, controls] = useScrollAnimation(0.2);
 	const onScrollAnimation = {
-		visible: (i: number) => ({ opacity: 1, y: 0, transition: { duration: 1, staggerChildren: 0.5, delay: 0.75 * i } }),
+		visible: (i: number) => ({ opacity: 1, y: 0, transition: { duration: 1, staggerChildren: 0.5, delay: 0.4 * i } }),
 		hidden: { opacity: 0, y: -50 },
 	};
 

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import classNames from 'classnames';
+import { motion } from 'framer-motion';
+import useScrollAnimation from '@hooks/useScrollAnimation';
 import styles from './Contact.module.css';
 
 interface ContactProps {
@@ -9,6 +11,13 @@ interface ContactProps {
 }
 
 export default function Contact({ contactData }: ContactProps) {
+	const [ref, controls] = useScrollAnimation(0.2);
+	const onScrollAnimation = {
+		visible: { opacity: 1, x: 0, transition: { duration: 1 } },
+		hiddenLeft: { opacity: 0, x: -100 },
+		hiddenRight: { opacity: 0, x: 100 },
+	};
+
 	const [contactForm, setContactForm] = useState({
 		loading: false,
 		disabled: false,
@@ -40,7 +49,7 @@ export default function Contact({ contactData }: ContactProps) {
 	};
 
 	return (
-		<section id="contact" className={classNames(styles.contact, 'flex-col-center-center')}>
+		<section ref={ref} id="contact" className={classNames(styles.contact, 'flex-col-center-center')}>
 			<div className="container">
 				<div className="line"></div>
 				<h2 className="section-title">CONTACT ME</h2>
@@ -52,8 +61,20 @@ export default function Contact({ contactData }: ContactProps) {
 					</a>
 				</p>
 				<div className="flex-row">
-					<div style={{ backgroundImage: `url(${contactData?.image?.url})` }} className={classNames(styles.contact_img)} />
-					<form onSubmit={handleSubmit(submitEmail)} className={classNames(styles.contact_form, 'flex-col')}>
+					<motion.div
+						animate={controls}
+						initial="hiddenLeft"
+						variants={onScrollAnimation}
+						style={{ backgroundImage: `url(${contactData?.image?.url})` }}
+						className={classNames(styles.contact_img)}
+					/>
+					<motion.form
+						animate={controls}
+						initial="hiddenRight"
+						variants={onScrollAnimation}
+						onSubmit={handleSubmit(submitEmail)}
+						className={classNames(styles.contact_form, 'flex-col')}
+					>
 						<span className={classNames(styles.error_handler, errors.contact_name && styles.show_error)}>
 							Name {errors.contact_name && 'is required'}
 						</span>
@@ -90,7 +111,7 @@ export default function Contact({ contactData }: ContactProps) {
 						>
 							{contactForm.loading ? <div className={classNames(styles.spinner)}></div> : <span>{contactForm.text}</span>}
 						</button>
-					</form>
+					</motion.form>
 				</div>
 			</div>
 		</section>

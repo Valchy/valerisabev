@@ -10,7 +10,7 @@ interface EducationProps {
 export default function Education({ educationData }: EducationProps) {
 	const [ref, controls] = useScrollAnimation(0.2);
 	const onScrollAnimation = {
-		visible: (i: number) => ({ opacity: 1, x: 0, transition: { duration: 1, staggerChildren: 0.5, delay: 1 * i } }),
+		visible: (i: number) => ({ opacity: 1, x: 0, transition: { duration: 1, staggerChildren: 0.5, delay: 0.5 * i } }),
 		hidden: { opacity: 0, x: 200 },
 	};
 

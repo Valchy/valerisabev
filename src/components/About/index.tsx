@@ -8,7 +8,7 @@ interface AboutProps {
 }
 
 export default function About({ aboutData }: AboutProps) {
-	const [ref, controls] = useScrollAnimation(0.8);
+	const [ref, controls] = useScrollAnimation(0.55);
 	const onScrollAnimation = {
 		visible: { opacity: 1, transition: { duration: 1 } },
 		hidden: { opacity: 0 },

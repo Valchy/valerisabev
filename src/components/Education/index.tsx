@@ -13,22 +13,20 @@ export default function Education({ educationData }: EducationProps) {
 				<div className="line"></div>
 				<h2 className="section-title">EDUCATION</h2>
 				<div className="flex-col">
-					{educationData
-						.filter(({ display }) => display)
-						.map(({ title, description, achievements, image, alt }, index: number) => (
-							<div className={classNames(styles.education_item, 'flex-row')} key={`${title}-${index}`}>
-								<img src={image?.url} alt={alt} />
-								<div>
-									<h3>{title}</h3>
-									<h4>{description}</h4>
-									<ul>
-										{achievements.map((achievement: string, index: number) => (
-											<li key={`${achievement}-${index}`}>{achievement}</li>
-										))}
-									</ul>
-								</div>
+					{educationData.map(({ title, description, achievements, image, alt }, index: number) => (
+						<div className={classNames(styles.education_item, 'flex-row')} key={`${title}-${index}`}>
+							<img src={image?.url} alt={alt} />
+							<div>
+								<h3>{title}</h3>
+								<h4>{description}</h4>
+								<ul>
+									{achievements.map((achievement: string, index: number) => (
+										<li key={`${achievement}-${index}`}>{achievement}</li>
+									))}
+								</ul>
 							</div>
-						))}
+						</div>
+					))}
 				</div>
 			</div>
 		</section>

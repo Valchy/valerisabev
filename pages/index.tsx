@@ -30,8 +30,8 @@ const MainPage: NextPage<MainPageProps> = ({ page }) => {
 	const navbarData = currentPage?.sections.find(({ __typename }) => __typename === 'NavbarSection');
 	const heroData = currentPage?.sections.find(({ __typename }) => __typename === 'HeroSection');
 	const aboutData = currentPage?.sections.find(({ __typename }) => __typename === 'AboutSection');
-	const educationData = currentPage?.sections.filter(({ __typename }) => __typename === 'EducationSection');
-	const experienceData = currentPage?.sections.filter(({ __typename }) => __typename === 'ExperienceSection');
+	const educationData = currentPage?.sections.filter(({ __typename, display }) => display && __typename === 'EducationSection');
+	const experienceData = currentPage?.sections.filter(({ __typename, display }) => display && __typename === 'ExperienceSection');
 	const contactData = currentPage?.sections.find(({ __typename }) => __typename === 'ContactSection');
 	const footerData = currentPage?.sections.find(({ __typename }) => __typename === 'FooterSection');
 

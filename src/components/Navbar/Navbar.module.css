@@ -18,6 +18,11 @@
 	font-weight: 600;
 }
 
+.nav_links a:hover {
+	text-decoration-color: var(--fadeWhite);
+	text-decoration: underline;
+}
+
 .header div > a {
 	flex-grow: 1;
 }

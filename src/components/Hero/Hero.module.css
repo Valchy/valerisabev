@@ -19,12 +19,12 @@
 	line-height: 1.1;
 }
 
-.page_title span {
+.page_title h2 {
 	font-weight: 100;
 	color: #eee;
 }
 
-.page_title b {
+.page_title h1 {
 	font-weight: 700;
 	font-size: 60px;
 	color: #fff;
@@ -51,7 +51,7 @@
 	cursor: pointer;
 	margin-top: 25px;
 	color: #fff;
-
+	transition: all 0.3s ease 0s;
 	position: relative;
 	height: 50px;
 	overflow: hidden;
@@ -65,75 +65,9 @@
 	height: 100%;
 	font-size: 14px;
 	letter-spacing: 1px;
-	/*background: #000;*/
-	/*-webkit-mask: url('/imgs/cv-btn-mask.png');*/
-	/*mask: url('/imgs/cv-btn-mask.png');*/
-	/*-webkit-mask-size: 2300% 100%;*/
-	/*mask-size: 2300% 100%;*/
 	border: none;
 	color: #fff;
 	cursor: pointer;
-	-webkit-animation: ani2 0.7s steps(22) forwards;
-	animation: ani2 0.7s steps(22) forwards;
-}
-
-.cv_wrapper a:hover {
-	-webkit-animation: ani 0.7s steps(22) forwards;
-	animation: ani 0.7s steps(22) forwards;
-}
-
-.mas {
-	position: absolute;
-	color: #000;
-	text-align: center;
-	width: 101%;
-	font-weight: 300;
-	position: absolute;
-	font-size: 11px;
-	margin-top: 17px;
-	overflow: hidden;
-	font-weight: bold;
-}
-
-@-webkit-keyframes ani {
-	from {
-		-webkit-mask-position: 0 0;
-		mask-position: 0 0;
-	}
-	to {
-		-webkit-mask-position: 100% 0;
-		mask-position: 100% 0;
-	}
-}
-@keyframes ani {
-	from {
-		-webkit-mask-position: 0 0;
-		mask-position: 0 0;
-	}
-	to {
-		-webkit-mask-position: 100% 0;
-		mask-position: 100% 0;
-	}
-}
-@-webkit-keyframes ani2 {
-	from {
-		-webkit-mask-position: 100% 0;
-		mask-position: 100% 0;
-	}
-	to {
-		-webkit-mask-position: 0 0;
-		mask-position: 0 0;
-	}
-}
-@keyframes ani2 {
-	from {
-		-webkit-mask-position: 100% 0;
-		mask-position: 100% 0;
-	}
-	to {
-		-webkit-mask-position: 0 0;
-		mask-position: 0 0;
-	}
 }
 
 @media screen and (max-width: 620px) {
@@ -142,7 +76,7 @@
 		margin-bottom: 25px;
 	}
 
-	.page_title b {
+	.page_title h1 {
 		font-size: 50px;
 	}
 
@@ -164,7 +98,7 @@
 		font-size: 30px;
 	}
 
-	.page_title b {
+	.page_title h1 {
 		font-size: 40px;
 	}
 

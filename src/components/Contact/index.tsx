@@ -8,9 +8,10 @@ import styles from './Contact.module.css';
 
 interface ContactProps {
 	contactData: any;
+	locale: string;
 }
 
-export default function Contact({ contactData }: ContactProps) {
+export default function Contact({ contactData, locale }: ContactProps) {
 	const [ref, controls] = useScrollAnimation(0.2);
 	const onScrollAnimation = {
 		visible: { opacity: 1, x: 0, transition: { duration: 1 } },
@@ -52,7 +53,7 @@ export default function Contact({ contactData }: ContactProps) {
 		<section ref={ref} id="contact" className={classNames(styles.contact, 'flex-col-center-center')}>
 			<div className="container">
 				<div className="line"></div>
-				<h2 className="section-title">CONTACT ME</h2>
+				<h2 className="section-title">{locale === 'bg' ? 'КОНТАКТ' : 'CONTACT ME'}</h2>
 				<p>
 					{contactData.description}
 					<br />

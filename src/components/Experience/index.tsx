@@ -6,9 +6,10 @@ import styles from './Experience.module.css';
 
 interface ExperienceProps {
 	experienceData: any[];
+	locale: string;
 }
 
-export default function Experience({ experienceData }: ExperienceProps) {
+export default function Experience({ experienceData, locale }: ExperienceProps) {
 	const [ref, controls] = useScrollAnimation(0.2);
 	const onScrollAnimation = {
 		visible: (i: number) => ({ opacity: 1, y: 0, transition: { duration: 1, staggerChildren: 0.5, delay: 0.4 * i } }),
@@ -19,7 +20,7 @@ export default function Experience({ experienceData }: ExperienceProps) {
 		<section ref={ref} id="experience" className={classNames(styles.experience, 'flex-col-center-center')}>
 			<div className="container">
 				<div className="line"></div>
-				<h2 className="section-title">EXPERIENCE</h2>
+				<h2 className="section-title">{locale === 'bg' ? 'ОПИТ' : 'EXPERIENCE'}</h2>
 				{experienceData.map(({ title, description, achievements, link, image, alt }, index: number) => (
 					<motion.div
 						animate={controls}

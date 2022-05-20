@@ -36,12 +36,12 @@ const MainPage: NextPage<MainPageProps> = ({ page, locale }) => {
 			{navbarData?.display && <Navbar navbarData={navbarData} locale={locale} />}
 			<main>
 				{heroData?.display && <Hero heroData={heroData} />}
-				{aboutData?.display && <About aboutData={aboutData} />}
-				{educationData && educationData?.length > 0 && <Education educationData={educationData} />}
-				{experienceData && experienceData?.length > 0 && <Experience experienceData={experienceData} />}
-				{contactData?.display && <Contact contactData={contactData} />}
+				{aboutData?.display && <About aboutData={aboutData} locale={locale} />}
+				{educationData && educationData?.length > 0 && <Education educationData={educationData} locale={locale} />}
+				{experienceData && experienceData?.length > 0 && <Experience experienceData={experienceData} locale={locale} />}
+				{contactData?.display && <Contact contactData={contactData} locale={locale} />}
 			</main>
-			{footerData?.display && <Footer footerData={footerData} />}
+			{footerData?.display && <Footer footerData={footerData} locale={locale} />}
 		</>
 	);
 };

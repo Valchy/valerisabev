@@ -4,14 +4,15 @@ import styles from './Footer.module.css';
 
 interface FooterProps {
 	footerData: any;
+	locale: string;
 }
 
-export default function Footer({ footerData }: FooterProps) {
+export default function Footer({ footerData, locale }: FooterProps) {
 	return (
 		<footer className={classNames(styles.footer, 'flex-col-center-none')}>
 			<div className={classNames(styles.footer_data, 'flex-row-none-sBetween container')}>
 				<div className={classNames(styles.footer_contact_info, 'flex-col-fStart-none')}>
-					<b> Contact Info </b>
+					<b>{locale === 'bg' ? 'Информация' : 'Contact Info'}</b>
 					<div className="flex-col">
 						<span>contact@valerisabev.com</span>
 						<span>Freelancing student in</span>
@@ -19,7 +20,7 @@ export default function Footer({ footerData }: FooterProps) {
 					</div>
 				</div>
 				<div className={classNames(styles.footer_social_media, 'flex-col-center-none')}>
-					<b> Social Media </b>
+					<b>{locale === 'bg' ? 'Социални Мрежи' : 'Social Media'}</b>
 					<div className="flex-row-center-center">
 						{footerData.footerItems
 							.filter(({ display }: { display: boolean }) => display)
@@ -37,7 +38,7 @@ export default function Footer({ footerData }: FooterProps) {
 					</div>
 				</div>
 				<div className={classNames(styles.footer_links, 'flex-col-fEnd-none')}>
-					<b> Links </b>
+					<b>{locale === 'bg' ? 'Линкове' : 'Links'}</b>
 					<div className={classNames('flex-col-fEnd-none')}>
 						<a rel="noreferrer" href="assets/valeri-sabev-cv.pdf" target="_BLANK">
 							Check out my CV

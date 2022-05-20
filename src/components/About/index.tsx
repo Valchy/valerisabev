@@ -5,9 +5,10 @@ import styles from './About.module.css';
 
 interface AboutProps {
 	aboutData: any;
+	locale: string;
 }
 
-export default function About({ aboutData }: AboutProps) {
+export default function About({ aboutData, locale }: AboutProps) {
 	const [ref, controls] = useScrollAnimation(0.55);
 	const onScrollAnimation = {
 		visible: { opacity: 1, transition: { duration: 1 } },
@@ -26,7 +27,7 @@ export default function About({ aboutData }: AboutProps) {
 			<div className="container">
 				<div className="flex-col">
 					<div className="flex-row-center-sBetween">
-						<h2 className="section-title">ABOUT ME</h2>
+						<h2 className="section-title">{locale === 'bg' ? 'ЗА МЕН' : 'ABOUT ME'}</h2>
 						<div className="line"></div>
 					</div>
 					<div className="flex-row about-text-wrapper">

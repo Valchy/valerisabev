@@ -5,9 +5,10 @@ import styles from './Education.module.css';
 
 interface EducationProps {
 	educationData: any[];
+	locale: string;
 }
 
-export default function Education({ educationData }: EducationProps) {
+export default function Education({ educationData, locale }: EducationProps) {
 	const [ref, controls] = useScrollAnimation(0.2);
 	const onScrollAnimation = {
 		visible: (i: number) => ({ opacity: 1, x: 0, transition: { duration: 1, staggerChildren: 0.5, delay: 0.5 * i } }),
@@ -18,7 +19,7 @@ export default function Education({ educationData }: EducationProps) {
 		<motion.section ref={ref} id="education" className={classNames(styles.education, 'flex-col-center-center')}>
 			<div className="container">
 				<div className="line"></div>
-				<h2 className="section-title">EDUCATION</h2>
+				<h2 className="section-title">{locale === 'bg' ? 'ОБРАЗУВАНИЕ' : 'EDUCATION'}</h2>
 				<div className="flex-col">
 					{educationData.map(({ title, description, achievements, image, alt }, index: number) => (
 						<motion.div

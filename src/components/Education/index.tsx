@@ -15,9 +15,9 @@ export default function Education({ educationData }: EducationProps) {
 				<div className="flex-col">
 					{educationData
 						.filter(({ display }) => display)
-						.map(({ title, description, achievements, image }, index: number) => (
+						.map(({ title, description, achievements, image, alt }, index: number) => (
 							<div className={classNames(styles.education_item, 'flex-row')} key={`${title}-${index}`}>
-								<img src={image.url} alt="Harbour Space University building" />
+								<img src={image?.url} alt={alt} />
 								<div>
 									<h3>{title}</h3>
 									<h4>{description}</h4>

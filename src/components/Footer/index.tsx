@@ -22,38 +22,19 @@ export default function Footer({ footerData }: FooterProps) {
 				<div className={classNames(styles.footer_social_media, 'flex-col-center-none')}>
 					<b> Social Media </b>
 					<div className="flex-row-center-center">
-						<a
-							rel="noreferrer"
-							href="https://www.facebook.com/ValchyGaming/"
-							target="_BLANK"
-							className={classNames(styles.footer_social_link, 'fade')}
-						>
-							<img src="/imgs/facebook-icon.svg" alt="Facebook social media" />
-						</a>
-						<a
-							rel="noreferrer"
-							href="https://www.instagram.com/valeri_sabev/"
-							target="_BLANK"
-							className={classNames(styles.footer_social_link, 'fade')}
-						>
-							<img src="/imgs/instagram-icon.svg" alt="Instagram social media" />
-						</a>
-						<a
-							rel="noreferrer"
-							href="https://github.com/Valchy"
-							target="_BLANK"
-							className={classNames(styles.footer_social_link, 'fade')}
-						>
-							<img src="/imgs/github-icon.svg" alt="GitHub" />
-						</a>
-						<a
-							rel="noreferrer"
-							href="https://www.linkedin.com/in/valerisabev"
-							target="_BLANK"
-							className={classNames(styles.footer_social_link, 'fade')}
-						>
-							<img src="/imgs/linkedin-icon.svg" alt="LinkedIn" />
-						</a>
+						{footerData.footerItems
+							.filter(({ display }: { display: boolean }) => display)
+							.map(({ link, alt, openInNewTab, image }: any) => (
+								<a
+									key={link}
+									href={link}
+									rel="noreferrer nofollow"
+									target={openInNewTab ? '_BLANK' : '_SELF'}
+									className={classNames(styles.footer_social_link, 'fade')}
+								>
+									<img src={image?.url} alt={alt} />
+								</a>
+							))}
 					</div>
 				</div>
 				<div className={classNames(styles.footer_links, 'flex-col-fEnd-none')}>

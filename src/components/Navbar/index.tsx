@@ -3,6 +3,7 @@ import { useViewportScroll, motion } from 'framer-motion';
 import Link from 'next/link';
 import classNames from 'classnames';
 import styles from './Navbar.module.css';
+import type { GetMainPageQuery } from '@generated/graphql';
 
 type NavItem = {
 	title: string;
@@ -11,15 +12,11 @@ type NavItem = {
 };
 
 interface NavbarProps {
-	navbarData: {
-		__typename: string;
-		display: boolean;
-		initials: string;
-		navItems: NavItem[];
-	};
+	navbarData: any;
+	// NonNullable<GetMainPageQuery['page']>['localizations']
 }
 
-export default function Navbar({ navbarData }: any) {
+export default function Navbar({ navbarData }: NavbarProps) {
 	const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
 	const [navbarOverlay, setNavbarOverlay] = useState(false);
 	const { scrollY } = useViewportScroll();
@@ -46,11 +43,13 @@ export default function Navbar({ navbarData }: any) {
 					<b className="fade">{navbarData.initials}</b>
 				</Link>
 				<nav className={styles.nav_links}>
-					{navbarData.navItems.map(({ title, link, openInNewTab }: any) => (
-						<a className="fade" href={link} rel="noreferrer nofollow" target={openInNewTab ? '_BLANK' : '_SELF'} key={link}>
-							{title}
-						</a>
-					))}
+					{navbarData.navItems
+						.filter(({ display }: { display: boolean }) => display)
+						.map(({ title, link, openInNewTab }: any) => (
+							<a className="fade" href={link} rel="noreferrer nofollow" target={openInNewTab ? '_BLANK' : '_SELF'} key={link}>
+								{title}
+							</a>
+						))}
 				</nav>
 				<button
 					onClick={toggleBurgerMenu}
@@ -62,13 +61,20 @@ export default function Navbar({ navbarData }: any) {
 			</div>
 			<nav className={classNames(styles.main_nav, openBurgerMenu && styles.is_open)}>
 				<ul>
-					{navbarData.navItems.map(({ title, link, openInNewTab }: any) => (
-						<li key={`mobile-link-${link}`}>
-							<a onClick={toggleBurgerMenu} href={link} rel="noreferrer nofollow" target={openInNewTab ? '_BLANK' : '_SELF'}>
-								{title}
-							</a>
-						</li>
-					))}
+					{navbarData.navItems
+						.filter(({ display }: { display: boolean }) => display)
+						.map(({ title, link, openInNewTab }: any) => (
+							<li key={`mobile-link-${link}`}>
+								<a
+									onClick={toggleBurgerMenu}
+									href={link}
+									rel="noreferrer nofollow"
+									target={openInNewTab ? '_BLANK' : '_SELF'}
+								>
+									{title}
+								</a>
+							</li>
+						))}
 				</ul>
 			</nav>
 		</motion.header>

@@ -36,7 +36,7 @@
 .experience_item {
 	-webkit-clip-path: polygon(10px 0, 100% 0%, 100% 100%, 10px 100%, 10px 42px, 0 32px, 10px 22px);
 	clip-path: polygon(10px 0, 100% 0%, 100% 100%, 10px 100%, 10px 42px, 0 32px, 10px 22px);
-	padding: 15px 20px 15px 30px;
+	padding: 15px 20px 15px 40px;
 	background-color: var(--lightWhite);
 	margin-left: 10px;
 	margin-bottom: 20px;

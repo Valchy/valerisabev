@@ -15,16 +15,12 @@ export default function Experience({ experienceData }: ExperienceProps) {
 				<h2 className="section-title">EXPERIENCE</h2>
 				{experienceData
 					.filter(({ display }) => display)
-					.map(({ title, description, achievements, image }, index: number) => (
+					.map(({ title, description, achievements, link, image, alt }, index: number) => (
 						<div className="flex-row" key={`${title}-${index}`}>
 							<div className="flex-col-center-none">
-								<Link href="https://bauwerksolutions.com/" target="_BLANK">
-									<a rel="noreferrer" href="https://bauwerksolutions.com/" target="_BLANK">
-										<img
-											className={classNames(styles.company_img)}
-											src={image.url}
-											alt="Logo of Bauwerk Building Solutions"
-										/>
+								<Link href={link} target="_BLANK">
+									<a rel="noreferrer" href={link} target="_BLANK">
+										<img className={classNames(styles.company_img)} src={image?.url} alt={alt} />
 									</a>
 								</Link>
 								<div className={classNames(styles.connection_line)}></div>

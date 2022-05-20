@@ -31,7 +31,9 @@ export type Scalars = {
 /** About me section */
 export type AboutSection = {
   __typename?: 'AboutSection';
-  /** Whether to show or hide the given component */
+  /** Image alt text */
+  alt: Scalars['String'];
+  /** Whether to show or hide the about section */
   display: Scalars['Boolean'];
   /** The unique identifier */
   id: Scalars['ID'];
@@ -43,8 +45,8 @@ export type AboutSection = {
   localizations: Array<AboutSection>;
   /** System stage field */
   stage: Stage;
-  /** About me markdown description */
-  text: Scalars['String'];
+  /** About me section text with formatting */
+  text: RichText;
 };
 
 
@@ -78,16 +80,19 @@ export type AboutSectionConnection = {
 };
 
 export type AboutSectionCreateInput = {
+  /** alt input for default locale (en) */
+  alt: Scalars['String'];
   display: Scalars['Boolean'];
   image: AssetCreateOneInlineInput;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AboutSectionCreateLocalizationsInput>;
   /** text input for default locale (en) */
-  text: Scalars['String'];
+  text: Scalars['RichTextAST'];
 };
 
 export type AboutSectionCreateLocalizationDataInput = {
-  text: Scalars['String'];
+  alt: Scalars['String'];
+  text: Scalars['RichTextAST'];
 };
 
 export type AboutSectionCreateLocalizationInput = {
@@ -163,12 +168,12 @@ export type AboutSectionManyWhereInput = {
 };
 
 export enum AboutSectionOrderByInput {
+  AltAsc = 'alt_ASC',
+  AltDesc = 'alt_DESC',
   DisplayAsc = 'display_ASC',
   DisplayDesc = 'display_DESC',
   IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  TextAsc = 'text_ASC',
-  TextDesc = 'text_DESC'
+  IdDesc = 'id_DESC'
 }
 
 export type AboutSectionParent = Page;
@@ -252,16 +257,19 @@ export type AboutSectionParentWhereUniqueInput = {
 };
 
 export type AboutSectionUpdateInput = {
+  /** alt input for default locale (en) */
+  alt?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
   image?: InputMaybe<AssetUpdateOneInlineInput>;
   /** Manage document localizations */
   localizations?: InputMaybe<AboutSectionUpdateLocalizationsInput>;
   /** text input for default locale (en) */
-  text?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['RichTextAST']>;
 };
 
 export type AboutSectionUpdateLocalizationDataInput = {
-  text?: InputMaybe<Scalars['String']>;
+  alt?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['RichTextAST']>;
 };
 
 export type AboutSectionUpdateLocalizationInput = {
@@ -291,15 +299,18 @@ export type AboutSectionUpdateManyInlineInput = {
 };
 
 export type AboutSectionUpdateManyInput = {
+  /** alt input for default locale (en) */
+  alt?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<AboutSectionUpdateManyLocalizationsInput>;
   /** text input for default locale (en) */
-  text?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['RichTextAST']>;
 };
 
 export type AboutSectionUpdateManyLocalizationDataInput = {
-  text?: InputMaybe<Scalars['String']>;
+  alt?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['RichTextAST']>;
 };
 
 export type AboutSectionUpdateManyLocalizationInput = {
@@ -385,6 +396,25 @@ export type AboutSectionWhereInput = {
   OR?: InputMaybe<Array<AboutSectionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  alt?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  alt_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  alt_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  alt_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  alt_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  alt_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  alt_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  alt_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  alt_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  alt_starts_with?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   display_not?: InputMaybe<Scalars['Boolean']>;
@@ -408,25 +438,6 @@ export type AboutSectionWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
   image?: InputMaybe<AssetWhereInput>;
-  text?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  text_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  text_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  text_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  text_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  text_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  text_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  text_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  text_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  text_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 /** References AboutSection record uniquely */
@@ -459,6 +470,7 @@ export type Asset = Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID'];
+  imageFooterItem: Array<FooterItem>;
   /** System Locale field */
   locale: Locale;
   /** Get the other localizations for this document */
@@ -523,6 +535,19 @@ export type AssetHistoryArgs = {
   limit?: Scalars['Int'];
   skip?: Scalars['Int'];
   stageOverride?: InputMaybe<Stage>;
+};
+
+
+/** Asset system model */
+export type AssetImageFooterItemArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<FooterItemOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<FooterItemWhereInput>;
 };
 
 
@@ -601,6 +626,7 @@ export type AssetCreateInput = {
   imageContactSection?: InputMaybe<ContactSectionCreateManyInlineInput>;
   imageEducationSection?: InputMaybe<EducationSectionCreateManyInlineInput>;
   imageExperienceSection?: InputMaybe<ExperienceSectionCreateManyInlineInput>;
+  imageFooterItem?: InputMaybe<FooterItemCreateManyInlineInput>;
   imageHeroSection?: InputMaybe<HeroSectionCreateManyInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>;
@@ -703,6 +729,9 @@ export type AssetManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  imageFooterItem_every?: InputMaybe<FooterItemWhereInput>;
+  imageFooterItem_none?: InputMaybe<FooterItemWhereInput>;
+  imageFooterItem_some?: InputMaybe<FooterItemWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -780,6 +809,7 @@ export type AssetUpdateInput = {
   imageContactSection?: InputMaybe<ContactSectionUpdateManyInlineInput>;
   imageEducationSection?: InputMaybe<EducationSectionUpdateManyInlineInput>;
   imageExperienceSection?: InputMaybe<ExperienceSectionUpdateManyInlineInput>;
+  imageFooterItem?: InputMaybe<FooterItemUpdateManyInlineInput>;
   imageHeroSection?: InputMaybe<HeroSectionUpdateManyInlineInput>;
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>;
@@ -1007,6 +1037,9 @@ export type AssetWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  imageFooterItem_every?: InputMaybe<FooterItemWhereInput>;
+  imageFooterItem_none?: InputMaybe<FooterItemWhereInput>;
+  imageFooterItem_some?: InputMaybe<FooterItemWhereInput>;
   mimeType?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   mimeType_contains?: InputMaybe<Scalars['String']>;
@@ -1132,9 +1165,11 @@ export type ConnectPositionInput = {
 /** Page contact section */
 export type ContactSection = {
   __typename?: 'ContactSection';
+  /** Contact image alt text */
+  alt: Scalars['String'];
   /** Contact section description */
   description: Scalars['String'];
-  /** Whether to show or hide the given component */
+  /** Whether to show or hide the contact section */
   display: Scalars['Boolean'];
   /** The unique identifier */
   id: Scalars['ID'];
@@ -1179,6 +1214,8 @@ export type ContactSectionConnection = {
 };
 
 export type ContactSectionCreateInput = {
+  /** alt input for default locale (en) */
+  alt: Scalars['String'];
   /** description input for default locale (en) */
   description: Scalars['String'];
   display: Scalars['Boolean'];
@@ -1188,6 +1225,7 @@ export type ContactSectionCreateInput = {
 };
 
 export type ContactSectionCreateLocalizationDataInput = {
+  alt: Scalars['String'];
   description: Scalars['String'];
 };
 
@@ -1264,6 +1302,8 @@ export type ContactSectionManyWhereInput = {
 };
 
 export enum ContactSectionOrderByInput {
+  AltAsc = 'alt_ASC',
+  AltDesc = 'alt_DESC',
   DescriptionAsc = 'description_ASC',
   DescriptionDesc = 'description_DESC',
   DisplayAsc = 'display_ASC',
@@ -1353,6 +1393,8 @@ export type ContactSectionParentWhereUniqueInput = {
 };
 
 export type ContactSectionUpdateInput = {
+  /** alt input for default locale (en) */
+  alt?: InputMaybe<Scalars['String']>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
@@ -1362,6 +1404,7 @@ export type ContactSectionUpdateInput = {
 };
 
 export type ContactSectionUpdateLocalizationDataInput = {
+  alt?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
 };
 
@@ -1392,6 +1435,8 @@ export type ContactSectionUpdateManyInlineInput = {
 };
 
 export type ContactSectionUpdateManyInput = {
+  /** alt input for default locale (en) */
+  alt?: InputMaybe<Scalars['String']>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
@@ -1400,6 +1445,7 @@ export type ContactSectionUpdateManyInput = {
 };
 
 export type ContactSectionUpdateManyLocalizationDataInput = {
+  alt?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
 };
 
@@ -1486,6 +1532,25 @@ export type ContactSectionWhereInput = {
   OR?: InputMaybe<Array<ContactSectionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  alt?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  alt_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  alt_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  alt_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  alt_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  alt_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  alt_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  alt_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  alt_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  alt_starts_with?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   description_contains?: InputMaybe<Scalars['String']>;
@@ -1604,9 +1669,11 @@ export type EducationSection = {
   __typename?: 'EducationSection';
   /** Bullet point achievements for the given school / university */
   achievements: Array<Scalars['String']>;
+  /** Education section image alt text */
+  alt: Scalars['String'];
   /** Any info related to the school / university, e.g study level, location, year */
   description: Scalars['String'];
-  /** Whether to show or hide the given component */
+  /** Whether to show or hide the education section item */
   display: Scalars['Boolean'];
   /** The unique identifier */
   id: Scalars['ID'];
@@ -1655,20 +1722,19 @@ export type EducationSectionConnection = {
 export type EducationSectionCreateInput = {
   /** achievements input for default locale (en) */
   achievements: Array<Scalars['String']>;
+  alt: Scalars['String'];
   /** description input for default locale (en) */
   description: Scalars['String'];
   display: Scalars['Boolean'];
   image: AssetCreateOneInlineInput;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<EducationSectionCreateLocalizationsInput>;
-  /** title input for default locale (en) */
   title: Scalars['String'];
 };
 
 export type EducationSectionCreateLocalizationDataInput = {
   achievements: Array<Scalars['String']>;
   description: Scalars['String'];
-  title: Scalars['String'];
 };
 
 export type EducationSectionCreateLocalizationInput = {
@@ -1718,6 +1784,25 @@ export type EducationSectionManyWhereInput = {
   OR?: InputMaybe<Array<EducationSectionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  alt?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  alt_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  alt_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  alt_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  alt_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  alt_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  alt_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  alt_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  alt_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  alt_starts_with?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   display_not?: InputMaybe<Scalars['Boolean']>;
@@ -1741,11 +1826,32 @@ export type EducationSectionManyWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
   image?: InputMaybe<AssetWhereInput>;
+  title?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 export enum EducationSectionOrderByInput {
   AchievementsAsc = 'achievements_ASC',
   AchievementsDesc = 'achievements_DESC',
+  AltAsc = 'alt_ASC',
+  AltDesc = 'alt_DESC',
   DescriptionAsc = 'description_ASC',
   DescriptionDesc = 'description_DESC',
   DisplayAsc = 'display_ASC',
@@ -1839,20 +1945,19 @@ export type EducationSectionParentWhereUniqueInput = {
 export type EducationSectionUpdateInput = {
   /** achievements input for default locale (en) */
   achievements?: InputMaybe<Array<Scalars['String']>>;
+  alt?: InputMaybe<Scalars['String']>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
   image?: InputMaybe<AssetUpdateOneInlineInput>;
   /** Manage document localizations */
   localizations?: InputMaybe<EducationSectionUpdateLocalizationsInput>;
-  /** title input for default locale (en) */
   title?: InputMaybe<Scalars['String']>;
 };
 
 export type EducationSectionUpdateLocalizationDataInput = {
   achievements?: InputMaybe<Array<Scalars['String']>>;
   description?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
 };
 
 export type EducationSectionUpdateLocalizationInput = {
@@ -1882,18 +1987,20 @@ export type EducationSectionUpdateManyInlineInput = {
 };
 
 export type EducationSectionUpdateManyInput = {
+  /** achievements input for default locale (en) */
+  achievements?: InputMaybe<Array<Scalars['String']>>;
+  alt?: InputMaybe<Scalars['String']>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<EducationSectionUpdateManyLocalizationsInput>;
-  /** title input for default locale (en) */
   title?: InputMaybe<Scalars['String']>;
 };
 
 export type EducationSectionUpdateManyLocalizationDataInput = {
+  achievements?: InputMaybe<Array<Scalars['String']>>;
   description?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
 };
 
 export type EducationSectionUpdateManyLocalizationInput = {
@@ -1989,6 +2096,25 @@ export type EducationSectionWhereInput = {
   achievements_contains_some?: InputMaybe<Array<Scalars['String']>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
   achievements_not?: InputMaybe<Array<Scalars['String']>>;
+  alt?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  alt_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  alt_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  alt_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  alt_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  alt_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  alt_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  alt_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  alt_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  alt_starts_with?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   description_contains?: InputMaybe<Scalars['String']>;
@@ -2062,9 +2188,11 @@ export type ExperienceSection = {
   __typename?: 'ExperienceSection';
   /** Bullet point achievements for the given job */
   achievements: Array<Scalars['String']>;
+  /** Experience section image alt text */
+  alt: Scalars['String'];
   /** Job description, e.g company name, country, start-end data */
   description: Scalars['String'];
-  /** Whether to show or hide the given component */
+  /** Whether to show or hide the experience section item */
   display: Scalars['Boolean'];
   /** The unique identifier */
   id: Scalars['ID'];
@@ -2115,6 +2243,7 @@ export type ExperienceSectionConnection = {
 export type ExperienceSectionCreateInput = {
   /** achievements input for default locale (en) */
   achievements: Array<Scalars['String']>;
+  alt: Scalars['String'];
   /** description input for default locale (en) */
   description: Scalars['String'];
   display: Scalars['Boolean'];
@@ -2122,14 +2251,12 @@ export type ExperienceSectionCreateInput = {
   link?: InputMaybe<Scalars['String']>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<ExperienceSectionCreateLocalizationsInput>;
-  /** title input for default locale (en) */
   title: Scalars['String'];
 };
 
 export type ExperienceSectionCreateLocalizationDataInput = {
   achievements: Array<Scalars['String']>;
   description: Scalars['String'];
-  title: Scalars['String'];
 };
 
 export type ExperienceSectionCreateLocalizationInput = {
@@ -2179,6 +2306,25 @@ export type ExperienceSectionManyWhereInput = {
   OR?: InputMaybe<Array<ExperienceSectionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  alt?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  alt_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  alt_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  alt_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  alt_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  alt_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  alt_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  alt_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  alt_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  alt_starts_with?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   display_not?: InputMaybe<Scalars['Boolean']>;
@@ -2221,11 +2367,32 @@ export type ExperienceSectionManyWhereInput = {
   link_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   link_starts_with?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 export enum ExperienceSectionOrderByInput {
   AchievementsAsc = 'achievements_ASC',
   AchievementsDesc = 'achievements_DESC',
+  AltAsc = 'alt_ASC',
+  AltDesc = 'alt_DESC',
   DescriptionAsc = 'description_ASC',
   DescriptionDesc = 'description_DESC',
   DisplayAsc = 'display_ASC',
@@ -2321,6 +2488,7 @@ export type ExperienceSectionParentWhereUniqueInput = {
 export type ExperienceSectionUpdateInput = {
   /** achievements input for default locale (en) */
   achievements?: InputMaybe<Array<Scalars['String']>>;
+  alt?: InputMaybe<Scalars['String']>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
@@ -2328,14 +2496,12 @@ export type ExperienceSectionUpdateInput = {
   link?: InputMaybe<Scalars['String']>;
   /** Manage document localizations */
   localizations?: InputMaybe<ExperienceSectionUpdateLocalizationsInput>;
-  /** title input for default locale (en) */
   title?: InputMaybe<Scalars['String']>;
 };
 
 export type ExperienceSectionUpdateLocalizationDataInput = {
   achievements?: InputMaybe<Array<Scalars['String']>>;
   description?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
 };
 
 export type ExperienceSectionUpdateLocalizationInput = {
@@ -2365,19 +2531,21 @@ export type ExperienceSectionUpdateManyInlineInput = {
 };
 
 export type ExperienceSectionUpdateManyInput = {
+  /** achievements input for default locale (en) */
+  achievements?: InputMaybe<Array<Scalars['String']>>;
+  alt?: InputMaybe<Scalars['String']>;
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   display?: InputMaybe<Scalars['Boolean']>;
   link?: InputMaybe<Scalars['String']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<ExperienceSectionUpdateManyLocalizationsInput>;
-  /** title input for default locale (en) */
   title?: InputMaybe<Scalars['String']>;
 };
 
 export type ExperienceSectionUpdateManyLocalizationDataInput = {
+  achievements?: InputMaybe<Array<Scalars['String']>>;
   description?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
 };
 
 export type ExperienceSectionUpdateManyLocalizationInput = {
@@ -2473,6 +2641,25 @@ export type ExperienceSectionWhereInput = {
   achievements_contains_some?: InputMaybe<Array<Scalars['String']>>;
   /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
   achievements_not?: InputMaybe<Array<Scalars['String']>>;
+  alt?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  alt_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  alt_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  alt_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  alt_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  alt_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  alt_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  alt_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  alt_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  alt_starts_with?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   description_contains?: InputMaybe<Scalars['String']>;
@@ -2560,15 +2747,580 @@ export type ExperienceSectionWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
+/** Footer social media item */
+export type FooterItem = Node & {
+  __typename?: 'FooterItem';
+  /** Image alt text */
+  alt: Scalars['String'];
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Whether to show or hide the footer item */
+  display: Scalars['Boolean'];
+  /** Get the document in other stages */
+  documentInStages: Array<FooterItem>;
+  /** List of FooterItem versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** Footer item image */
+  image: Asset;
+  /** URL for social media link */
+  link: Scalars['String'];
+  /** System Locale field */
+  locale: Locale;
+  /** Get the other localizations for this document */
+  localizations: Array<FooterItem>;
+  /** Whether to open the item in a new tab */
+  openInNewTab: Scalars['Boolean'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+/** Footer social media item */
+export type FooterItemCreatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
+};
+
+
+/** Footer social media item */
+export type FooterItemCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+/** Footer social media item */
+export type FooterItemDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+/** Footer social media item */
+export type FooterItemHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+/** Footer social media item */
+export type FooterItemImageArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+/** Footer social media item */
+export type FooterItemLocalizationsArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  locales?: Array<Locale>;
+};
+
+
+/** Footer social media item */
+export type FooterItemPublishedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
+};
+
+
+/** Footer social media item */
+export type FooterItemPublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+/** Footer social media item */
+export type FooterItemScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+/** Footer social media item */
+export type FooterItemUpdatedAtArgs = {
+  variation?: SystemDateTimeFieldVariation;
+};
+
+
+/** Footer social media item */
+export type FooterItemUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type FooterItemConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: FooterItemWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type FooterItemConnection = {
+  __typename?: 'FooterItemConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<FooterItemEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type FooterItemCreateInput = {
+  /** alt input for default locale (en) */
+  alt: Scalars['String'];
+  cl3dmztg12gun01z4doanbwqu?: InputMaybe<FooterSectionCreateManyInlineInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  display: Scalars['Boolean'];
+  image: AssetCreateOneInlineInput;
+  link: Scalars['String'];
+  /** Inline mutations for managing document localizations excluding the default locale */
+  localizations?: InputMaybe<FooterItemCreateLocalizationsInput>;
+  openInNewTab: Scalars['Boolean'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type FooterItemCreateLocalizationDataInput = {
+  alt: Scalars['String'];
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type FooterItemCreateLocalizationInput = {
+  /** Localization input */
+  data: FooterItemCreateLocalizationDataInput;
+  locale: Locale;
+};
+
+export type FooterItemCreateLocalizationsInput = {
+  /** Create localizations for the newly-created document */
+  create?: InputMaybe<Array<FooterItemCreateLocalizationInput>>;
+};
+
+export type FooterItemCreateManyInlineInput = {
+  /** Connect multiple existing FooterItem documents */
+  connect?: InputMaybe<Array<FooterItemWhereUniqueInput>>;
+  /** Create and connect multiple existing FooterItem documents */
+  create?: InputMaybe<Array<FooterItemCreateInput>>;
+};
+
+export type FooterItemCreateOneInlineInput = {
+  /** Connect one existing FooterItem document */
+  connect?: InputMaybe<FooterItemWhereUniqueInput>;
+  /** Create and connect one FooterItem document */
+  create?: InputMaybe<FooterItemCreateInput>;
+};
+
+/** An edge in a connection. */
+export type FooterItemEdge = {
+  __typename?: 'FooterItemEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: FooterItem;
+};
+
+/** Identifies documents */
+export type FooterItemManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FooterItemWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FooterItemWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FooterItemWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  display?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  display_not?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  image?: InputMaybe<AssetWhereInput>;
+  link?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  link_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  link_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  link_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  link_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  link_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  link_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  link_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  link_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  link_starts_with?: InputMaybe<Scalars['String']>;
+  openInNewTab?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  openInNewTab_not?: InputMaybe<Scalars['Boolean']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum FooterItemOrderByInput {
+  AltAsc = 'alt_ASC',
+  AltDesc = 'alt_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  DisplayAsc = 'display_ASC',
+  DisplayDesc = 'display_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  LinkAsc = 'link_ASC',
+  LinkDesc = 'link_DESC',
+  OpenInNewTabAsc = 'openInNewTab_ASC',
+  OpenInNewTabDesc = 'openInNewTab_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type FooterItemUpdateInput = {
+  /** alt input for default locale (en) */
+  alt?: InputMaybe<Scalars['String']>;
+  cl3dmztg12gun01z4doanbwqu?: InputMaybe<FooterSectionUpdateManyInlineInput>;
+  display?: InputMaybe<Scalars['Boolean']>;
+  image?: InputMaybe<AssetUpdateOneInlineInput>;
+  link?: InputMaybe<Scalars['String']>;
+  /** Manage document localizations */
+  localizations?: InputMaybe<FooterItemUpdateLocalizationsInput>;
+  openInNewTab?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type FooterItemUpdateLocalizationDataInput = {
+  alt?: InputMaybe<Scalars['String']>;
+};
+
+export type FooterItemUpdateLocalizationInput = {
+  data: FooterItemUpdateLocalizationDataInput;
+  locale: Locale;
+};
+
+export type FooterItemUpdateLocalizationsInput = {
+  /** Localizations to create */
+  create?: InputMaybe<Array<FooterItemCreateLocalizationInput>>;
+  /** Localizations to delete */
+  delete?: InputMaybe<Array<Locale>>;
+  /** Localizations to update */
+  update?: InputMaybe<Array<FooterItemUpdateLocalizationInput>>;
+  upsert?: InputMaybe<Array<FooterItemUpsertLocalizationInput>>;
+};
+
+export type FooterItemUpdateManyInlineInput = {
+  /** Connect multiple existing FooterItem documents */
+  connect?: InputMaybe<Array<FooterItemConnectInput>>;
+  /** Create and connect multiple FooterItem documents */
+  create?: InputMaybe<Array<FooterItemCreateInput>>;
+  /** Delete multiple FooterItem documents */
+  delete?: InputMaybe<Array<FooterItemWhereUniqueInput>>;
+  /** Disconnect multiple FooterItem documents */
+  disconnect?: InputMaybe<Array<FooterItemWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing FooterItem documents */
+  set?: InputMaybe<Array<FooterItemWhereUniqueInput>>;
+  /** Update multiple FooterItem documents */
+  update?: InputMaybe<Array<FooterItemUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple FooterItem documents */
+  upsert?: InputMaybe<Array<FooterItemUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type FooterItemUpdateManyInput = {
+  display?: InputMaybe<Scalars['Boolean']>;
+  link?: InputMaybe<Scalars['String']>;
+  openInNewTab?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type FooterItemUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: FooterItemUpdateManyInput;
+  /** Document search */
+  where: FooterItemWhereInput;
+};
+
+export type FooterItemUpdateOneInlineInput = {
+  /** Connect existing FooterItem document */
+  connect?: InputMaybe<FooterItemWhereUniqueInput>;
+  /** Create and connect one FooterItem document */
+  create?: InputMaybe<FooterItemCreateInput>;
+  /** Delete currently connected FooterItem document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected FooterItem document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single FooterItem document */
+  update?: InputMaybe<FooterItemUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single FooterItem document */
+  upsert?: InputMaybe<FooterItemUpsertWithNestedWhereUniqueInput>;
+};
+
+export type FooterItemUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: FooterItemUpdateInput;
+  /** Unique document search */
+  where: FooterItemWhereUniqueInput;
+};
+
+export type FooterItemUpsertInput = {
+  /** Create document if it didn't exist */
+  create: FooterItemCreateInput;
+  /** Update document if it exists */
+  update: FooterItemUpdateInput;
+};
+
+export type FooterItemUpsertLocalizationInput = {
+  create: FooterItemCreateLocalizationDataInput;
+  locale: Locale;
+  update: FooterItemUpdateLocalizationDataInput;
+};
+
+export type FooterItemUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: FooterItemUpsertInput;
+  /** Unique document search */
+  where: FooterItemWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type FooterItemWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FooterItemWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FooterItemWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FooterItemWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  alt?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  alt_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  alt_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  alt_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  alt_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  alt_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  alt_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  alt_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  alt_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  alt_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  display?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  display_not?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  image?: InputMaybe<AssetWhereInput>;
+  link?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  link_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  link_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  link_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  link_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  link_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  link_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  link_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  link_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  link_starts_with?: InputMaybe<Scalars['String']>;
+  openInNewTab?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  openInNewTab_not?: InputMaybe<Scalars['Boolean']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** References FooterItem record uniquely */
+export type FooterItemWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 /** Page footer section */
 export type FooterSection = {
   __typename?: 'FooterSection';
-  /** Whether to show or hide the given component */
+  /** Whether to show or hide the footer section */
   display: Scalars['Boolean'];
+  /** Footer social media items */
+  footerItems: Array<FooterItem>;
   /** The unique identifier */
   id: Scalars['ID'];
   /** System stage field */
   stage: Stage;
+};
+
+
+/** Page footer section */
+export type FooterSectionFooterItemsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<FooterItemOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<FooterItemWhereInput>;
 };
 
 export type FooterSectionConnectInput = {
@@ -2590,6 +3342,7 @@ export type FooterSectionConnection = {
 
 export type FooterSectionCreateInput = {
   display: Scalars['Boolean'];
+  footerItems?: InputMaybe<FooterItemCreateManyInlineInput>;
 };
 
 export type FooterSectionCreateManyInlineInput = {
@@ -2631,6 +3384,9 @@ export type FooterSectionManyWhereInput = {
   display?: InputMaybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   display_not?: InputMaybe<Scalars['Boolean']>;
+  footerItems_every?: InputMaybe<FooterItemWhereInput>;
+  footerItems_none?: InputMaybe<FooterItemWhereInput>;
+  footerItems_some?: InputMaybe<FooterItemWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -2741,6 +3497,7 @@ export type FooterSectionParentWhereUniqueInput = {
 
 export type FooterSectionUpdateInput = {
   display?: InputMaybe<Scalars['Boolean']>;
+  footerItems?: InputMaybe<FooterItemUpdateManyInlineInput>;
 };
 
 export type FooterSectionUpdateManyInlineInput = {
@@ -2828,6 +3585,9 @@ export type FooterSectionWhereInput = {
   display?: InputMaybe<Scalars['Boolean']>;
   /** All values that are not equal to given value. */
   display_not?: InputMaybe<Scalars['Boolean']>;
+  footerItems_every?: InputMaybe<FooterItemWhereInput>;
+  footerItems_none?: InputMaybe<FooterItemWhereInput>;
+  footerItems_some?: InputMaybe<FooterItemWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -2863,7 +3623,7 @@ export type HeroSection = {
   callToActionText: Scalars['String'];
   /** Call to action URL */
   callToActionUrl: Scalars['String'];
-  /** Whether to show or hide the given component */
+  /** Whether to show or hide the hero section */
   display: Scalars['Boolean'];
   /** The unique identifier */
   id: Scalars['ID'];
@@ -3469,6 +4229,8 @@ export type Mutation = {
    * @deprecated Asset mutations will be overhauled soon
    */
   createAsset?: Maybe<Asset>;
+  /** Create one footerItem */
+  createFooterItem?: Maybe<FooterItem>;
   /** Create one navItem */
   createNavItem?: Maybe<NavItem>;
   /** Create one page */
@@ -3477,6 +4239,8 @@ export type Mutation = {
   createScheduledRelease?: Maybe<ScheduledRelease>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>;
+  /** Delete one footerItem from _all_ existing stages. Returns deleted document. */
+  deleteFooterItem?: Maybe<FooterItem>;
   /**
    * Delete many Asset documents
    * @deprecated Please use the new paginated many mutation (deleteManyAssetsConnection)
@@ -3484,6 +4248,13 @@ export type Mutation = {
   deleteManyAssets: BatchPayload;
   /** Delete many Asset documents, return deleted documents */
   deleteManyAssetsConnection: AssetConnection;
+  /**
+   * Delete many FooterItem documents
+   * @deprecated Please use the new paginated many mutation (deleteManyFooterItemsConnection)
+   */
+  deleteManyFooterItems: BatchPayload;
+  /** Delete many FooterItem documents, return deleted documents */
+  deleteManyFooterItemsConnection: FooterItemConnection;
   /**
    * Delete many NavItem documents
    * @deprecated Please use the new paginated many mutation (deleteManyNavItemsConnection)
@@ -3508,6 +4279,8 @@ export type Mutation = {
   deleteScheduledRelease?: Maybe<ScheduledRelease>;
   /** Publish one asset */
   publishAsset?: Maybe<Asset>;
+  /** Publish one footerItem */
+  publishFooterItem?: Maybe<FooterItem>;
   /**
    * Publish many Asset documents
    * @deprecated Please use the new paginated many mutation (publishManyAssetsConnection)
@@ -3515,6 +4288,13 @@ export type Mutation = {
   publishManyAssets: BatchPayload;
   /** Publish many Asset documents */
   publishManyAssetsConnection: AssetConnection;
+  /**
+   * Publish many FooterItem documents
+   * @deprecated Please use the new paginated many mutation (publishManyFooterItemsConnection)
+   */
+  publishManyFooterItems: BatchPayload;
+  /** Publish many FooterItem documents */
+  publishManyFooterItemsConnection: FooterItemConnection;
   /**
    * Publish many NavItem documents
    * @deprecated Please use the new paginated many mutation (publishManyNavItemsConnection)
@@ -3535,18 +4315,24 @@ export type Mutation = {
   publishPage?: Maybe<Page>;
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>;
+  /** Schedule to publish one footerItem */
+  schedulePublishFooterItem?: Maybe<FooterItem>;
   /** Schedule to publish one navItem */
   schedulePublishNavItem?: Maybe<NavItem>;
   /** Schedule to publish one page */
   schedulePublishPage?: Maybe<Page>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>;
+  /** Unpublish one footerItem from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishFooterItem?: Maybe<FooterItem>;
   /** Unpublish one navItem from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishNavItem?: Maybe<NavItem>;
   /** Unpublish one page from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishPage?: Maybe<Page>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>;
+  /** Unpublish one footerItem from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishFooterItem?: Maybe<FooterItem>;
   /**
    * Unpublish many Asset documents
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
@@ -3554,6 +4340,13 @@ export type Mutation = {
   unpublishManyAssets: BatchPayload;
   /** Find many Asset documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyAssetsConnection: AssetConnection;
+  /**
+   * Unpublish many FooterItem documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyFooterItemsConnection)
+   */
+  unpublishManyFooterItems: BatchPayload;
+  /** Find many FooterItem documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyFooterItemsConnection: FooterItemConnection;
   /**
    * Unpublish many NavItem documents
    * @deprecated Please use the new paginated many mutation (unpublishManyNavItemsConnection)
@@ -3574,6 +4367,8 @@ export type Mutation = {
   unpublishPage?: Maybe<Page>;
   /** Update one asset */
   updateAsset?: Maybe<Asset>;
+  /** Update one footerItem */
+  updateFooterItem?: Maybe<FooterItem>;
   /**
    * Update many assets
    * @deprecated Please use the new paginated many mutation (updateManyAssetsConnection)
@@ -3581,6 +4376,13 @@ export type Mutation = {
   updateManyAssets: BatchPayload;
   /** Update many Asset documents */
   updateManyAssetsConnection: AssetConnection;
+  /**
+   * Update many footerItems
+   * @deprecated Please use the new paginated many mutation (updateManyFooterItemsConnection)
+   */
+  updateManyFooterItems: BatchPayload;
+  /** Update many FooterItem documents */
+  updateManyFooterItemsConnection: FooterItemConnection;
   /**
    * Update many navItems
    * @deprecated Please use the new paginated many mutation (updateManyNavItemsConnection)
@@ -3603,6 +4405,8 @@ export type Mutation = {
   updateScheduledRelease?: Maybe<ScheduledRelease>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
+  /** Upsert one footerItem */
+  upsertFooterItem?: Maybe<FooterItem>;
   /** Upsert one navItem */
   upsertNavItem?: Maybe<NavItem>;
   /** Upsert one page */
@@ -3612,6 +4416,11 @@ export type Mutation = {
 
 export type MutationCreateAssetArgs = {
   data: AssetCreateInput;
+};
+
+
+export type MutationCreateFooterItemArgs = {
+  data: FooterItemCreateInput;
 };
 
 
@@ -3635,6 +4444,11 @@ export type MutationDeleteAssetArgs = {
 };
 
 
+export type MutationDeleteFooterItemArgs = {
+  where: FooterItemWhereUniqueInput;
+};
+
+
 export type MutationDeleteManyAssetsArgs = {
   where?: InputMaybe<AssetManyWhereInput>;
 };
@@ -3647,6 +4461,21 @@ export type MutationDeleteManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationDeleteManyFooterItemsArgs = {
+  where?: InputMaybe<FooterItemManyWhereInput>;
+};
+
+
+export type MutationDeleteManyFooterItemsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<FooterItemManyWhereInput>;
 };
 
 
@@ -3709,6 +4538,15 @@ export type MutationPublishAssetArgs = {
 };
 
 
+export type MutationPublishFooterItemArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  to?: Array<Stage>;
+  where: FooterItemWhereUniqueInput;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
 export type MutationPublishManyAssetsArgs = {
   locales?: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']>;
@@ -3729,6 +4567,30 @@ export type MutationPublishManyAssetsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   to?: Array<Stage>;
   where?: InputMaybe<AssetManyWhereInput>;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type MutationPublishManyFooterItemsArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<FooterItemManyWhereInput>;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type MutationPublishManyFooterItemsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<FooterItemManyWhereInput>;
   withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
 };
 
@@ -3810,6 +4672,17 @@ export type MutationSchedulePublishAssetArgs = {
 };
 
 
+export type MutationSchedulePublishFooterItemArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+  publishBase?: InputMaybe<Scalars['Boolean']>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: FooterItemWhereUniqueInput;
+  withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
 export type MutationSchedulePublishNavItemArgs = {
   locales?: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']>;
@@ -3842,6 +4715,16 @@ export type MutationScheduleUnpublishAssetArgs = {
 };
 
 
+export type MutationScheduleUnpublishFooterItemArgs = {
+  from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where: FooterItemWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishNavItemArgs = {
   from?: Array<Stage>;
   locales?: InputMaybe<Array<Locale>>;
@@ -3870,6 +4753,14 @@ export type MutationUnpublishAssetArgs = {
 };
 
 
+export type MutationUnpublishFooterItemArgs = {
+  from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where: FooterItemWhereUniqueInput;
+};
+
+
 export type MutationUnpublishManyAssetsArgs = {
   from?: Array<Stage>;
   locales?: InputMaybe<Array<Locale>>;
@@ -3889,6 +4780,28 @@ export type MutationUnpublishManyAssetsConnectionArgs = {
   stage?: InputMaybe<Stage>;
   unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyFooterItemsArgs = {
+  from?: Array<Stage>;
+  locales?: InputMaybe<Array<Locale>>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<FooterItemManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyFooterItemsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  unpublishBase?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<FooterItemManyWhereInput>;
 };
 
 
@@ -3958,6 +4871,12 @@ export type MutationUpdateAssetArgs = {
 };
 
 
+export type MutationUpdateFooterItemArgs = {
+  data: FooterItemUpdateInput;
+  where: FooterItemWhereUniqueInput;
+};
+
+
 export type MutationUpdateManyAssetsArgs = {
   data: AssetUpdateManyInput;
   where?: InputMaybe<AssetManyWhereInput>;
@@ -3972,6 +4891,23 @@ export type MutationUpdateManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUpdateManyFooterItemsArgs = {
+  data: FooterItemUpdateManyInput;
+  where?: InputMaybe<FooterItemManyWhereInput>;
+};
+
+
+export type MutationUpdateManyFooterItemsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: FooterItemUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<FooterItemManyWhereInput>;
 };
 
 
@@ -4033,6 +4969,12 @@ export type MutationUpsertAssetArgs = {
 };
 
 
+export type MutationUpsertFooterItemArgs = {
+  upsert: FooterItemUpsertInput;
+  where: FooterItemWhereUniqueInput;
+};
+
+
 export type MutationUpsertNavItemArgs = {
   upsert: NavItemUpsertInput;
   where: NavItemWhereUniqueInput;
@@ -4051,6 +4993,8 @@ export type NavItem = Node & {
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy?: Maybe<User>;
+  /** Whether to show or hide the nav item */
+  display: Scalars['Boolean'];
   /** Get the document in other stages */
   documentInStages: Array<NavItem>;
   /** List of NavItem versions */
@@ -4170,6 +5114,7 @@ export type NavItemConnection = {
 export type NavItemCreateInput = {
   cl3d6a2d31qz401xp02ac1mui?: InputMaybe<NavbarSectionCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  display: Scalars['Boolean'];
   link: Scalars['String'];
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<NavItemCreateLocalizationsInput>;
@@ -4245,6 +5190,9 @@ export type NavItemManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  display?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  display_not?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -4326,6 +5274,8 @@ export type NavItemManyWhereInput = {
 export enum NavItemOrderByInput {
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
+  DisplayAsc = 'display_ASC',
+  DisplayDesc = 'display_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   LinkAsc = 'link_ASC',
@@ -4342,6 +5292,7 @@ export enum NavItemOrderByInput {
 
 export type NavItemUpdateInput = {
   cl3d6a2d31qz401xp02ac1mui?: InputMaybe<NavbarSectionUpdateManyInlineInput>;
+  display?: InputMaybe<Scalars['Boolean']>;
   link?: InputMaybe<Scalars['String']>;
   /** Manage document localizations */
   localizations?: InputMaybe<NavItemUpdateLocalizationsInput>;
@@ -4387,6 +5338,7 @@ export type NavItemUpdateManyInlineInput = {
 };
 
 export type NavItemUpdateManyInput = {
+  display?: InputMaybe<Scalars['Boolean']>;
   link?: InputMaybe<Scalars['String']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<NavItemUpdateManyLocalizationsInput>;
@@ -4484,6 +5436,9 @@ export type NavItemWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  display?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  display_not?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -4589,7 +5544,7 @@ export type NavItemWhereUniqueInput = {
 /** Navbar section */
 export type NavbarSection = {
   __typename?: 'NavbarSection';
-  /** Whether to show or hide the given component */
+  /** Whether to show or hide the navbar */
   display: Scalars['Boolean'];
   /** The unique identifier */
   id: Scalars['ID'];
@@ -5020,6 +5975,8 @@ export type Page = Node & {
   createdBy?: Maybe<User>;
   /** The page description */
   description: Scalars['String'];
+  /** Whether to render the page or not */
+  display: Scalars['Boolean'];
   /** Get the document in other stages */
   documentInStages: Array<Page>;
   /** Page favicon */
@@ -5160,6 +6117,7 @@ export type PageCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** description input for default locale (en) */
   description: Scalars['String'];
+  display: Scalars['Boolean'];
   favicon?: InputMaybe<AssetCreateOneInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<PageCreateLocalizationsInput>;
@@ -5250,6 +6208,9 @@ export type PageManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  display?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  display_not?: InputMaybe<Scalars['Boolean']>;
   favicon?: InputMaybe<AssetWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
@@ -5350,6 +6311,8 @@ export enum PageOrderByInput {
   CreatedAtDesc = 'createdAt_DESC',
   DescriptionAsc = 'description_ASC',
   DescriptionDesc = 'description_DESC',
+  DisplayAsc = 'display_ASC',
+  DisplayDesc = 'display_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
@@ -5365,6 +6328,7 @@ export enum PageOrderByInput {
 export type PageUpdateInput = {
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
+  display?: InputMaybe<Scalars['Boolean']>;
   favicon?: InputMaybe<AssetUpdateOneInlineInput>;
   /** Manage document localizations */
   localizations?: InputMaybe<PageUpdateLocalizationsInput>;
@@ -5412,6 +6376,7 @@ export type PageUpdateManyInlineInput = {
 export type PageUpdateManyInput = {
   /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
+  display?: InputMaybe<Scalars['Boolean']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<PageUpdateManyLocalizationsInput>;
   title?: InputMaybe<Scalars['String']>;
@@ -5525,6 +6490,9 @@ export type PageWhereInput = {
   description_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   description_starts_with?: InputMaybe<Scalars['String']>;
+  display?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  display_not?: InputMaybe<Scalars['Boolean']>;
   favicon?: InputMaybe<AssetWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
@@ -5787,6 +6755,14 @@ export type Query = {
   assets: Array<Asset>;
   /** Retrieve multiple assets using the Relay connection interface */
   assetsConnection: AssetConnection;
+  /** Retrieve a single footerItem */
+  footerItem?: Maybe<FooterItem>;
+  /** Retrieve document version */
+  footerItemVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple footerItems */
+  footerItems: Array<FooterItem>;
+  /** Retrieve multiple footerItems using the Relay connection interface */
+  footerItemsConnection: FooterItemConnection;
   /** Retrieve a single navItem */
   navItem?: Maybe<NavItem>;
   /** Retrieve document version */
@@ -5861,6 +6837,44 @@ export type QueryAssetsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<AssetWhereInput>;
+};
+
+
+export type QueryFooterItemArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: FooterItemWhereUniqueInput;
+};
+
+
+export type QueryFooterItemVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryFooterItemsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<FooterItemOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<FooterItemWhereInput>;
+};
+
+
+export type QueryFooterItemsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<FooterItemOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<FooterItemWhereInput>;
 };
 
 
@@ -6152,7 +7166,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | NavItem | Page;
+export type ScheduledOperationAffectedDocument = Asset | FooterItem | NavItem | Page;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -7545,7 +8559,7 @@ export enum _SystemDateTimeFieldVariation {
 export type GetMainPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetMainPageQuery = { __typename?: 'Query', page?: { __typename?: 'Page', localizations: Array<{ __typename?: 'Page', locale: Locale, title: string, description: string, favicon?: { __typename?: 'Asset', url: string, fileName: string, width?: number | null, height?: number | null } | null, sections: Array<{ __typename: 'AboutSection', text: string, display: boolean, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename: 'ContactSection', description: string, display: boolean, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename: 'EducationSection', achievements: Array<string>, description: string, display: boolean, title: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename: 'ExperienceSection', achievements: Array<string>, description: string, display: boolean, title: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename: 'FooterSection', display: boolean } | { __typename: 'HeroSection', bottomSkills: Array<string>, callToActionText: string, callToActionUrl: string, display: boolean, topSkills: Array<string>, title: string, secondaryTitle: string, image: { __typename?: 'Asset', fileName: string, height?: number | null, url: string, width?: number | null } } | { __typename: 'NavbarSection', display: boolean, initials: string, navItems: Array<{ __typename?: 'NavItem', title: string, link: string, openInNewTab: boolean }> }> }> } | null };
+export type GetMainPageQuery = { __typename?: 'Query', page?: { __typename?: 'Page', localizations: Array<{ __typename?: 'Page', locale: Locale, title: string, description: string, display: boolean, favicon?: { __typename?: 'Asset', url: string, width?: number | null, height?: number | null } | null, sections: Array<{ __typename: 'AboutSection', display: boolean, alt: string, text: { __typename?: 'RichText', html: string }, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'ContactSection', description: string, display: boolean, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'EducationSection', achievements: Array<string>, description: string, display: boolean, title: string, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'ExperienceSection', achievements: Array<string>, description: string, display: boolean, title: string, link?: string | null, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'FooterSection', display: boolean, footerItems: Array<{ __typename?: 'FooterItem', display: boolean, openInNewTab: boolean, link: string, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } }> } | { __typename: 'HeroSection', topSkills: Array<string>, bottomSkills: Array<string>, callToActionText: string, callToActionUrl: string, display: boolean, title: string, secondaryTitle: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'NavbarSection', display: boolean, initials: string, navItems: Array<{ __typename?: 'NavItem', title: string, link: string, openInNewTab: boolean, display: boolean }> }> }> } | null };
 
 
 export const GetMainPageDocument = gql`
@@ -7555,10 +8569,9 @@ export const GetMainPageDocument = gql`
       locale
       title
       description
-      locale
+      display
       favicon {
         url
-        fileName
         width
         height
       }
@@ -7571,31 +8584,35 @@ export const GetMainPageDocument = gql`
             title
             link
             openInNewTab
+            display
           }
         }
         ... on HeroSection {
+          topSkills
           bottomSkills
           callToActionText
           callToActionUrl
           display
-          topSkills
           title
           secondaryTitle
           image {
             fileName
-            height
             url
             width
+            height
           }
         }
         ... on AboutSection {
-          text
+          text {
+            html
+          }
           display
+          alt
           image {
             fileName
-            height
             url
             width
+            height
           }
         }
         ... on EducationSection {
@@ -7603,11 +8620,12 @@ export const GetMainPageDocument = gql`
           description
           display
           title
+          alt
           image {
             fileName
-            height
             url
             width
+            height
           }
         }
         ... on ExperienceSection {
@@ -7615,25 +8633,40 @@ export const GetMainPageDocument = gql`
           description
           display
           title
+          link
+          alt
           image {
             fileName
-            height
             url
             width
+            height
           }
         }
         ... on ContactSection {
           description
           display
+          alt
           image {
             fileName
-            height
             url
             width
+            height
           }
         }
         ... on FooterSection {
           display
+          footerItems {
+            display
+            openInNewTab
+            link
+            alt
+            image {
+              fileName
+              url
+              width
+              height
+            }
+          }
         }
       }
     }

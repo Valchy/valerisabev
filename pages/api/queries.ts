@@ -9,10 +9,9 @@ export const GET_MAIN_PAGE = gql`
 				locale
 				title
 				description
-				locale
+				display
 				favicon {
 					url
-					fileName
 					width
 					height
 				}
@@ -25,31 +24,35 @@ export const GET_MAIN_PAGE = gql`
 							title
 							link
 							openInNewTab
+							display
 						}
 					}
 					... on HeroSection {
+						topSkills
 						bottomSkills
 						callToActionText
 						callToActionUrl
 						display
-						topSkills
 						title
 						secondaryTitle
 						image {
 							fileName
-							height
 							url
 							width
+							height
 						}
 					}
 					... on AboutSection {
-						text
+						text {
+							html
+						}
 						display
+						alt
 						image {
 							fileName
-							height
 							url
 							width
+							height
 						}
 					}
 					... on EducationSection {
@@ -57,11 +60,12 @@ export const GET_MAIN_PAGE = gql`
 						description
 						display
 						title
+						alt
 						image {
 							fileName
-							height
 							url
 							width
+							height
 						}
 					}
 					... on ExperienceSection {
@@ -69,25 +73,40 @@ export const GET_MAIN_PAGE = gql`
 						description
 						display
 						title
+						link
+						alt
 						image {
 							fileName
-							height
 							url
 							width
+							height
 						}
 					}
 					... on ContactSection {
 						description
 						display
+						alt
 						image {
 							fileName
-							height
 							url
 							width
+							height
 						}
 					}
 					... on FooterSection {
 						display
+						footerItems {
+							display
+							openInNewTab
+							link
+							alt
+							image {
+								fileName
+								url
+								width
+								height
+							}
+						}
 					}
 				}
 			}

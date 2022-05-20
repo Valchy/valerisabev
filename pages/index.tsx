@@ -24,7 +24,7 @@ const MainPage: NextPage<MainPageProps> = ({ page }) => {
 	const { locale } = useRouter();
 	const language = locale?.split('-')[0];
 	const chosenPage = page?.localizations.find(({ locale }) => locale === language);
-	const currentPage = chosenPage || page?.localizations[0];
+	const currentPage = page?.localizations[1]; // chosenPage || page?.localizations[0];
 
 	// Getting data for each component
 	const navbarData = currentPage?.sections.find(({ __typename }) => __typename === 'NavbarSection');

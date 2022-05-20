@@ -10,6 +10,7 @@
 	transition: all 0.4s ease 0s;
 }
 
+.locale,
 .nav_links a {
 	color: var(--fadeWhite);
 	font-size: 14px;
@@ -48,7 +49,6 @@
 	color: #fff;
 }
 
-/* Main menu positionning */
 .main_nav {
 	width: 100vw;
 	height: 100vh;
@@ -71,7 +71,6 @@
 	visibility: visible;
 }
 
-/* Yellow band effect */
 .main_nav::before {
 	content: '';
 	position: absolute;
@@ -89,11 +88,10 @@
 	transform: skew(-14deg) translateX(0);
 }
 
-/* Skewing effect on menu links */
 .main_nav ul {
 	display: inline-flex;
 	flex-direction: column;
-	height: 93%; /* Should be 100%, but we have a notice message :D */
+	height: 93%;
 	align-items: flex-end;
 	justify-content: center;
 	transform: translateX(-18%) skew(-16deg);
@@ -106,7 +104,6 @@
 	transform: skew(16deg);
 }
 
-/* Apparition effect on links */
 .main_nav a {
 	opacity: 0;
 	transform: translateY(-10px);
@@ -116,28 +113,33 @@
 	opacity: 1;
 	transform: translateY(0);
 }
+
 .main_nav li:nth-child(1) a {
 	transition: all 275ms 175ms;
 }
+
 .main_nav li:nth-child(2) a {
 	transition: all 275ms 225ms;
 }
+
 .main_nav li:nth-child(3) a {
 	transition: all 275ms 275ms;
 }
+
 .main_nav li:nth-child(4) a {
 	transition: all 275ms 325ms;
 }
+
 .main_nav li:nth-child(5) a {
 	transition: all 275ms 375ms;
 }
 
-/* Decoration */
 .main_nav ul,
 .main_nav li {
 	list-style: none;
 	padding: 0;
 }
+.locale_mobile,
 .main_nav a {
 	display: block;
 	padding: 12px 0;
@@ -187,7 +189,6 @@
 	transform: translateY(-16px) skew(-10deg);
 }
 
-/* Toggle State part */
 .is_open .burger {
 	transform: skew(5deg) translateY(-8px) rotate(-45deg);
 }
@@ -201,8 +202,6 @@
 	opacity: 0;
 }
 
-/* MENU Text part */
-
 .burger_text {
 	display: block;
 	font-size: 0.675rem;
@@ -212,30 +211,6 @@
 	font-weight: 500;
 	text-align: center;
 	color: #fff;
-}
-
-/* Notice */
-.notice {
-	position: absolute;
-	bottom: -15px;
-	left: 0;
-	right: 0;
-	padding: 20px;
-	background: #f2f2f2;
-	color: #fff;
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 1.5;
-	z-index: 100;
-	text-align: center;
-}
-.notice strong {
-	font-weight: 700;
-}
-.notice a {
-	padding: 2px 3px;
-	background: #fedc2a;
-	text-decoration: none;
 }
 
 @media screen and (max-width: 770px) {
@@ -251,4 +226,23 @@
 	.nav_links {
 		display: none;
 	}
+}
+
+.locale {
+	margin-left: 25px;
+	cursor: pointer;
+}
+
+.locale_mobile {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	opacity: 0;
+	transition: all 0.3s ease 0s;
+	transition-delay: 400ms;
+	cursor: pointer;
+}
+
+.locale_mobile.is_open_locale {
+	opacity: 1;
 }

@@ -18,7 +18,7 @@ export default function About({ aboutData }: AboutProps) {
 					</div>
 					<div className="flex-row about-text-wrapper">
 						<div className="fGrow" dangerouslySetInnerHTML={{ __html: `${aboutData.text.html}` }} />
-						<img src={aboutData.image.url} alt="Happy summer with Valeri Sabev" />
+						<img src={aboutData?.image?.url} alt="Happy summer with Valeri Sabev" />
 					</div>
 				</div>
 			</div>

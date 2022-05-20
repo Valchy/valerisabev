@@ -13,10 +13,11 @@ type NavItem = {
 
 interface NavbarProps {
 	navbarData: any;
+	locale: string;
 	// NonNullable<GetMainPageQuery['page']>['localizations']
 }
 
-export default function Navbar({ navbarData }: NavbarProps) {
+export default function Navbar({ navbarData, locale }: NavbarProps) {
 	const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
 	const [navbarOverlay, setNavbarOverlay] = useState(false);
 	const { scrollY } = useViewportScroll();
@@ -50,6 +51,9 @@ export default function Navbar({ navbarData }: NavbarProps) {
 								{title}
 							</a>
 						))}
+					<Link href="/" locale={locale === 'en' ? 'bg' : 'en'} rel="noreferrer nofollow">
+						<span className={classNames(styles.locale, 'fade')}>{locale === 'bg' ? 'BG' : 'EN'}</span>
+					</Link>
 				</nav>
 				<button
 					onClick={toggleBurgerMenu}
@@ -76,6 +80,11 @@ export default function Navbar({ navbarData }: NavbarProps) {
 							</li>
 						))}
 				</ul>
+				<Link href="/" locale={locale === 'en' ? 'bg' : 'en'} rel="noreferrer nofollow">
+					<div className={classNames(styles.locale_mobile, openBurgerMenu && styles.is_open_locale)}>
+						{locale === 'bg' ? 'BG' : 'EN'}
+					</div>
+				</Link>
 			</nav>
 		</motion.header>
 	);

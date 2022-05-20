@@ -52,7 +52,7 @@ export default function Contact({ contactData }: ContactProps) {
 					</a>
 				</p>
 				<div className="flex-row">
-					<div style={{ backgroundImage: `url(${contactData.image.url})` }} className={classNames(styles.contact_img)} />
+					<div style={{ backgroundImage: `url(${contactData?.image?.url})` }} className={classNames(styles.contact_img)} />
 					<form onSubmit={handleSubmit(submitEmail)} className={classNames(styles.contact_form, 'flex-col')}>
 						<span className={classNames(styles.error_handler, errors.contact_name && styles.show_error)}>
 							Name {errors.contact_name && 'is required'}

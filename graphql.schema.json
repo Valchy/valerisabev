@@ -41534,9 +41534,13 @@
               }
             ],
             "type": {
-              "kind": "OBJECT",
-              "name": "Asset",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Asset",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -42277,9 +42281,13 @@
             "name": "favicon",
             "description": null,
             "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "AssetCreateOneInlineInput",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INPUT_OBJECT",
+                "name": "AssetCreateOneInlineInput",
+                "ofType": null
+              }
             },
             "defaultValue": null,
             "isDeprecated": false,

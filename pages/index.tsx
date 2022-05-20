@@ -1,6 +1,5 @@
 import type { NextPage, GetStaticProps } from 'next';
 import { request } from 'graphql-request';
-import { useRouter } from 'next/router';
 
 // Section components
 import Header from '@components/Header';
@@ -18,27 +17,23 @@ import type { GetMainPageQuery } from '@generated/graphql';
 
 interface MainPageProps {
 	page: GetMainPageQuery['page'];
+	locale: string;
 }
 
-const MainPage: NextPage<MainPageProps> = ({ page }) => {
-	const { locale } = useRouter();
-	const language = locale?.split('-')[0];
-	const chosenPage = page?.localizations.find(({ locale }) => locale === language);
-	const currentPage = page?.localizations[1]; // chosenPage || page?.localizations[0];
-
+const MainPage: NextPage<MainPageProps> = ({ page, locale }) => {
 	// Getting data for each component
-	const navbarData = currentPage?.sections.find(({ __typename }) => __typename === 'NavbarSection');
-	const heroData = currentPage?.sections.find(({ __typename }) => __typename === 'HeroSection');
-	const aboutData = currentPage?.sections.find(({ __typename }) => __typename === 'AboutSection');
-	const educationData = currentPage?.sections.filter(({ __typename, display }) => display && __typename === 'EducationSection');
-	const experienceData = currentPage?.sections.filter(({ __typename, display }) => display && __typename === 'ExperienceSection');
-	const contactData = currentPage?.sections.find(({ __typename }) => __typename === 'ContactSection');
-	const footerData = currentPage?.sections.find(({ __typename }) => __typename === 'FooterSection');
+	const navbarData = page?.sections?.find(({ __typename }) => __typename === 'NavbarSection');
+	const heroData = page?.sections?.find(({ __typename }) => __typename === 'HeroSection');
+	const aboutData = page?.sections?.find(({ __typename }) => __typename === 'AboutSection');
+	const educationData = page?.sections?.filter(({ __typename, display }) => display && __typename === 'EducationSection');
+	const experienceData = page?.sections?.filter(({ __typename, display }) => display && __typename === 'ExperienceSection');
+	const contactData = page?.sections?.find(({ __typename }) => __typename === 'ContactSection');
+	const footerData = page?.sections?.find(({ __typename }) => __typename === 'FooterSection');
 
 	return (
 		<>
-			<Header title={currentPage?.title} description={currentPage?.description} favicon={currentPage?.favicon?.url} />
-			{navbarData?.display && <Navbar navbarData={navbarData} />}
+			<Header title={page?.title} description={page?.description} favicon={page?.favicon?.url} />
+			{navbarData?.display && <Navbar navbarData={navbarData} locale={locale} />}
 			<main>
 				{heroData?.display && <Hero heroData={heroData} />}
 				{aboutData?.display && <About aboutData={aboutData} />}
@@ -51,11 +46,11 @@ const MainPage: NextPage<MainPageProps> = ({ page }) => {
 	);
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-	const { page } = await request<GetMainPageQuery>(CONTENT_API, GET_MAIN_PAGE);
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+	const { page } = await request<GetMainPageQuery>(CONTENT_API, GET_MAIN_PAGE(locale));
 
 	return {
-		props: { page: page || [] },
+		props: { page, locale },
 	};
 };
 

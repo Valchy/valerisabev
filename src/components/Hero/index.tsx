@@ -10,7 +10,7 @@ export default function Hero({ heroData }: HeroProps) {
 	return (
 		<section
 			id="home"
-			style={{ backgroundImage: `url(${heroData.image.url})` }}
+			style={{ backgroundImage: `url(${heroData?.image?.url})` }}
 			className={classNames(styles.home, 'flex-col-center-center')}
 		>
 			<div className="container flex-col-center-center">

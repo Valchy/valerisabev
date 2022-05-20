@@ -5980,7 +5980,7 @@ export type Page = Node & {
   /** Get the document in other stages */
   documentInStages: Array<Page>;
   /** Page favicon */
-  favicon?: Maybe<Asset>;
+  favicon: Asset;
   /** List of Page versions */
   history: Array<Version>;
   /** The unique identifier */
@@ -6118,7 +6118,7 @@ export type PageCreateInput = {
   /** description input for default locale (en) */
   description: Scalars['String'];
   display: Scalars['Boolean'];
-  favicon?: InputMaybe<AssetCreateOneInlineInput>;
+  favicon: AssetCreateOneInlineInput;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<PageCreateLocalizationsInput>;
   sections?: InputMaybe<PagesectionsUnionCreateManyInlineInput>;
@@ -8559,80 +8559,104 @@ export enum _SystemDateTimeFieldVariation {
 export type GetMainPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetMainPageQuery = { __typename?: 'Query', page?: { __typename?: 'Page', localizations: Array<{ __typename?: 'Page', locale: Locale, title: string, description: string, display: boolean, favicon?: { __typename?: 'Asset', url: string, width?: number | null, height?: number | null } | null, sections: Array<{ __typename: 'AboutSection', display: boolean, alt: string, text: { __typename?: 'RichText', html: string }, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'ContactSection', description: string, display: boolean, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'EducationSection', achievements: Array<string>, description: string, display: boolean, title: string, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'ExperienceSection', achievements: Array<string>, description: string, display: boolean, title: string, link?: string | null, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'FooterSection', display: boolean, footerItems: Array<{ __typename?: 'FooterItem', display: boolean, openInNewTab: boolean, link: string, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } }> } | { __typename: 'HeroSection', topSkills: Array<string>, bottomSkills: Array<string>, callToActionText: string, callToActionUrl: string, display: boolean, title: string, secondaryTitle: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'NavbarSection', display: boolean, initials: string, navItems: Array<{ __typename?: 'NavItem', title: string, link: string, openInNewTab: boolean, display: boolean }> }> }> } | null };
+export type GetMainPageQuery = { __typename?: 'Query', page?: { __typename?: 'Page', locale: Locale, title: string, description: string, display: boolean, favicon: { __typename?: 'Asset', url: string, width?: number | null, height?: number | null }, sections: Array<{ __typename: 'AboutSection', display: boolean, alt: string, text: { __typename?: 'RichText', html: string }, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'ContactSection', description: string, display: boolean, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'EducationSection', achievements: Array<string>, description: string, display: boolean, title: string, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'ExperienceSection', achievements: Array<string>, description: string, display: boolean, title: string, link?: string | null, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'FooterSection', display: boolean, footerItems: Array<{ __typename?: 'FooterItem', display: boolean, openInNewTab: boolean, link: string, alt: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } }> } | { __typename: 'HeroSection', topSkills: Array<string>, bottomSkills: Array<string>, callToActionText: string, callToActionUrl: string, display: boolean, title: string, secondaryTitle: string, image: { __typename?: 'Asset', fileName: string, url: string, width?: number | null, height?: number | null } } | { __typename: 'NavbarSection', display: boolean, initials: string, navItems: Array<{ __typename?: 'NavItem', title: string, link: string, openInNewTab: boolean, display: boolean }> }> } | null };
 
 
 export const GetMainPageDocument = gql`
     query GetMainPage {
-  page(where: {url: "index"}) {
-    localizations(locales: [en, bg], includeCurrent: true) {
-      locale
-      title
-      description
-      display
-      favicon {
-        url
-        width
-        height
+  page(where: {url: "index"}, locales: []) {
+    locale
+    title
+    description
+    display
+    favicon {
+      url
+      width
+      height
+    }
+    sections {
+      __typename
+      ... on NavbarSection {
+        display
+        initials
+        navItems {
+          title
+          link
+          openInNewTab
+          display
+        }
       }
-      sections {
-        __typename
-        ... on NavbarSection {
-          display
-          initials
-          navItems {
-            title
-            link
-            openInNewTab
-            display
-          }
+      ... on HeroSection {
+        topSkills
+        bottomSkills
+        callToActionText
+        callToActionUrl
+        display
+        title
+        secondaryTitle
+        image {
+          fileName
+          url
+          width
+          height
         }
-        ... on HeroSection {
-          topSkills
-          bottomSkills
-          callToActionText
-          callToActionUrl
-          display
-          title
-          secondaryTitle
-          image {
-            fileName
-            url
-            width
-            height
-          }
+      }
+      ... on AboutSection {
+        text {
+          html
         }
-        ... on AboutSection {
-          text {
-            html
-          }
-          display
-          alt
-          image {
-            fileName
-            url
-            width
-            height
-          }
+        display
+        alt
+        image {
+          fileName
+          url
+          width
+          height
         }
-        ... on EducationSection {
-          achievements
-          description
-          display
-          title
-          alt
-          image {
-            fileName
-            url
-            width
-            height
-          }
+      }
+      ... on EducationSection {
+        achievements
+        description
+        display
+        title
+        alt
+        image {
+          fileName
+          url
+          width
+          height
         }
-        ... on ExperienceSection {
-          achievements
-          description
+      }
+      ... on ExperienceSection {
+        achievements
+        description
+        display
+        title
+        link
+        alt
+        image {
+          fileName
+          url
+          width
+          height
+        }
+      }
+      ... on ContactSection {
+        description
+        display
+        alt
+        image {
+          fileName
+          url
+          width
+          height
+        }
+      }
+      ... on FooterSection {
+        display
+        footerItems {
           display
-          title
+          openInNewTab
           link
           alt
           image {
@@ -8640,32 +8664,6 @@ export const GetMainPageDocument = gql`
             url
             width
             height
-          }
-        }
-        ... on ContactSection {
-          description
-          display
-          alt
-          image {
-            fileName
-            url
-            width
-            height
-          }
-        }
-        ... on FooterSection {
-          display
-          footerItems {
-            display
-            openInNewTab
-            link
-            alt
-            image {
-              fileName
-              url
-              width
-              height
-            }
           }
         }
       }
